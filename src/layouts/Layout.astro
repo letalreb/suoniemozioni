@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Catalogo video del museo',
+  description = 'Esplora i contenuti video del museo.'
+} = Astro.props;
+---
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">Catalogo video</a>
+      <span>Archivio multimediale</span>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">© {new Date().getFullYear()} Museo</footer>
+  </body>
+</html>

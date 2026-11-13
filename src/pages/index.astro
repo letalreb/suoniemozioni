@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import videos from '../data/videos.json';
+
+const categories = [...new Set(videos.map((video) => video.category))].sort();
+---
+<Layout>
+  <section class="intro">
+    <p class="eyebrow">Archivio multimediale</p>
+    <h1>Catalogo video del museo</h1>
+    <p>Esplora video, storie e contenuti dalle collezioni del museo.</p>
+  </section>
+
+  <section class="catalog" aria-label="Catalogo video">
+    <div class="toolbar">
+      <label class="search-label">
+        <span class="sr-only">Cerca video</span>
+        <input id="search" type="search" placeholder="Cerca per titolo, descrizione o tag..." />
+      </label>
+      <label>
+        <span class="sr-only">Filtra per categoria</span>
+        <select id="category">
+          <option value="">Tutte le categorie</option>
+          {categories.map((category) => <option value={category}>{category}</option>)}
+        </select>
+      </label>
+    </div>
+
+    <p id="result-count" class="result-count">{videos.length} contenuti</p>
+    <div class="video-grid" id="video-grid">
+      {videos.map((video) => <VideoCard video={video} />)}
+    </div>
+    <p id="empty-state" class="empty-state" hidden>Nessun video trovato.</p>
+  </section>
+</Layout>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>('#search');
+  const category = document.querySelector<HTMLSelectElement>('#category');
+  const cards = [...document.querySelectorAll<HTMLElement>('.video-card')];
+  const count = document.querySelector<HTMLElement>('#result-count');
+  const empty = document.querySelector<HTMLElement>('#empty-state');
+
+  function filterVideos() {
+    const term = (search?.value || '').trim().toLocaleLowerCase('it');
+    const selectedCategory = category?.value || '';
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const text = card.textContent?.toLocaleLowerCase('it') || '';
+      const matchesText = text.includes(term);
+      const matchesCategory = !selectedCategory || card.querySelector('.eyebrow')?.textContent?.startsWith(selectedCategory);
+      const show = matchesText && matchesCategory;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+
+    if (count) count.textContent = `${visible} ${visible === 1 ? 'contenuto' : 'contenuti'}`;
+    if (empty) empty.hidden = visible !== 0;
+  }
+
+  search?.addEventListener('input', filterVideos);
+  category?.addEventListener('change', filterVideos);
+</script>

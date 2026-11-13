@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import videos from '../../data/videos.json';
+
+export function getStaticPaths() {
+  return videos.map((video) => ({
+    params: { slug: video.slug },
+    props: { video }
+  }));
+}
+
+const { video } = Astro.props;
+---
+<Layout title={`${video.title} | Catalogo video`} description={video.description}>
+  <article class="video-detail">
+    <a class="back-link" href="/">← Torna al catalogo</a>
+    <p class="eyebrow">{video.category}{video.year ? ` · ${video.year}` : ''}</p>
+    <h1>{video.title}</h1>
+    <p class="detail-description">{video.description}</p>
+
+    <div class="player">
+      <iframe
+        src={video.videoUrl}
+        title={video.title}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <dl class="metadata">
+      {video.duration && <div><dt>Durata</dt><dd>{video.duration}</dd></div>}
+      {video.language && <div><dt>Lingua</dt><dd>{video.language.toUpperCase()}</dd></div>}
+      {video.year && <div><dt>Anno</dt><dd>{video.year}</dd></div>}
+    </dl>
+
+    {video.tags?.length > 0 && (
+      <div class="tags">
+        {video.tags.map((tag) => <span>#{tag}</span>)}
+      </div>
+    )}
+  </article>
+</Layout>

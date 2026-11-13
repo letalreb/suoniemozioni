@@ -1,0 +1,23 @@
+---
+interface Props {
+  video: {
+    slug: string;
+    title: string;
+    description: string;
+    category: string;
+    year?: number;
+    duration?: string;
+    thumbnail: string;
+  };
+}
+const { video } = Astro.props;
+---
+<a class="video-card" href={`/video/${video.slug}/`}>
+  <img src={video.thumbnail} alt="" loading="lazy" />
+  <div class="video-card-content">
+    <span class="eyebrow">{video.category}{video.year ? ` · ${video.year}` : ''}</span>
+    <h2>{video.title}</h2>
+    <p>{video.description}</p>
+    {video.duration && <span class="duration">{video.duration}</span>}
+  </div>
+</a>
