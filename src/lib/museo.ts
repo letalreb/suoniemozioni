@@ -6,7 +6,8 @@ import speciali from '../data/speciali.json';
 
 export type Sezione = (typeof sezioni)[number];
 export type Foto = { hero: string; heroSmall: string; w: number; h: number; pagina: number; galleria: { src: string; thumb: string; w: number; h: number; pagina: number }[] };
-export type Sala = Omit<(typeof sale)[number], 'foto'> & { foto: Foto | null };
+export type Copertina = { src: string; w: number; h: number; pagina: number; didascalia: string };
+export type Sala = Omit<(typeof sale)[number], 'foto' | 'copertina'> & { foto: Foto | null; copertina: Copertina | null };
 export type Strumento = (typeof strumenti)[number];
 export type Video = (typeof videos)[number] & { sala?: number };
 

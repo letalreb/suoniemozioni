@@ -13,7 +13,14 @@
    20,
    32
   ],
-  "approfondimento": "Questo è il frontespizio del piccolo volume con il quale Joseph Dufour presentava al pubblico l’ambizioso progetto di tradurre in papier peint Les Amours de Psyché et de Cupidon, di Jean de La Fontaine, nel tentativo di far rivivere attraverso le immagini le medesime sensazioni generate dalla scrittura. Con Psyché et Cupidon, Joseph Dufour si propone di realizzare le chef-d’œuvre del papier peint coronando un lavoro di decenni che aveva visto la sua Manifattura primeggiare in Francia e in Europa, fino a raggiungere una perfezione ineguagliata, anche dal punto di vista tecnico."
+  "approfondimento": "Questo è il frontespizio del piccolo volume con il quale Joseph Dufour presentava al pubblico l’ambizioso progetto di tradurre in papier peint Les Amours de Psyché et de Cupidon, di Jean de La Fontaine, nel tentativo di far rivivere attraverso le immagini le medesime sensazioni generate dalla scrittura. Con Psyché et Cupidon, Joseph Dufour si propone di realizzare le chef-d’œuvre del papier peint coronando un lavoro di decenni che aveva visto la sua Manifattura primeggiare in Francia e in Europa, fino a raggiungere una perfezione ineguagliata, anche dal punto di vista tecnico.",
+  "copertina": {
+   "src": "/img/1/copertina.webp",
+   "w": 352,
+   "h": 209,
+   "pagina": 32,
+   "didascalia": "Una lunetta del Salone Impero con gli strumenti musicali"
+  }
  },
  {
   "numero": 2,
@@ -36,7 +43,8 @@
    83,
    84
   ],
-  "approfondimento": "Le due ante d’organo, di grandi dimensioni, presentano una iconografia sulla quale è necessario soffermarsi con una breve premessa, per chiarire la presenza nei due riquadri di Santa Cecilia e di Re David, figure che nei secoli sono diventate simbolo della musica e del canto. Cecilia è una giovane nobile romana cristiana, che durante il pontificato di Urbano I (222-230) va in sposa al pagano Valeriano, al quale rivela la sera delle nozze di aver fatto voto di castità in nome della propria fede e di essere protetta da un angelo, che veglia su di lei."
+  "approfondimento": "Le due ante d’organo, di grandi dimensioni, presentano una iconografia sulla quale è necessario soffermarsi con una breve premessa, per chiarire la presenza nei due riquadri di Santa Cecilia e di Re David, figure che nei secoli sono diventate simbolo della musica e del canto. Cecilia è una giovane nobile romana cristiana, che durante il pontificato di Urbano I (222-230) va in sposa al pagano Valeriano, al quale rivela la sera delle nozze di aver fatto voto di castità in nome della propria fede e di essere protetta da un angelo, che veglia su di lei.",
+  "copertina": null
  },
  {
   "numero": 3,
@@ -54,7 +62,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": "Il soggetto di questo arazzo è stato ripreso dal canto primo dell’Eneide dove Virgilio così descrive l’apparizione di Venere a Enea e al suo fedele compagno Acate sullo sfondo di un bosco: “In mezzo de la selva una donzella, / Ch’era sua madre, si com’era avanti / Che madre fosse, incontro gli si fece. / Donzella a l’armi, a l’abito, al sembiante / Parea di Sparta, o quale in Tracia Arpalice / Leggiera è sciolta il dorso affaticando / Del fugace destrier, l’Ebro varcava. / Al collo avea da cacciatrice un arco / Abile e lesto, i crini a l’aura sparsi / Nudo il ginocchio, e con bel nodo stretto / tenea raccolto de la gonna il seno”."
+  "approfondimento": "Il soggetto di questo arazzo è stato ripreso dal canto primo dell’Eneide dove Virgilio così descrive l’apparizione di Venere a Enea e al suo fedele compagno Acate sullo sfondo di un bosco: “In mezzo de la selva una donzella, / Ch’era sua madre, si com’era avanti / Che madre fosse, incontro gli si fece. / Donzella a l’armi, a l’abito, al sembiante / Parea di Sparta, o quale in Tracia Arpalice / Leggiera è sciolta il dorso affaticando / Del fugace destrier, l’Ebro varcava. / Al collo avea da cacciatrice un arco / Abile e lesto, i crini a l’aura sparsi / Nudo il ginocchio, e con bel nodo stretto / tenea raccolto de la gonna il seno”.",
+  "copertina": null
  },
  {
   "numero": 4,
@@ -72,7 +81,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 5,
@@ -83,7 +93,8 @@
   "descrizione": "Una galleria dedicata ai serviti da tavola della collezione, come quello decorato in monocromo seppia con paesaggi di fantasia di gusto orientale.",
   "foto": null,
   "strumenti": [],
-  "approfondimento": "Questo servito da tavola è decorato con un motivo a “transfer print” in monocromo seppia, rappresentante al centro del cavetto un paesaggio di fantasia contornato da alberi e fronde che incorniciano un fiume con montagne sullo sfondo. Lungo la riva sinistra sono seduti personaggi in costume, mentre sul lato opposto si ergono costruzioni di netta impronta orientale."
+  "approfondimento": "Questo servito da tavola è decorato con un motivo a “transfer print” in monocromo seppia, rappresentante al centro del cavetto un paesaggio di fantasia contornato da alberi e fronde che incorniciano un fiume con montagne sullo sfondo. Lungo la riva sinistra sono seduti personaggi in costume, mentre sul lato opposto si ergono costruzioni di netta impronta orientale.",
+  "copertina": null
  },
  {
   "numero": 6,
@@ -101,7 +112,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 7,
@@ -127,7 +139,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": "La serie di tavole in oggetto presente in Collezione Giulini proviene dalla prima edizione della raccolta intitolata Disegni originali di eccellenti pittori esistenti nella Regia Galleria di Firenze incisi in rame con imitazione di grandezze e colore ad acquerello penna e matita, pubblicata da Andrea Scacciati detto ‘il Giovane’ a Firenze nel 1766 in collaborazione col suo migliore allievo Stefano Mulinari, la quale nella sua versione completa consta di 100 incisioni, le prime 66 prodotte da Scacciati e le rimanenti da Mulinari."
+  "approfondimento": "La serie di tavole in oggetto presente in Collezione Giulini proviene dalla prima edizione della raccolta intitolata Disegni originali di eccellenti pittori esistenti nella Regia Galleria di Firenze incisi in rame con imitazione di grandezze e colore ad acquerello penna e matita, pubblicata da Andrea Scacciati detto ‘il Giovane’ a Firenze nel 1766 in collaborazione col suo migliore allievo Stefano Mulinari, la quale nella sua versione completa consta di 100 incisioni, le prime 66 prodotte da Scacciati e le rimanenti da Mulinari.",
+  "copertina": null
  },
  {
   "numero": 8,
@@ -153,7 +166,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": "Il servizio, costituito da ben centotrenta pezzi, presenta una superficie ondulata e un decoro costituito da girali vegetali e fiori naturalistici in monocromo blu turchino che riveste la falda del piatto mentre il bordo è delimitato da una greca geometrica nello stesso colore. Al centro del cavetto e degli oggetti di forma si trova un medaglione rotondo entro cui si ripete lo stesso motivo decorativo. Il servito rappresenta uno dei prodotti più interessanti e apprezzati della manifattura francese di Gien, creata nel 1821 nella valle della Loira da un ceramista inglese dello Staffordshire, Thomas Hall."
+  "approfondimento": "Il servizio, costituito da ben centotrenta pezzi, presenta una superficie ondulata e un decoro costituito da girali vegetali e fiori naturalistici in monocromo blu turchino che riveste la falda del piatto mentre il bordo è delimitato da una greca geometrica nello stesso colore. Al centro del cavetto e degli oggetti di forma si trova un medaglione rotondo entro cui si ripete lo stesso motivo decorativo. Il servito rappresenta uno dei prodotti più interessanti e apprezzati della manifattura francese di Gien, creata nel 1821 nella valle della Loira da un ceramista inglese dello Staffordshire, Thomas Hall.",
+  "copertina": null
  },
  {
   "numero": 9,
@@ -164,7 +178,14 @@
   "descrizione": "Lo scalone che sale al primo piano è ornato da quattro arazzi con composizioni di fiori su colonne, incorniciate da intrecci ispirati agli ornati di Jean Bérain.",
   "foto": null,
   "strumenti": [],
-  "approfondimento": "I quattro arazzi raffigurano ciascuno una composizione di fiori posta su di una slanciata colonna e contornata da una cornice i cui intrecci sono ispirati agli ornati inventati da Jean Bérain e pubblicati Parigi per la prima volta nel 1711."
+  "approfondimento": "I quattro arazzi raffigurano ciascuno una composizione di fiori posta su di una slanciata colonna e contornata da una cornice i cui intrecci sono ispirati agli ornati inventati da Jean Bérain e pubblicati Parigi per la prima volta nel 1711.",
+  "copertina": {
+   "src": "/img/9/copertina.webp",
+   "w": 393,
+   "h": 264,
+   "pagina": 406,
+   "didascalia": "Cavalieri turchi e cristiani, dipinto del primo Settecento esposto sullo scalone"
+  }
  },
  {
   "numero": 10,
@@ -190,7 +211,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": "Il tappeto proviene quasi certamente da un castello nel Banato, oppure da una celebre palazzina di Budapest nella Uri Utca 15. Lo stemma che lo fregia è quello della famiglia Nákó de Nagy-Szent-Miklós, di origine rumeno-macedone, che ricevette il titolo comitale il 26 febbraio 1813 e che era imparentata con grandi famiglie magiare, come i Festetics."
+  "approfondimento": "Il tappeto proviene quasi certamente da un castello nel Banato, oppure da una celebre palazzina di Budapest nella Uri Utca 15. Lo stemma che lo fregia è quello della famiglia Nákó de Nagy-Szent-Miklós, di origine rumeno-macedone, che ricevette il titolo comitale il 26 febbraio 1813 e che era imparentata con grandi famiglie magiare, come i Festetics.",
+  "copertina": null
  },
  {
   "numero": 11,
@@ -208,7 +230,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 12,
@@ -234,7 +257,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 13,
@@ -262,7 +286,8 @@
   "strumenti": [
    24
   ],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 14,
@@ -280,7 +305,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 15,
@@ -306,7 +332,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 16,
@@ -317,7 +344,8 @@
   "descrizione": "Una camera nei toni del verde pastello, con incisioni neoclassiche di traduzione alle pareti.",
   "foto": null,
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 17,
@@ -346,7 +374,8 @@
    27,
    31
   ],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 18,
@@ -357,7 +386,8 @@
   "descrizione": "Una sala per il riposo, arredata con mobili lombardi dell’Ottocento come la toilette in noce intagliato.",
   "foto": null,
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 19,
@@ -368,7 +398,8 @@
   "descrizione": "Il soffitto è decorato con rami di ulivo carichi di bacche e il tema ritorna nella camera rivolta al giardino: il grande tappeto Aubusson verde salvia, il ricamo dell’Annunciazione, le rose da taglio.",
   "foto": null,
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 20,
@@ -417,7 +448,8 @@
   "strumenti": [
    38
   ],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 21,
@@ -438,7 +470,8 @@
    28,
    29
   ],
-  "approfondimento": "Dagli anni Venti dell’Ottocento assistiamo al ricomporsi di quella frattura tra vetro e tela che tante divisioni estetiche ed economiche aveva generato nei secoli precedenti. I due materiali, ormai lavorati con metodi differenti, si possono ora sovrapporre all’interno e all’esterno delle finestre, proponendo un modello funzionale – sia come riparo dagli agenti atmosferici sia come ornamento di interni – che diventerà nei decenni successivi tra i più ricercati per le esigenze di decoro abitativo, ponendosi come ricercata alternativa ai tendaggi abituali."
+  "approfondimento": "Dagli anni Venti dell’Ottocento assistiamo al ricomporsi di quella frattura tra vetro e tela che tante divisioni estetiche ed economiche aveva generato nei secoli precedenti. I due materiali, ormai lavorati con metodi differenti, si possono ora sovrapporre all’interno e all’esterno delle finestre, proponendo un modello funzionale – sia come riparo dagli agenti atmosferici sia come ornamento di interni – che diventerà nei decenni successivi tra i più ricercati per le esigenze di decoro abitativo, ponendosi come ricercata alternativa ai tendaggi abituali.",
+  "copertina": null
  },
  {
   "numero": 22,
@@ -469,7 +502,8 @@
    25,
    65
   ],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 23,
@@ -487,7 +521,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 24,
@@ -551,7 +586,8 @@
    112,
    113
   ],
-  "approfondimento": "Il camino, acquistato sul mercato antiquario, è sorretto ai lati da due erme maschili dall’aspetto di satiri che poggiano su un pilastro a tronco di piramide: tra la parte figurata e il sostegno piramidale è scolpita una naturalistica fascia di foglie e frutti. Le erme sorreggono una severa trabeazione dorica decorata con triglifi intervallati da bucrani, mascheroni e rosette."
+  "approfondimento": "Il camino, acquistato sul mercato antiquario, è sorretto ai lati da due erme maschili dall’aspetto di satiri che poggiano su un pilastro a tronco di piramide: tra la parte figurata e il sostegno piramidale è scolpita una naturalistica fascia di foglie e frutti. Le erme sorreggono una severa trabeazione dorica decorata con triglifi intervallati da bucrani, mascheroni e rosette.",
+  "copertina": null
  },
  {
   "numero": 25,
@@ -587,7 +623,8 @@
    110,
    111
   ],
-  "approfondimento": "I due vasi con coperchio riprendono un’antica tradizione di Delft, la pittura a motivi blu su fondo bianco che – imitando la porcellana cinese in bianco e blu – rese famosa questa città dell’Olanda per la sua produzione ceramica: la Koninklijke Porceleyne Fles costituisce oggi l’unica manifattura rimanente delle trentadue manifatture di maiolica che erano attive a Delft nel XVII secolo. Seppur non si possa stabilire con certezza una data di inizio della produzione ceramica di Delft, nella seconda metà del XVI secolo alcuni maiolicari italiani raggiunsero l’Olanda e la fabbricazione della maiolica ebbe inizio a Delft."
+  "approfondimento": "I due vasi con coperchio riprendono un’antica tradizione di Delft, la pittura a motivi blu su fondo bianco che – imitando la porcellana cinese in bianco e blu – rese famosa questa città dell’Olanda per la sua produzione ceramica: la Koninklijke Porceleyne Fles costituisce oggi l’unica manifattura rimanente delle trentadue manifatture di maiolica che erano attive a Delft nel XVII secolo. Seppur non si possa stabilire con certezza una data di inizio della produzione ceramica di Delft, nella seconda metà del XVI secolo alcuni maiolicari italiani raggiunsero l’Olanda e la fabbricazione della maiolica ebbe inizio a Delft.",
+  "copertina": null
  },
  {
   "numero": 26,
@@ -620,7 +657,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 27,
@@ -660,7 +698,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 28,
@@ -686,7 +725,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 29,
@@ -715,7 +755,8 @@
    76,
    77
   ],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 30,
@@ -741,7 +782,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": "Il caduceo e la cornucopia, nell’elenco redatto da Ripa, compaiono entrambi nella “Tavola d’Ordigni diversi e altre cose Artificiali”7 rispettivamente in cinque e in ventidue disegni, che concretizzano singolarmente altrettanti significati, tutti diversi tranne la Felicità Pubblica, in cui sono presenti entrambi gli oggetti, accessori di una figura di donna seduta che regge con la mano sinistra la cornucopia e con la destra il caduceo (Fig. 3). “La Felicità è riposo dell’animo in un bene sommamente conosciuto, & desiderato, & desiderabile, però si dipinge a sedere, col Caduceo in segno di pace, & di sapienza."
+  "approfondimento": "Il caduceo e la cornucopia, nell’elenco redatto da Ripa, compaiono entrambi nella “Tavola d’Ordigni diversi e altre cose Artificiali”7 rispettivamente in cinque e in ventidue disegni, che concretizzano singolarmente altrettanti significati, tutti diversi tranne la Felicità Pubblica, in cui sono presenti entrambi gli oggetti, accessori di una figura di donna seduta che regge con la mano sinistra la cornucopia e con la destra il caduceo (Fig. 3). “La Felicità è riposo dell’animo in un bene sommamente conosciuto, & desiderato, & desiderabile, però si dipinge a sedere, col Caduceo in segno di pace, & di sapienza.",
+  "copertina": null
  },
  {
   "numero": 31,
@@ -788,7 +830,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 32,
@@ -831,7 +874,8 @@
    75,
    80
   ],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 33,
@@ -871,7 +915,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": "Nel Piemonte sabaudo, fin dal XVIII secolo, si susseguono diverse generazioni della famiglia Galliari2 – quadraturisti, architetti e scenografi – che tra fine secolo e inizio dell’Ottocento raggiungono l’apice della notorietà e delle committenze pubbliche e private, espandendo la propria attività anche in Lombardia e in Veneto."
+  "approfondimento": "Nel Piemonte sabaudo, fin dal XVIII secolo, si susseguono diverse generazioni della famiglia Galliari2 – quadraturisti, architetti e scenografi – che tra fine secolo e inizio dell’Ottocento raggiungono l’apice della notorietà e delle committenze pubbliche e private, espandendo la propria attività anche in Lombardia e in Veneto.",
+  "copertina": null
  },
  {
   "numero": 34,
@@ -911,7 +956,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 35,
@@ -951,7 +997,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 36,
@@ -984,7 +1031,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": "Il fondale rappresenta il Sacrificio di Ifigenia e l’Arrivo dei doni nuziali, episodi strettamente concatenati, tratti dalla Ifigenia in Aulide di Euripide. Agamennone ha offeso Artemide uccidendo una delle sue cerve sacre e lei si vendica, impedendo che soffi un vento propizio, necessario affinché le navi greche possano salpare alla volta di Troia. Soltanto il sacrificio di Ifigenia, figlia di Agamennone e di Clitennestra, avrebbe placato la dea e dato luogo all’avvio della spedizione. Con l’animo attraversato dal dolore e dal dubbio, il re decide di uccidere la figlia e la trae in Aulide con l’inganno di darla in sposa ad Achille."
+  "approfondimento": "Il fondale rappresenta il Sacrificio di Ifigenia e l’Arrivo dei doni nuziali, episodi strettamente concatenati, tratti dalla Ifigenia in Aulide di Euripide. Agamennone ha offeso Artemide uccidendo una delle sue cerve sacre e lei si vendica, impedendo che soffi un vento propizio, necessario affinché le navi greche possano salpare alla volta di Troia. Soltanto il sacrificio di Ifigenia, figlia di Agamennone e di Clitennestra, avrebbe placato la dea e dato luogo all’avvio della spedizione. Con l’animo attraversato dal dolore e dal dubbio, il re decide di uccidere la figlia e la trae in Aulide con l’inganno di darla in sposa ad Achille.",
+  "copertina": null
  },
  {
   "numero": 37,
@@ -1004,7 +1052,8 @@
   "strumenti": [
    86
   ],
-  "approfondimento": "Il servito, che oggi comprende trentanove pezzi, è decorato sulla falda dei piatti con un fregio a festoni grigioazzurri composti da un motivo fogliaceo che si alterna a una fruttiera ricolma: il tutto è contornato da una filettatura nel medesimo colore. Questo servito include alcune rimanenze di un più vasto servizio da tavola eseguito nella manifattura inglese di Johnson Brothers, che prende il nome dai suoi fondatori, Alfred, Frederick, Henry e Robert Johnson i quali aprirono la manifattura nel 1883 iniziando una produzione di terraglia dura."
+  "approfondimento": "Il servito, che oggi comprende trentanove pezzi, è decorato sulla falda dei piatti con un fregio a festoni grigioazzurri composti da un motivo fogliaceo che si alterna a una fruttiera ricolma: il tutto è contornato da una filettatura nel medesimo colore. Questo servito include alcune rimanenze di un più vasto servizio da tavola eseguito nella manifattura inglese di Johnson Brothers, che prende il nome dai suoi fondatori, Alfred, Frederick, Henry e Robert Johnson i quali aprirono la manifattura nel 1883 iniziando una produzione di terraglia dura.",
+  "copertina": null
  },
  {
   "numero": 38,
@@ -1022,7 +1071,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 39,
@@ -1050,7 +1100,8 @@
   "strumenti": [
    41
   ],
-  "approfondimento": "I dipinti sono su tela di forma trapezoidale – denominati per consuetudine ‘spicchi’ – e hanno le medesime dimensioni. Raffigurano strumenti musicali inseriti su una superficie decorata con elementi vegetali, pressoché simili per struttura ma di differenti tonalità di colori; tra loro risaltano vivaci fiocchi e nastri pendenti. Il comparto superiore è uguale per tutti: un lineare intreccio di foglie collega due arabeschi laterali."
+  "approfondimento": "I dipinti sono su tela di forma trapezoidale – denominati per consuetudine ‘spicchi’ – e hanno le medesime dimensioni. Raffigurano strumenti musicali inseriti su una superficie decorata con elementi vegetali, pressoché simili per struttura ma di differenti tonalità di colori; tra loro risaltano vivaci fiocchi e nastri pendenti. Il comparto superiore è uguale per tutti: un lineare intreccio di foglie collega due arabeschi laterali.",
+  "copertina": null
  },
  {
   "numero": 40,
@@ -1070,7 +1121,8 @@
   "strumenti": [
    39
   ],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 41,
@@ -1088,7 +1140,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 42,
@@ -1149,7 +1202,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 43,
@@ -1189,7 +1243,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 44,
@@ -1207,7 +1262,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 45,
@@ -1233,7 +1289,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 46,
@@ -1251,7 +1308,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 47,
@@ -1269,7 +1327,8 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 48,
@@ -1323,7 +1382,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 49,
@@ -1363,7 +1423,8 @@
    ]
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  },
  {
   "numero": 50,
@@ -1381,6 +1442,7 @@
    "galleria": []
   },
   "strumenti": [],
-  "approfondimento": ""
+  "approfondimento": "",
+  "copertina": null
  }
 ]

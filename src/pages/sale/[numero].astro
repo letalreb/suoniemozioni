@@ -54,6 +54,12 @@ const f = sala.foto;
           <div class="griglia-video">{video.map((v) => <VideoCard video={v} mostraSala={false} />)}</div>
         </section>
       )}
+      {!f && sala.copertina && (
+        <figure class="figura-sala">
+          <img src={asset(sala.copertina.src)} alt={sala.copertina.didascalia} width={sala.copertina.w} height={sala.copertina.h} />
+          <figcaption class="didascalia">{sala.copertina.didascalia}. Dal volume {TITOLO_LIBRO}, p. {sala.copertina.pagina}.</figcaption>
+        </figure>
+      )}
       {!f && <p class="nota">Le fotografie di questa sala saranno pubblicate con la versione definitiva del volume.</p>}
     </div>
   </article>

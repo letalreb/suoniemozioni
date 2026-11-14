@@ -5,9 +5,9 @@ const { sala, carica = 'lazy' } = Astro.props;
 const sez = sezionePer(sala.sezione);
 ---
 <a class="carta" href={linkSala(sala.numero)} style={stileSezione(sez)} data-carta>
-  {sala.foto
-    ? <img src={asset(sala.foto.heroSmall)} alt="" loading={carica} decoding="async" />
-    : <span class="carta-vuota" aria-hidden="true"></span>}
+  {sala.foto || sala.copertina
+    ? <img src={asset(sala.foto ? sala.foto.heroSmall : sala.copertina!.src)} alt="" loading={carica} decoding="async" />
+    : <span class="carta-vuota" aria-hidden="true"><span>Fotografie in arrivo</span></span>}
   <span class="carta-num" aria-hidden="true">{sala.numero}</span>
   <span class="carta-tit"><span class="sr-only">Sala {sala.numero}: </span>{sala.titolo}</span>
 </a>
