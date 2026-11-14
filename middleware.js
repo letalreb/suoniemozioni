@@ -47,7 +47,7 @@ function pagina(dest, errore) {
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   const html = `<!doctype html><html lang="it"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex"><title>Accesso | Villa Medici Giulini</title>
+<meta name="robots" content="noindex"><title>Accesso | Suoni ed emozioni</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Hanken+Grotesk:wght@400;600&display=swap">
 <style>
@@ -65,8 +65,8 @@ button{height:3.2rem;padding:0 1.3rem;font:600 1rem inherit;border:0;border-radi
 :focus-visible{outline:2px solid #2457C5;outline-offset:3px}
 .err{color:var(--err);margin:.8rem 0 0}
 </style></head><body><main>
-<h1>Villa Medici Giulini</h1>
-<p>Il sito è in anteprima. Scrivi il PIN che ti è stato comunicato per entrare.</p>
+<h1>Suoni ed emozioni</h1>
+<p>Invito all’arte e alla musica a Villa Medici Giulini. Il sito è in anteprima. Scrivi il PIN che ti è stato comunicato per entrare.</p>
 <form method="post" action="/accesso">
 <label for="pin">PIN</label>
 <div class="riga"><input id="pin" name="pin" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{4,8}" required autofocus ${errore ? 'aria-describedby="err" aria-invalid="true"' : ''}>

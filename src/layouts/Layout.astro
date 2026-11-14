@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
-import { NOME, TITOLO_LIBRO, crediti, tutteLeSale, url } from '../lib/museo';
+import { NOME, LUOGO, crediti, tutteLeSale, url } from '../lib/museo';
 interface Props { title?: string; description?: string; sezione?: string; trasparente?: boolean }
-const { title = `${NOME}, ${TITOLO_LIBRO}`, description = `Le ${tutteLeSale.length} sale di Villa Medici Giulini a Briosco: strumenti musicali, arredi e opere d’arte.`, sezione, trasparente = false } = Astro.props;
+const { title = `${NOME}, invito all’arte e alla musica a ${LUOGO}`, description = `Le ${tutteLeSale.length} sale di Villa Medici Giulini a Briosco: strumenti musicali, arredi e opere d’arte.`, sezione, trasparente = false } = Astro.props;
 const voci = [['sale', 'Le sale', '/sale/'], ['strumenti', 'Strumenti', '/strumenti/'], ['teatrino', 'Teatrino', '/teatrino/'], ['giardino', 'Giardino', '/giardino/'], ['video', 'Video', '/video/']];
 ---
 <!doctype html>
@@ -27,7 +27,7 @@ const voci = [['sale', 'Le sale', '/sale/'], ['strumenti', 'Strumenti', '/strume
   <body class:list={{ 'con-hero': trasparente }}>
     <a class="skip" href="#contenuto">Vai al contenuto</a>
     <header class="testata">
-      <a class="marchio" href={url('/')}><span>Villa Medici</span> Giulini</a>
+      <a class="marchio" href={url('/')}>Suoni ed emozioni</a>
       <nav aria-label="Navigazione principale">
         {voci.map(([id, nome, path]) => <a href={url(path)} aria-current={sezione === id ? 'page' : undefined}>{nome}</a>)}
       </nav>
@@ -40,8 +40,8 @@ const voci = [['sale', 'Le sale', '/sale/'], ['strumenti', 'Strumenti', '/strume
     <main id="contenuto"><slot /></main>
     <footer class="piede">
       <div>
-        <p class="piede-nome">Villa Medici Giulini</p>
-        <p>Via Medici 6, 20836 Briosco (MB)</p>
+        <p class="piede-nome">Suoni ed emozioni</p>
+        <p>Villa Medici Giulini, via Medici 6, 20836 Briosco (MB)</p>
       </div>
       <p class="piede-crediti">{crediti}</p>
     </footer>

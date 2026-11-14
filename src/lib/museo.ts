@@ -10,7 +10,8 @@ export type Sala = Omit<(typeof sale)[number], 'foto'> & { foto: Foto | null };
 export type Strumento = (typeof strumenti)[number];
 export type Video = (typeof videos)[number] & { sala?: number };
 
-export const NOME = 'Villa Medici Giulini';
+export const NOME = 'Suoni ed emozioni';
+export const LUOGO = 'Villa Medici Giulini';
 export const TITOLO_LIBRO = 'Suoni ed emozioni';
 export const SITO_ASCOLTO = 'https://www.allaricercadeisuoniperduti.com';
 
