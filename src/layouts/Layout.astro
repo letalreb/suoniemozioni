@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Marchio from '../components/Marchio.astro';
 import { NOME, LUOGO, SITO_ASCOLTO, crediti, tutteLeSale, url } from '../lib/museo';
 interface Props { title?: string; description?: string; sezione?: string; trasparente?: boolean }
 const { title = `${NOME}, invito all’arte e alla musica a ${LUOGO}`, description = `Le ${tutteLeSale.length} sale di Villa Medici Giulini a Briosco: strumenti musicali, arredi e opere d’arte.`, sezione, trasparente = false } = Astro.props;
@@ -18,7 +19,12 @@ const voci = [['sale', 'Le sale', '/sale/'], ['teatrino', 'Teatrino', '/teatrino
     <meta property="og:description" content={description} />
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <meta property="og:locale" content="it_IT" />
+    <link rel="icon" href={url('/favicon.ico')} sizes="48x48" />
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
+    <link rel="manifest" href={url('/site.webmanifest')} />
+    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" />
@@ -27,7 +33,7 @@ const voci = [['sale', 'Le sale', '/sale/'], ['teatrino', 'Teatrino', '/teatrino
   <body class:list={{ 'con-hero': trasparente }}>
     <a class="skip" href="#contenuto">Vai al contenuto</a>
     <header class="testata">
-      <a class="marchio" href={url('/')}>Suoni ed emozioni</a>
+      <a class="marchio" href={url('/')}><Marchio /><span>Suoni ed emozioni</span></a>
       <nav aria-label="Navigazione principale">
         {voci.map(([id, nome, path]) => <a href={url(path)} aria-current={sezione === id ? 'page' : undefined}>{nome}</a>)}
         <a href={SITO_ASCOLTO} target="_blank" rel="noopener">Ascolta gli strumenti</a>
