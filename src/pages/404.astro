@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { NOME_MUSEO, url } from '../lib/museo';
+import { NOME, url } from '../lib/museo';
 ---
-<Layout title={`Pagina non trovata | ${NOME_MUSEO}`}>
+<Layout title={`Pagina non trovata | ${NOME}`}>
   <header class="pagina-testa">
     <h1>Questa pagina non esiste</h1>
-    <p class="lead">Se cercavi una sala, scrivi il suo numero nella casella <strong>Sala n°</strong> in alto, oppure <a href={url('/sale/')}>apri l’elenco delle sale</a>.</p>
+    <p class="lead">Se cercavi una sala, scrivi il suo numero nella casella Sala in alto, oppure <a href={url('/sale/')}>apri l’elenco delle sale</a>.</p>
   </header>
 </Layout>

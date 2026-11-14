@@ -1,0 +1,16 @@
+---
+import { SITO_ASCOLTO, asset, linkSala, salaPer, type Strumento } from '../lib/museo';
+interface Props { s: Strumento; mostraSala?: boolean }
+const { s, mostraSala = true } = Astro.props;
+const sala = salaPer(s.sala);
+---
+<article class="strumento" data-strumento data-ascolto={s.ascolto ? '1' : ''} data-testo={`${s.numero} ${s.nome}`.toLocaleLowerCase('it')}>
+  <div class="strumento-foto">
+    {s.foto ? <img src={asset(s.foto)} alt="" loading="lazy" decoding="async" /> : <span class="strumento-n" aria-hidden="true">{s.numero}</span>}
+  </div>
+  <div class="strumento-testo">
+    <h3><span class="strumento-cat">N. {s.numero}</span> {s.nome}</h3>
+    {mostraSala && sala && <p>Nella <a href={linkSala(sala.numero)}>sala {sala.numero}, {sala.titolo}</a></p>}
+    {s.ascolto && <a class="ascolta" href={SITO_ASCOLTO} target="_blank" rel="noopener">Ascolta lo strumento</a>}
+  </div>
+</article>

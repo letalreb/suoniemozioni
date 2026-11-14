@@ -1,13 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import VideoCard from '../../components/VideoCard.astro';
-import { NOME_MUSEO, salaPer, tuttiIVideo } from '../../lib/museo';
+import { NOME, salaPer, tuttiIVideo } from '../../lib/museo';
 
 const saleConVideo = [...new Set(tuttiIVideo.map((v) => v.sala).filter(Boolean))]
   .sort((a, b) => a! - b!)
   .map((n) => salaPer(n)!);
 ---
-<Layout title={`Video | ${NOME_MUSEO}`} sezione="video">
+<Layout title={`Video | ${NOME}`} sezione="video">
   <header class="pagina-testa">
     <h1>Video</h1>
     <p class="lead">Tutti i video del museo. Filtra per sala o cerca per argomento.</p>

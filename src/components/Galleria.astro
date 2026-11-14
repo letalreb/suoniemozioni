@@ -1,0 +1,35 @@
+---
+import { TITOLO_LIBRO, asset } from '../lib/museo';
+interface Props { foto: { src: string; thumb: string; w: number; h: number; pagina: number }[]; titolo: string }
+const { foto, titolo } = Astro.props;
+---
+{foto.length > 0 && (
+  <div class="galleria" data-galleria>
+    {foto.map((f, i) => (
+      <button type="button" class="galleria-voce" data-i={i} data-src={asset(f.src)} data-didascalia={`${titolo}. Dal volume ${TITOLO_LIBRO}, p. ${f.pagina}`}
+        style={`aspect-ratio:${f.w}/${f.h}`} aria-label={`Ingrandisci la fotografia ${i + 1} di ${foto.length}`}>
+        <img src={asset(f.thumb)} alt="" loading="lazy" decoding="async" />
+      </button>
+    ))}
+    <dialog class="lightbox" aria-label="Fotografia ingrandita">
+      <figure><img alt="" /><figcaption></figcaption></figure>
+      <button type="button" class="lb-chiudi" data-chiudi>Chiudi</button>
+      <button type="button" class="lb-prec" data-passo="-1" aria-label="Fotografia precedente">‹</button>
+      <button type="button" class="lb-succ" data-passo="1" aria-label="Fotografia successiva">›</button>
+    </dialog>
+  </div>
+)}
+<script>
+  document.querySelectorAll<HTMLElement>('[data-galleria]').forEach((g) => {
+    const voci = [...g.querySelectorAll<HTMLButtonElement>('.galleria-voce')];
+    const dlg = g.querySelector('dialog')!, img = dlg.querySelector('img')!, cap = dlg.querySelector('figcaption')!;
+    let i = 0;
+    const mostra = (k: number) => { i = (k + voci.length) % voci.length; img.src = voci[i].dataset.src!; cap.textContent = voci[i].dataset.didascalia!; };
+    voci.forEach((v, k) => v.addEventListener('click', () => { mostra(k); dlg.showModal(); }));
+    dlg.querySelector('[data-chiudi]')!.addEventListener('click', () => dlg.close());
+    dlg.querySelectorAll<HTMLButtonElement>('[data-passo]').forEach((b) => b.addEventListener('click', () => mostra(i + Number(b.dataset.passo))));
+    dlg.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') mostra(i + 1); if (e.key === 'ArrowLeft') mostra(i - 1); });
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', () => voci[i].focus());
+  });
+</script>

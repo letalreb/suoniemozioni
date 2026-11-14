@@ -1,60 +1,75 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Spettro from '../components/Spettro.astro';
-import VideoCard from '../components/VideoCard.astro';
-import {
-  NOME_MUSEO, linkSala, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni, tuttiIVideo, url
-} from '../lib/museo';
-
-const recenti = [...tuttiIVideo].sort((a, b) => (b.year ?? 0) - (a.year ?? 0)).slice(0, 3);
+import CartaSala from '../components/CartaSala.astro';
+import CartaStrumento from '../components/CartaStrumento.astro';
+import { TITOLO_LIBRO, asset, fotoSpeciali, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni, tuttiGliStrumenti, url } from '../lib/museo';
+const intro = fotoSpeciali.intro!;
+const teatrino = fotoSpeciali.teatrino!, giardino = fotoSpeciali.giardino!;
+const scelti = [22, 15, 10, 39, 8].map((n) => tuttiGliStrumenti.find((s) => s.numero === n)!).filter((s) => s?.foto);
 ---
-<Layout sezione="home">
-  <section class="apertura">
-    <h1>Cinquanta sale da ascoltare</h1>
-    <p class="lead">
-      {NOME_MUSEO} è un percorso in {tutteLeSale.length} sale su tre piani. Per ogni sala trovi
-      testi e video da guardare durante la visita o da casa.
-    </p>
-    <Spettro sale={tutteLeSale} />
+<Layout sezione="home" trasparente>
+  <section class="copertina">
+    <img src={asset(intro.hero)} alt="La facciata di Villa Giulini oltre il giardino all’italiana" width={intro.w} height={intro.h} fetchpriority="high" />
+    <div class="copertina-testo">
+      <h1>{TITOLO_LIBRO}</h1>
+      <p>Invito all’arte e alla musica a Villa Medici Giulini, Briosco. Cinquanta sale dove gli strumenti della collezione abitano tra dipinti, porcellane, lumiere e arredi.</p>
+    </div>
   </section>
 
-  <section class="blocco" aria-labelledby="t-sezioni">
-    <h2 id="t-sezioni">Il percorso</h2>
-    <ol class="sezioni">
+  <section class="percorso" aria-labelledby="t-percorso">
+    <div class="percorso-testa">
+      <h2 id="t-percorso">Il percorso, sala per sala</h2>
+      <p>Le sale si susseguono in ordine numerico, in senso orario, come nel volume. Scorri per sfogliarle.</p>
+      <div class="percorso-frecce">
+        <button type="button" data-scorri="-1" aria-label="Sale precedenti">‹</button>
+        <button type="button" data-scorri="1" aria-label="Sale successive">›</button>
+      </div>
+    </div>
+    <ol class="striscia" data-striscia>
+      {tutteLeSale.map((s, i) => <li><CartaSala sala={s} carica={i < 6 ? 'eager' : 'lazy'} /></li>)}
+    </ol>
+  </section>
+
+  <section class="blocco" aria-labelledby="t-edifici">
+    <h2 id="t-edifici">Cinque luoghi della dimora</h2>
+    <ul class="edifici">
       {tutteLeSezioni.map((sez) => {
-        const sale = saleDellaSezione(sez.id);
-        const primo = sale[0].numero, ultimo = sale[sale.length - 1].numero;
+        const ss = saleDellaSezione(sez.id); const a = ss[0].numero, b = ss[ss.length - 1].numero;
         return (
-          <li class="sezione" style={stileSezione(sez)}>
+          <li style={stileSezione(sez)}>
             <a href={url(`/sale/#${sez.id}`)}>
-              <span class="sezione-range">Sale {primo}–{ultimo}</span>
-              <span class="sezione-nome">{sez.nome}</span>
-              <span class="sezione-desc">{sez.descrizione}</span>
+              <span class="edificio-range">{a === b ? `Sala ${a}` : `Sale ${a}–${b}`}</span>
+              <span class="edificio-nome">{sez.nome}</span>
+              <span class="edificio-desc">{sez.descrizione}</span>
             </a>
           </li>
         );
       })}
-    </ol>
+    </ul>
   </section>
 
-  <section class="blocco visita" aria-labelledby="t-visita">
-    <h2 id="t-visita">Sei nel museo?</h2>
-    <p>
-      Ogni sala ha un cartello con il suo numero e un codice QR. Inquadra il codice, oppure scrivi il
-      numero in alto nella casella <strong>Sala n°</strong>. Per iniziare dalla prima:
-      <a href={linkSala(1)}>apri la sala 1</a>.
-    </p>
+  <section class="blocco" aria-labelledby="t-strumenti">
+    <div class="blocco-testa">
+      <h2 id="t-strumenti">Strumenti da ascoltare</h2>
+      <a href={url('/strumenti/')}>Tutta la collezione</a>
+    </div>
+    <p class="nota">Ogni strumento della collezione è stato registrato, anche in doppio ascolto con un pianoforte Steinway.</p>
+    <div class="griglia-strumenti">{scelti.slice(0, 4).map((s) => <CartaStrumento s={s} />)}</div>
   </section>
 
-  {recenti.length > 0 && (
-    <section class="blocco" aria-labelledby="t-video">
-      <div class="blocco-testa">
-        <h2 id="t-video">Video</h2>
-        <a href={url('/video/')}>Vedi tutti i {tuttiIVideo.length} video</a>
-      </div>
-      <div class="griglia-video">
-        {recenti.map((v) => <VideoCard video={v} />)}
-      </div>
-    </section>
-  )}
+  <section class="dittico" aria-label="Il Teatrino e il giardino">
+    <a href={url('/teatrino/')} class="pannello">
+      <img src={asset(teatrino.heroSmall)} alt="" loading="lazy" />
+      <span><strong>Il Teatrino</strong>Il punto finale dell’itinerario nel mondo della musica.</span>
+    </a>
+    <a href={url('/giardino/')} class="pannello">
+      <img src={asset(giardino.heroSmall)} alt="" loading="lazy" />
+      <span><strong>Il giardino incantato</strong>Fioriture, colori d’autunno e musica all’aperto.</span>
+    </a>
+  </section>
 </Layout>
+<script>
+  const s = document.querySelector<HTMLElement>('[data-striscia]')!;
+  document.querySelectorAll<HTMLButtonElement>('[data-scorri]').forEach((b) =>
+    b.addEventListener('click', () => s.scrollBy({ left: Number(b.dataset.scorri) * s.clientWidth * 0.8, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })));
+</script>

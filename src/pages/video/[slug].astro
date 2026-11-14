@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { NOME_MUSEO, linkSala, salaPer, sezionePer, stileSezione, tuttiIVideo, url, type Video } from '../../lib/museo';
+import { NOME, linkSala, salaPer, sezionePer, stileSezione, tuttiIVideo, url, type Video } from '../../lib/museo';
 
 export function getStaticPaths() {
   return tuttiIVideo.map((video) => ({ params: { slug: video.slug }, props: { video } }));
@@ -9,7 +9,7 @@ const { video } = Astro.props as { video: Video };
 const sala = salaPer(video.sala);
 const stile = sala ? stileSezione(sezionePer(sala.sezione)) : undefined;
 ---
-<Layout title={`${video.title} | ${NOME_MUSEO}`} description={video.description} sezione="video">
+<Layout title={`${video.title} | ${NOME}`} description={video.description} sezione="video">
   <article class="video-dettaglio" style={stile}>
     {sala ? (
       <a class="indietro" href={linkSala(sala.numero)}>Torna alla sala {sala.numero}, {sala.titolo}</a>

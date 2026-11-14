@@ -1,19 +1,9 @@
 ---
 import '../styles/global.css';
-import { NOME_MUSEO, url, tutteLeSale } from '../lib/museo';
-
-interface Props {
-  title?: string;
-  description?: string;
-  sezione?: 'home' | 'sale' | 'video';
-}
-
-const {
-  title = NOME_MUSEO,
-  description = `Le 50 sale del museo ${NOME_MUSEO}, con video e contenuti di approfondimento.`,
-  sezione
-} = Astro.props;
-const totale = tutteLeSale.length;
+import { NOME, TITOLO_LIBRO, crediti, tutteLeSale, url } from '../lib/museo';
+interface Props { title?: string; description?: string; sezione?: string; trasparente?: boolean }
+const { title = `${NOME}, ${TITOLO_LIBRO}`, description = `Le ${tutteLeSale.length} sale di Villa Medici Giulini a Briosco: strumenti musicali, arredi e opere d’arte.`, sezione, trasparente = false } = Astro.props;
+const voci = [['sale', 'Le sale', '/sale/'], ['strumenti', 'Strumenti', '/strumenti/'], ['teatrino', 'Teatrino', '/teatrino/'], ['giardino', 'Giardino', '/giardino/'], ['video', 'Video', '/video/']];
 ---
 <!doctype html>
 <html lang="it">
@@ -21,57 +11,47 @@ const totale = tutteLeSale.length;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#E7EAEC" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#161A22" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#EDEFEA" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#141814" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class:list={{ 'con-hero': trasparente }}>
     <a class="skip" href="#contenuto">Vai al contenuto</a>
     <header class="testata">
-      <a class="marchio" href={url('/')}>{NOME_MUSEO}</a>
+      <a class="marchio" href={url('/')}><span>Villa Medici</span> Giulini</a>
       <nav aria-label="Navigazione principale">
-        <a href={url('/sale/')} aria-current={sezione === 'sale' ? 'page' : undefined}>Sale</a>
-        <a href={url('/video/')} aria-current={sezione === 'video' ? 'page' : undefined}>Video</a>
+        {voci.map(([id, nome, path]) => <a href={url(path)} aria-current={sezione === id ? 'page' : undefined}>{nome}</a>)}
       </nav>
-      <form class="vai-sala" data-vai-sala data-max={totale} data-base={url('/sale/')}>
-        <label for="vai-sala-input">Sala n°</label>
-        <input id="vai-sala-input" name="n" type="number" inputmode="numeric" min="1" max={totale} placeholder="1–50" required />
+      <form class="vai-sala" data-vai-sala data-max={tutteLeSale.length} data-base={url('/sale/')}>
+        <label for="vai-sala">Sala</label>
+        <input id="vai-sala" type="number" inputmode="numeric" min="1" max={tutteLeSale.length} placeholder="n°" required />
         <button type="submit">Vai</button>
       </form>
     </header>
-    <main id="contenuto">
-      <slot />
-    </main>
+    <main id="contenuto"><slot /></main>
     <footer class="piede">
-      <p>{NOME_MUSEO}</p>
-      <p>{totale} sale su tre piani</p>
+      <div>
+        <p class="piede-nome">Villa Medici Giulini</p>
+        <p>Via Medici 6, 20836 Briosco (MB)</p>
+      </div>
+      <p class="piede-crediti">{crediti}</p>
     </footer>
-
     <script>
-      // "Vai alla sala": chi è nel museo legge il numero sul cartello e salta lì.
       document.querySelectorAll<HTMLFormElement>('[data-vai-sala]').forEach((form) => {
+        const input = form.querySelector('input')!;
         form.addEventListener('submit', (e) => {
           e.preventDefault();
-          const input = form.querySelector('input')!;
-          const n = Number(input.value);
-          const max = Number(form.dataset.max);
+          const n = Number(input.value), max = Number(form.dataset.max);
           if (!Number.isInteger(n) || n < 1 || n > max) {
-            input.setCustomValidity(`Scrivi un numero da 1 a ${max}`);
-            input.reportValidity();
-            return;
+            input.setCustomValidity(`Scrivi un numero da 1 a ${max}`); input.reportValidity(); return;
           }
-          window.location.href = `${form.dataset.base}${n}/`;
+          location.href = `${form.dataset.base}${n}/`;
         });
-        form.querySelector('input')!.addEventListener('input', (e) =>
-          (e.target as HTMLInputElement).setCustomValidity('')
-        );
+        input.addEventListener('input', () => input.setCustomValidity(''));
       });
     </script>
   </body>

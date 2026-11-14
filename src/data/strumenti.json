@@ -1,0 +1,714 @@
+[
+ {
+  "numero": 1,
+  "nome": "Cembalo Giovanni Natale Boccalari, Napoli, 1679",
+  "ascolto": true,
+  "foto": "/img/strumenti/1.webp",
+  "pagina": 46,
+  "sala": null
+ },
+ {
+  "numero": 2,
+  "nome": "Cembalo “Ottoboni”, Italia, (Roma?), seconda metà del XVII secolo",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 46,
+  "sala": null
+ },
+ {
+  "numero": 3,
+  "nome": "Cembalo Onofrio Guarracino (attribuito), Napoli, seconda metà del XVII secolo",
+  "ascolto": true,
+  "foto": "/img/strumenti/3.webp",
+  "pagina": 50,
+  "sala": null
+ },
+ {
+  "numero": 4,
+  "nome": "Cembalo Andrés Fernández Santos, Valladolid, 1728",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 48,
+  "sala": null
+ },
+ {
+  "numero": 5,
+  "nome": "Spinetta trapezoidale all’ottava, Rinaldo Bertoni, Bologna, 1707",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 46,
+  "sala": null
+ },
+ {
+  "numero": 6,
+  "nome": "Spinetta rettangolare all’ottava, Hieronimus (Girolamo) Bassi, Venezia, 1713",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 46,
+  "sala": null
+ },
+ {
+  "numero": 7,
+  "nome": "Arpicordo rettangolare Baptista Carenonus, Salò, 1700",
+  "ascolto": true,
+  "foto": "/img/strumenti/7.webp",
+  "pagina": 54,
+  "sala": null
+ },
+ {
+  "numero": 8,
+  "nome": "Cembalo fiammingo trasformato in fortepiano “ravalé” da Joseph Treyer “L’empereur”, Parigi",
+  "ascolto": true,
+  "foto": "/img/strumenti/8.webp",
+  "pagina": 45,
+  "sala": null
+ },
+ {
+  "numero": 9,
+  "nome": "Cembalo e fortepiano “combinatorio” Johann Ludwig Hellen (Hehlen), Berna, 1763",
+  "ascolto": true,
+  "foto": "/img/strumenti/9.webp",
+  "pagina": 62,
+  "sala": null
+ },
+ {
+  "numero": 10,
+  "nome": "Fortepiano a coda Nannette Stein e Matthäus Andreas Stein (Frère et Soeur Stein), Vienna, tra il",
+  "ascolto": true,
+  "foto": "/img/strumenti/10.webp",
+  "pagina": 49,
+  "sala": null
+ },
+ {
+  "numero": 11,
+  "nome": "Fortepiano a coda Anton Walter, Vienna, ca. 1789",
+  "ascolto": true,
+  "foto": "/img/strumenti/11.webp",
+  "pagina": 64,
+  "sala": null
+ },
+ {
+  "numero": 12,
+  "nome": "Fortepiano a coda Anton Walter, Vienna, ca. 1796",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 65,
+  "sala": null
+ },
+ {
+  "numero": 13,
+  "nome": "Fortepiano a coda Johann Schantz, Vienna, ca. 1810",
+  "ascolto": true,
+  "foto": "/img/strumenti/13.webp",
+  "pagina": 58,
+  "sala": null
+ },
+ {
+  "numero": 14,
+  "nome": "Fortepiano a coda Johann Schantz, Vienna, 1810-20",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 58,
+  "sala": null
+ },
+ {
+  "numero": 15,
+  "nome": "Fortepiano a coda Johann o Joseph Fritz, Vienna, ca. 1830",
+  "ascolto": true,
+  "foto": "/img/strumenti/15.webp",
+  "pagina": 67,
+  "sala": null
+ },
+ {
+  "numero": 16,
+  "nome": "Fortepiano a coda Conrad Graf, Vienna, ca. 1834",
+  "ascolto": true,
+  "foto": "/img/strumenti/16.webp",
+  "pagina": 59,
+  "sala": 1
+ },
+ {
+  "numero": 17,
+  "nome": "Fortepiano a coda Conrad Graf, Vienna, ca. 1834",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 59,
+  "sala": 1
+ },
+ {
+  "numero": 18,
+  "nome": "Fortepiano a coda Johann Baptist Streicher, Vienna, 1837",
+  "ascolto": true,
+  "foto": "/img/strumenti/18.webp",
+  "pagina": 80,
+  "sala": null
+ },
+ {
+  "numero": 19,
+  "nome": "Pianoforte a coda Joseph Dohnal figlio, Vienna, ca. 1830",
+  "ascolto": true,
+  "foto": "/img/strumenti/19.webp",
+  "pagina": 81,
+  "sala": null
+ },
+ {
+  "numero": 20,
+  "nome": "Fortepiano a coda Maximilian Schott, Vienna, ca. 1840",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 80,
+  "sala": 1
+ },
+ {
+  "numero": 21,
+  "nome": "Fortepiano a coda Ignaz Bösendorfer, Vienna, ca. 1850",
+  "ascolto": true,
+  "foto": "/img/strumenti/21.webp",
+  "pagina": 82,
+  "sala": null
+ },
+ {
+  "numero": 22,
+  "nome": "Fortepiano a coda Ignace Pleyel, Parigi, 1839",
+  "ascolto": true,
+  "foto": "/img/strumenti/22.webp",
+  "pagina": 72,
+  "sala": 22
+ },
+ {
+  "numero": 23,
+  "nome": "Fortepiano a coda Ignace Pleyel, Parigi, 1852",
+  "ascolto": true,
+  "foto": "/img/strumenti/23.webp",
+  "pagina": 74,
+  "sala": 22
+ },
+ {
+  "numero": 24,
+  "nome": "Fortepiano a coda Boisselot et Fils, Marsiglia, dopo 1844",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 76,
+  "sala": 13
+ },
+ {
+  "numero": 25,
+  "nome": "Fortepiano a coda Pierre-Orphée Érard, Londra, ca. 1853",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 73,
+  "sala": 22
+ },
+ {
+  "numero": 26,
+  "nome": "Fortepiano da boudoir (con scatola da cucito), Vienna (?), prima metà del XIX secolo",
+  "ascolto": true,
+  "foto": "/img/strumenti/26.webp",
+  "pagina": 70,
+  "sala": null
+ },
+ {
+  "numero": 27,
+  "nome": "Fortepiano a tavolo Johann Christoph Zumpe, Londra, 1780",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 71,
+  "sala": 17
+ },
+ {
+  "numero": 28,
+  "nome": "Fortepiano a tavolo Fratelli Elli, Milano, 1800",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 71,
+  "sala": 21
+ },
+ {
+  "numero": 29,
+  "nome": "Fortepiano a tavolo Gaetano Scappa, Milano, 1796",
+  "ascolto": true,
+  "foto": "/img/strumenti/29.webp",
+  "pagina": 69,
+  "sala": 21
+ },
+ {
+  "numero": 31,
+  "nome": "Fortepiano a tavolo Italia (?), seconda metà del XVIII secolo",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 71,
+  "sala": 17
+ },
+ {
+  "numero": 32,
+  "nome": "Fortepiano a tavolo Jean-Henri Pape, Parigi, 1825",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 72,
+  "sala": 1
+ },
+ {
+  "numero": 33,
+  "nome": "Pianoforte a coda Emerich Bétsy (padre), Vienna, 1854",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 82,
+  "sala": null
+ },
+ {
+  "numero": 34,
+  "nome": "Pianoforte a coda, Modello 3bis [Auguste Wolff] Pleyel, Parigi, 1882",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 76,
+  "sala": null
+ },
+ {
+  "numero": 35,
+  "nome": "Pianoforte a coda Julius Blüthner, Leipzig, 1902",
+  "ascolto": true,
+  "foto": "/img/strumenti/35.webp",
+  "pagina": 85,
+  "sala": null
+ },
+ {
+  "numero": 36,
+  "nome": "Pianoforte mezza coda aliquot Julius Blüthner, Leipzig, 1929",
+  "ascolto": true,
+  "foto": "/img/strumenti/36.webp",
+  "pagina": 84,
+  "sala": null
+ },
+ {
+  "numero": 37,
+  "nome": "Pianoforte mezza coda, Modello L Carl Bechstein, Berlino, 1963",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 84,
+  "sala": null
+ },
+ {
+  "numero": 38,
+  "nome": "Pianoforte a coda Modello B Steinway & Sons, Amburgo, 1990",
+  "ascolto": true,
+  "foto": "/img/strumenti/38.webp",
+  "pagina": 91,
+  "sala": 20
+ },
+ {
+  "numero": 39,
+  "nome": "Organo Bartolomeo Ravani, Lucca, seconda metà del XVII secolo",
+  "ascolto": true,
+  "foto": "/img/strumenti/39.webp",
+  "pagina": 104,
+  "sala": 40
+ },
+ {
+  "numero": 40,
+  "nome": "Organo Scuola veneziana, seconda metà del XVIII secolo",
+  "ascolto": true,
+  "foto": "/img/strumenti/40.webp",
+  "pagina": 106,
+  "sala": 2
+ },
+ {
+  "numero": 41,
+  "nome": "Organo Dominicus Antonius Rossi (attribuito), Napoli, XVIII secolo",
+  "ascolto": true,
+  "foto": null,
+  "pagina": 102,
+  "sala": 39
+ },
+ {
+  "numero": 42,
+  "nome": "Arpa diatonica viggianese, Anonimo, ca. 1830",
+  "ascolto": false,
+  "foto": "/img/strumenti/42.webp",
+  "pagina": 110,
+  "sala": null
+ },
+ {
+  "numero": 43,
+  "nome": "Arpa a pedali a movimento semplice [Godefroid] Holtzman, Parigi, 1775",
+  "ascolto": false,
+  "foto": "/img/strumenti/43.webp",
+  "pagina": 109,
+  "sala": null
+ },
+ {
+  "numero": 46,
+  "nome": "Arpa a pedali a movimento semplice [J·B·] Hurtz, Parigi, ca. 1785",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 110,
+  "sala": null
+ },
+ {
+  "numero": 47,
+  "nome": "Arpa a pedali a movimento semplice [Pierre-Joseph?] Zimmerman, Parigi, ca. 1785",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 110,
+  "sala": null
+ },
+ {
+  "numero": 49,
+  "nome": "Arpa a pedali a movimento semplice [Jacques-Georges] Cousineau",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 110,
+  "sala": null
+ },
+ {
+  "numero": 51,
+  "nome": "Arpa a pedali a movimento doppio Sébastien Érard, Londra, 1821",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 110,
+  "sala": null
+ },
+ {
+  "numero": 52,
+  "nome": "Arpa a pedali a movimento doppio Sébastien Érard",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 108,
+  "sala": null
+ },
+ {
+  "numero": 53,
+  "nome": "Salterio (25 cori), Italia, fine del XVIII secolo",
+  "ascolto": false,
+  "foto": "/img/strumenti/53.webp",
+  "pagina": 128,
+  "sala": null
+ },
+ {
+  "numero": 54,
+  "nome": "Salterio (24 cori), Italia, fine del XVIII secolo",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 128,
+  "sala": null
+ },
+ {
+  "numero": 55,
+  "nome": "Salterio (27 cori), Italia, ca. 1800",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 128,
+  "sala": null
+ },
+ {
+  "numero": 56,
+  "nome": "Salterio (23 cori), Gran Bretagna (?), inizio del XIX secolo",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 128,
+  "sala": null
+ },
+ {
+  "numero": 57,
+  "nome": "Salterio (26 cori), Germania o Impero austro-ungarico (?), nineteenth century",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 128,
+  "sala": null
+ },
+ {
+  "numero": 58,
+  "nome": "Mandolino a sei corde Carlo Albertini e figlio, Lombardia, prima metà del XX secolo",
+  "ascolto": false,
+  "foto": "/img/strumenti/58.webp",
+  "pagina": 126,
+  "sala": null
+ },
+ {
+  "numero": 59,
+  "nome": "Mandolino napoletano, Napoli, XX secolo",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 126,
+  "sala": null
+ },
+ {
+  "numero": 60,
+  "nome": "Chitarra Fernando del Perugia, Firenze, 1894",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 126,
+  "sala": null
+ },
+ {
+  "numero": 61,
+  "nome": "Fortepiano a coda “Archinto”, Johann Schantz, Vienna, ca. 1816",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 60,
+  "sala": null
+ },
+ {
+  "numero": 62,
+  "nome": "Pianoforte a coda “Giulini” Johann Heitzmann und Sohn, Vienna, ca. 1870",
+  "ascolto": false,
+  "foto": "/img/strumenti/62.webp",
+  "pagina": 83,
+  "sala": null
+ },
+ {
+  "numero": 63,
+  "nome": "Pianoforte a coda Pleyel Wolff et Compagnie, Parigi, 1885",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 76,
+  "sala": null
+ },
+ {
+  "numero": 64,
+  "nome": "Pianoforte a coda Érard, Parigi, 1883",
+  "ascolto": false,
+  "foto": "/img/strumenti/64.webp",
+  "pagina": 77,
+  "sala": null
+ },
+ {
+  "numero": 65,
+  "nome": "Pianoforte a coda Érard, Parigi, 1892",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 77,
+  "sala": 22
+ },
+ {
+  "numero": 66,
+  "nome": "Arpa a pedali a movimento semplice Érard Frères, Parigi, 1808",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 112,
+  "sala": null
+ },
+ {
+  "numero": 67,
+  "nome": "Arpa a pedali a movimento doppio Érard, Parigi, ottobre 1919",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 112,
+  "sala": null
+ },
+ {
+  "numero": 68,
+  "nome": "Arpa a pedali a movimento doppio Érard “Bassi”, Parigi, 1902",
+  "ascolto": false,
+  "foto": "/img/strumenti/68.webp",
+  "pagina": 117,
+  "sala": null
+ },
+ {
+  "numero": 69,
+  "nome": "Salterio Antonio Berti, Firenze, secondo quarto del",
+  "ascolto": false,
+  "foto": "/img/strumenti/69.webp",
+  "pagina": 132,
+  "sala": null
+ },
+ {
+  "numero": 70,
+  "nome": "Salterio italiano con scatola, Venezia, 1725",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 130,
+  "sala": null
+ },
+ {
+  "numero": 71,
+  "nome": "Salterio Antonio Berti, Firenze, prima metà del XVIII",
+  "ascolto": false,
+  "foto": "/img/strumenti/71.webp",
+  "pagina": 133,
+  "sala": null
+ },
+ {
+  "numero": 72,
+  "nome": "Mandolino Nicola e Raffaele Calace, Napoli",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 126,
+  "sala": null
+ },
+ {
+  "numero": 74,
+  "nome": "Fortepiano a coda “Prearo” Johannes Michael Schölly, Roma, 1793",
+  "ascolto": false,
+  "foto": "/img/strumenti/74.webp",
+  "pagina": 63,
+  "sala": null
+ },
+ {
+  "numero": 75,
+  "nome": "Pianoforte “Bigatti” Ernest Kaps, Dresden, 1885",
+  "ascolto": false,
+  "foto": "/img/strumenti/75.webp",
+  "pagina": 86,
+  "sala": 32
+ },
+ {
+  "numero": 76,
+  "nome": "Pianoforte mezza coda Blüthner aliquot, n. 137200",
+  "ascolto": false,
+  "foto": "/img/strumenti/76.webp",
+  "pagina": 87,
+  "sala": 29
+ },
+ {
+  "numero": 77,
+  "nome": "Pianoforte mezza coda “Montorfano” Burger & Jacobi, n. 2854320",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 86,
+  "sala": 29
+ },
+ {
+  "numero": 78,
+  "nome": "Pianoforte a coda Pleyel, n. 173871",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 76,
+  "sala": null
+ },
+ {
+  "numero": 79,
+  "nome": "Pianoforte a coda “Ravasio” Augusto Tallone, n. 2136",
+  "ascolto": false,
+  "foto": "/img/strumenti/79.webp",
+  "pagina": 89,
+  "sala": null
+ },
+ {
+  "numero": 80,
+  "nome": "Pianoforte “Ravasio” Tallone, Milano, 1950",
+  "ascolto": false,
+  "foto": "/img/strumenti/80.webp",
+  "pagina": 93,
+  "sala": 32
+ },
+ {
+  "numero": 81,
+  "nome": "Pianoforte quarto di coda Steinway & Sons, New York-Hamburg, 1926",
+  "ascolto": false,
+  "foto": "/img/strumenti/81.webp",
+  "pagina": 95,
+  "sala": 2
+ },
+ {
+  "numero": 82,
+  "nome": "Pianoforte mezza coda Modello A-188 Steinway & Sons, n.484418",
+  "ascolto": false,
+  "foto": "/img/strumenti/82.webp",
+  "pagina": 97,
+  "sala": null
+ },
+ {
+  "numero": 83,
+  "nome": "Pianoforte mezza coda Yamaha G1 RE 4700115",
+  "ascolto": false,
+  "foto": "/img/strumenti/83.webp",
+  "pagina": 99,
+  "sala": 2
+ },
+ {
+  "numero": 84,
+  "nome": "Pianoforte mezza coda Yamaha G1 RE 4800351",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 99,
+  "sala": 2
+ },
+ {
+  "numero": 85,
+  "nome": "Pianoforte mezza coda Yamaha, G2 E 1853242",
+  "ascolto": false,
+  "foto": "/img/strumenti/85.webp",
+  "pagina": 101,
+  "sala": null
+ },
+ {
+  "numero": 86,
+  "nome": "Harmonium Kasriel, Paris, about 1930",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 76,
+  "sala": 37
+ },
+ {
+  "numero": 88,
+  "nome": "Violino “Bergamasco” Giuseppe Pedrazzini (1879",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 118,
+  "sala": null
+ },
+ {
+  "numero": 89,
+  "nome": "Violino da bambino, metà del XX secolo",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 118,
+  "sala": null
+ },
+ {
+  "numero": 90,
+  "nome": "Violino Maidstone, inizio del XX secolo",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 118,
+  "sala": null
+ },
+ {
+  "numero": 91,
+  "nome": "Violino Stefano Caponnetto, Catania, primo quarto del XX secolo",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 118,
+  "sala": null
+ },
+ {
+  "numero": 92,
+  "nome": "Viola Wenzl Fuchs, 1960",
+  "ascolto": false,
+  "foto": null,
+  "pagina": 118,
+  "sala": null
+ },
+ {
+  "numero": 110,
+  "nome": "Clavinova Yamaha CLP300",
+  "ascolto": false,
+  "foto": null,
+  "pagina": null,
+  "sala": 25
+ },
+ {
+  "numero": 111,
+  "nome": "Clavinova Yamaha CLP130",
+  "ascolto": false,
+  "foto": null,
+  "pagina": null,
+  "sala": 25
+ },
+ {
+  "numero": 112,
+  "nome": "Clavinova Yamaha CLP560",
+  "ascolto": false,
+  "foto": null,
+  "pagina": null,
+  "sala": 24
+ },
+ {
+  "numero": 113,
+  "nome": "Clavinova Yamaha CLP300",
+  "ascolto": false,
+  "foto": null,
+  "pagina": null,
+  "sala": 24
+ }
+]

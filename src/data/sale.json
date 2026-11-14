@@ -1,402 +1,1386 @@
 [
-  {
-    "numero": 1,
-    "titolo": "Il primo battito",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+ {
+  "numero": 1,
+  "titolo": "Il Salone Impero",
+  "titoloEn": "The Empire Hall",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "Il grande salone del pianterreno accoglie fortepiani viennesi e parigini dell’Ottocento tra arredi milanesi in stile Impero e un tappeto Aubusson di oltre dieci metri. Alle pareti, i papiers peints di Joseph Dufour con Les Amours de Psyché et de Cupidon.",
+  "foto": null,
+  "strumenti": [
+   16,
+   17,
+   20,
+   32
+  ],
+  "approfondimento": "Questo è il frontespizio del piccolo volume con il quale Joseph Dufour presentava al pubblico l’ambizioso progetto di tradurre in papier peint Les Amours de Psyché et de Cupidon, di Jean de La Fontaine, nel tentativo di far rivivere attraverso le immagini le medesime sensazioni generate dalla scrittura. Con Psyché et Cupidon, Joseph Dufour si propone di realizzare le chef-d’œuvre del papier peint coronando un lavoro di decenni che aveva visto la sua Manifattura primeggiare in Francia e in Europa, fino a raggiungere una perfezione ineguagliata, anche dal punto di vista tecnico."
+ },
+ {
+  "numero": 2,
+  "titolo": "La Sala dell’Organo veneto",
+  "titoloEn": "The Venetian Organ Hall",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "Domina la sala l’organo di scuola veneziana della seconda metà del Settecento, con le grandi ante dipinte che raffigurano Santa Cecilia e il re David, figure divenute nei secoli simbolo della musica e del canto.",
+  "foto": {
+   "hero": "/img/2/hero.webp",
+   "heroSmall": "/img/2/hero-s.webp",
+   "w": 1558,
+   "h": 934,
+   "pagina": 106,
+   "galleria": []
   },
-  {
-    "numero": 2,
-    "titolo": "Pietre che risuonano",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   40,
+   81,
+   83,
+   84
+  ],
+  "approfondimento": "Le due ante d’organo, di grandi dimensioni, presentano una iconografia sulla quale è necessario soffermarsi con una breve premessa, per chiarire la presenza nei due riquadri di Santa Cecilia e di Re David, figure che nei secoli sono diventate simbolo della musica e del canto. Cecilia è una giovane nobile romana cristiana, che durante il pontificato di Urbano I (222-230) va in sposa al pagano Valeriano, al quale rivela la sera delle nozze di aver fatto voto di castità in nome della propria fede e di essere protetta da un angelo, che veglia su di lei."
+ },
+ {
+  "numero": 3,
+  "titolo": "La Sala verde",
+  "titoloEn": "The Green Hall",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "Una sala nei toni del verde, dove un arazzo racconta l’apparizione di Venere a Enea e al compagno Acate, tratta dal primo canto dell’Eneide.",
+  "foto": {
+   "hero": "/img/3/hero.webp",
+   "heroSmall": "/img/3/hero-s.webp",
+   "w": 639,
+   "h": 578,
+   "pagina": 358,
+   "galleria": []
   },
-  {
-    "numero": 3,
-    "titolo": "Ossa e flauti",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": "Il soggetto di questo arazzo è stato ripreso dal canto primo dell’Eneide dove Virgilio così descrive l’apparizione di Venere a Enea e al suo fedele compagno Acate sullo sfondo di un bosco: “In mezzo de la selva una donzella, / Ch’era sua madre, si com’era avanti / Che madre fosse, incontro gli si fece. / Donzella a l’armi, a l’abito, al sembiante / Parea di Sparta, o quale in Tracia Arpalice / Leggiera è sciolta il dorso affaticando / Del fugace destrier, l’Ebro varcava. / Al collo avea da cacciatrice un arco / Abile e lesto, i crini a l’aura sparsi / Nudo il ginocchio, e con bel nodo stretto / tenea raccolto de la gonna il seno”."
+ },
+ {
+  "numero": 4,
+  "titolo": "La Sala da pranzo",
+  "titoloEn": "The Dining Room",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "La sala da pranzo è dominata da grandi nature morte della seconda metà del Settecento, con fiori, frutta e vasi in paesaggi, dipinte a succhi d’erba su tela.",
+  "foto": {
+   "hero": "/img/4/hero.webp",
+   "heroSmall": "/img/4/hero-s.webp",
+   "w": 463,
+   "h": 609,
+   "pagina": 375,
+   "galleria": []
   },
-  {
-    "numero": 4,
-    "titolo": "Il tamburo",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 5,
+  "titolo": "La Galleria di porcellane",
+  "titoloEn": "The Porcelains Gallery",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "Una galleria dedicata ai serviti da tavola della collezione, come quello decorato in monocromo seppia con paesaggi di fantasia di gusto orientale.",
+  "foto": null,
+  "strumenti": [],
+  "approfondimento": "Questo servito da tavola è decorato con un motivo a “transfer print” in monocromo seppia, rappresentante al centro del cavetto un paesaggio di fantasia contornato da alberi e fronde che incorniciano un fiume con montagne sullo sfondo. Lungo la riva sinistra sono seduti personaggi in costume, mentre sul lato opposto si ergono costruzioni di netta impronta orientale."
+ },
+ {
+  "numero": 6,
+  "titolo": "La Biblioteca di musica",
+  "titoloEn": "The Music Library",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "La biblioteca dedicata alla musica, dove sono esposte anche le acqueforti di Marc’Antonio Dal Re dalle Ville di delizia nello Stato di Milano (1726).",
+  "foto": {
+   "hero": "/img/6/hero.webp",
+   "heroSmall": "/img/6/hero-s.webp",
+   "w": 778,
+   "h": 918,
+   "pagina": 384,
+   "galleria": []
   },
-  {
-    "numero": 5,
-    "titolo": "Richiami e segnali",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 7,
+  "titolo": "La Biblioteca di letteratura",
+  "titoloEn": "The Books Library",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "Tra le librerie sono esposte le tavole dei Disegni originali di eccellenti pittori della Regia Galleria di Firenze, pubblicate da Andrea Scacciati nel 1766.",
+  "foto": {
+   "hero": "/img/7/hero.webp",
+   "heroSmall": "/img/7/hero-s.webp",
+   "w": 949,
+   "h": 982,
+   "pagina": 388,
+   "galleria": [
+    {
+     "src": "/img/7/g1.webp",
+     "thumb": "/img/7/g1-s.webp",
+     "w": 779,
+     "h": 797,
+     "pagina": 394
+    }
+   ]
   },
-  {
-    "numero": 6,
-    "titolo": "Eco e grotte",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": "La serie di tavole in oggetto presente in Collezione Giulini proviene dalla prima edizione della raccolta intitolata Disegni originali di eccellenti pittori esistenti nella Regia Galleria di Firenze incisi in rame con imitazione di grandezze e colore ad acquerello penna e matita, pubblicata da Andrea Scacciati detto ‘il Giovane’ a Firenze nel 1766 in collaborazione col suo migliore allievo Stefano Mulinari, la quale nella sua versione completa consta di 100 incisioni, le prime 66 prodotte da Scacciati e le rimanenti da Mulinari."
+ },
+ {
+  "numero": 8,
+  "titolo": "La Cucina storica",
+  "titoloEn": "The Historic Kitchen",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "La cucina storica conserva arredi e stoviglie d’epoca, tra cui un servizio di centotrenta pezzi decorato con girali e fiori in blu turchino.",
+  "foto": {
+   "hero": "/img/8/hero.webp",
+   "heroSmall": "/img/8/hero-s.webp",
+   "w": 948,
+   "h": 1185,
+   "pagina": 400,
+   "galleria": [
+    {
+     "src": "/img/8/g1.webp",
+     "thumb": "/img/8/g1-s.webp",
+     "w": 797,
+     "h": 886,
+     "pagina": 396
+    }
+   ]
   },
-  {
-    "numero": 7,
-    "titolo": "Il ritmo del lavoro",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": "Il servizio, costituito da ben centotrenta pezzi, presenta una superficie ondulata e un decoro costituito da girali vegetali e fiori naturalistici in monocromo blu turchino che riveste la falda del piatto mentre il bordo è delimitato da una greca geometrica nello stesso colore. Al centro del cavetto e degli oggetti di forma si trova un medaglione rotondo entro cui si ripete lo stesso motivo decorativo. Il servito rappresenta uno dei prodotti più interessanti e apprezzati della manifattura francese di Gien, creata nel 1821 nella valle della Loira da un ceramista inglese dello Staffordshire, Thomas Hall."
+ },
+ {
+  "numero": 9,
+  "titolo": "Lo Scalone d’onore",
+  "titoloEn": "The Grand Staircase",
+  "sezione": "villa",
+  "piano": "Pianterreno",
+  "descrizione": "Lo scalone che sale al primo piano è ornato da quattro arazzi con composizioni di fiori su colonne, incorniciate da intrecci ispirati agli ornati di Jean Bérain.",
+  "foto": null,
+  "strumenti": [],
+  "approfondimento": "I quattro arazzi raffigurano ciascuno una composizione di fiori posta su di una slanciata colonna e contornata da una cornice i cui intrecci sono ispirati agli ornati inventati da Jean Bérain e pubblicati Parigi per la prima volta nel 1711."
+ },
+ {
+  "numero": 10,
+  "titolo": "Il Salone dipinto da Francesco Zuccarelli",
+  "titoloEn": "The Hall painted by Francesco Zuccarelli",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Il cuore della villa: il salone affrescato da Francesco Zuccarelli con paesaggi fluviali, scene pastorali e un porto di mare. Qui sono riuniti i fortepiani viennesi della collezione, su un tappeto con lo stemma dei conti Nákó.",
+  "foto": {
+   "hero": "/img/10/hero.webp",
+   "heroSmall": "/img/10/hero-s.webp",
+   "w": 1556,
+   "h": 966,
+   "pagina": 418,
+   "galleria": [
+    {
+     "src": "/img/10/g1.webp",
+     "thumb": "/img/10/g1-s.webp",
+     "w": 1400,
+     "h": 875,
+     "pagina": 56
+    }
+   ]
   },
-  {
-    "numero": 8,
-    "titolo": "Canti di terra",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": "Il tappeto proviene quasi certamente da un castello nel Banato, oppure da una celebre palazzina di Budapest nella Uri Utca 15. Lo stemma che lo fregia è quello della famiglia Nákó de Nagy-Szent-Miklós, di origine rumeno-macedone, che ricevette il titolo comitale il 26 febbraio 1813 e che era imparentata con grandi famiglie magiare, come i Festetics."
+ },
+ {
+  "numero": 11,
+  "titolo": "La Camera gialla",
+  "titoloEn": "The Yellow Room",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Il giallo dei medaglioni del soffitto dà il tono alla camera. Gli arredi si ispirano alla Francia e al Ducato di Parma, e il colore ritorna nelle volute dei ricami.",
+  "foto": {
+   "hero": "/img/11/hero.webp",
+   "heroSmall": "/img/11/hero-s.webp",
+   "w": 778,
+   "h": 886,
+   "pagina": 422,
+   "galleria": []
   },
-  {
-    "numero": 9,
-    "titolo": "La campana",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 12,
+  "titolo": "La Camera blu",
+  "titoloEn": "The Blue Room",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Il blu del soffitto ritorna nei tappeti, nelle giare cinesi, nei velluti e nei damaschi, fino al papier peint Le toucher tra le finestre sul giardino. Forse era la camera preferita dei padroni di casa, fresca nei mesi estivi.",
+  "foto": {
+   "hero": "/img/12/hero.webp",
+   "heroSmall": "/img/12/hero-s.webp",
+   "w": 1800,
+   "h": 764,
+   "pagina": 432,
+   "galleria": [
+    {
+     "src": "/img/12/g1.webp",
+     "thumb": "/img/12/g1-s.webp",
+     "w": 779,
+     "h": 758,
+     "pagina": 434
+    }
+   ]
   },
-  {
-    "numero": 10,
-    "titolo": "Il silenzio",
-    "sezione": "origini",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 13,
+  "titolo": "La Camera verde",
+  "titoloEn": "The Green Room",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Il verde dell’agrifoglio dipinto nei cassettoni del soffitto guida la camera. Il fortepiano Boisselot con i tre leggii sembra invitare a un trio da camera.",
+  "foto": {
+   "hero": "/img/13/hero.webp",
+   "heroSmall": "/img/13/hero-s.webp",
+   "w": 778,
+   "h": 827,
+   "pagina": 446,
+   "galleria": [
+    {
+     "src": "/img/13/g1.webp",
+     "thumb": "/img/13/g1-s.webp",
+     "w": 778,
+     "h": 827,
+     "pagina": 446
+    }
+   ]
   },
-  {
-    "numero": 11,
-    "titolo": "Corde",
-    "sezione": "strumenti",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   24
+  ],
+  "approfondimento": ""
+ },
+ {
+  "numero": 14,
+  "titolo": "L’Angolo bar",
+  "titoloEn": "The Bar Corner",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Un angolo raccolto del primo piano, arredato con cassettoni lombardi del Settecento in noce intarsiato.",
+  "foto": {
+   "hero": "/img/14/hero.webp",
+   "heroSmall": "/img/14/hero-s.webp",
+   "w": 1555,
+   "h": 869,
+   "pagina": 460,
+   "galleria": []
   },
-  {
-    "numero": 12,
-    "titolo": "Fiati",
-    "sezione": "strumenti",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 15,
+  "titolo": "La Camera delle specchiere veneziane",
+  "titoloEn": "The Venetian Mirrors Room",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "La camera prende il nome dalla coppia di specchiere veneziane del terzo quarto del Settecento, in legno intagliato e dorato a intrecci di volute.",
+  "foto": {
+   "hero": "/img/15/hero.webp",
+   "heroSmall": "/img/15/hero-s.webp",
+   "w": 948,
+   "h": 1185,
+   "pagina": 462,
+   "galleria": [
+    {
+     "src": "/img/15/g1.webp",
+     "thumb": "/img/15/g1-s.webp",
+     "w": 779,
+     "h": 1185,
+     "pagina": 464
+    }
+   ]
   },
-  {
-    "numero": 13,
-    "titolo": "Percussioni dal mondo",
-    "sezione": "strumenti",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 16,
+  "titolo": "La Camera verde pastello",
+  "titoloEn": "The Pastel Green Room",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Una camera nei toni del verde pastello, con incisioni neoclassiche di traduzione alle pareti.",
+  "foto": null,
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 17,
+  "titolo": "Una Galleria di strumenti e di incisioni",
+  "titoloEn": "A Gallery of instruments and engravings",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "I fortepiani a tavolo, tra cui lo Zumpe di Londra del 1780, dialogano con le incisioni, come la serie delle Storie del Figliol Prodigo attribuita alla stamperia dei Remondini.",
+  "foto": {
+   "hero": "/img/17/hero.webp",
+   "heroSmall": "/img/17/hero-s.webp",
+   "w": 751,
+   "h": 928,
+   "pagina": 70,
+   "galleria": [
+    {
+     "src": "/img/17/g1.webp",
+     "thumb": "/img/17/g1-s.webp",
+     "w": 751,
+     "h": 928,
+     "pagina": 70
+    }
+   ]
   },
-  {
-    "numero": 14,
-    "titolo": "La bottega del liutaio",
-    "sezione": "strumenti",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   27,
+   31
+  ],
+  "approfondimento": ""
+ },
+ {
+  "numero": 18,
+  "titolo": "Una Sala per il relax",
+  "titoloEn": "A Room for relaxing",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Una sala per il riposo, arredata con mobili lombardi dell’Ottocento come la toilette in noce intagliato.",
+  "foto": null,
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 19,
+  "titolo": "La Camera dei rami di ulivo",
+  "titoloEn": "The Room of the olive branches",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Il soffitto è decorato con rami di ulivo carichi di bacche e il tema ritorna nella camera rivolta al giardino: il grande tappeto Aubusson verde salvia, il ricamo dell’Annunciazione, le rose da taglio.",
+  "foto": null,
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 20,
+  "titolo": "La Biblioteca dorata",
+  "titoloEn": "The Golden Library",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Librerie dorate, il pianoforte a coda Steinway Modello B e dipinti del primo Settecento, tra cui le storie di Eraclio e della Vera Croce.",
+  "foto": {
+   "hero": "/img/20/hero.webp",
+   "heroSmall": "/img/20/hero-s.webp",
+   "w": 1800,
+   "h": 645,
+   "pagina": 502,
+   "galleria": [
+    {
+     "src": "/img/20/g1.webp",
+     "thumb": "/img/20/g1-s.webp",
+     "w": 778,
+     "h": 913,
+     "pagina": 501
+    },
+    {
+     "src": "/img/20/g2.webp",
+     "thumb": "/img/20/g2-s.webp",
+     "w": 949,
+     "h": 1185,
+     "pagina": 502
+    },
+    {
+     "src": "/img/20/g3.webp",
+     "thumb": "/img/20/g3-s.webp",
+     "w": 778,
+     "h": 913,
+     "pagina": 504
+    },
+    {
+     "src": "/img/20/g4.webp",
+     "thumb": "/img/20/g4-s.webp",
+     "w": 717,
+     "h": 612,
+     "pagina": 513
+    }
+   ]
   },
-  {
-    "numero": 15,
-    "titolo": "Il pianoforte",
-    "sezione": "strumenti",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   38
+  ],
+  "approfondimento": ""
+ },
+ {
+  "numero": 21,
+  "titolo": "Un angolo sulla corte",
+  "titoloEn": "A corner overlooking the courtyard",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "Un angolo affacciato sulla corte dei tigli, con due fortepiani a tavolo milanesi: quello dei Fratelli Elli e quello di Gaetano Scappa.",
+  "foto": {
+   "hero": "/img/21/hero.webp",
+   "heroSmall": "/img/21/hero-s.webp",
+   "w": 720,
+   "h": 870,
+   "pagina": 69,
+   "galleria": []
   },
-  {
-    "numero": 16,
-    "titolo": "L’organo",
-    "sezione": "strumenti",
-    "piano": 0,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   28,
+   29
+  ],
+  "approfondimento": "Dagli anni Venti dell’Ottocento assistiamo al ricomporsi di quella frattura tra vetro e tela che tante divisioni estetiche ed economiche aveva generato nei secoli precedenti. I due materiali, ormai lavorati con metodi differenti, si possono ora sovrapporre all’interno e all’esterno delle finestre, proponendo un modello funzionale – sia come riparo dagli agenti atmosferici sia come ornamento di interni – che diventerà nei decenni successivi tra i più ricercati per le esigenze di decoro abitativo, ponendosi come ricercata alternativa ai tendaggi abituali."
+ },
+ {
+  "numero": 22,
+  "titolo": "La Sala dei pianoforti francesi",
+  "titoloEn": "The Hall of French pianos",
+  "sezione": "villa",
+  "piano": "Primo piano",
+  "descrizione": "La sala riunisce i grandi fortepiani francesi: l’Érard del 1853 circa e i due Pleyel del 1839 e del 1852, tra poltrone settecentesche dell’Italia settentrionale.",
+  "foto": {
+   "hero": "/img/22/hero.webp",
+   "heroSmall": "/img/22/hero-s.webp",
+   "w": 1558,
+   "h": 870,
+   "pagina": 74,
+   "galleria": [
+    {
+     "src": "/img/22/g1.webp",
+     "thumb": "/img/22/g1-s.webp",
+     "w": 1400,
+     "h": 782,
+     "pagina": 74
+    }
+   ]
   },
-  {
-    "numero": 17,
-    "titolo": "Strumenti popolari",
-    "sezione": "strumenti",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   22,
+   23,
+   25,
+   65
+  ],
+  "approfondimento": ""
+ },
+ {
+  "numero": 23,
+  "titolo": "La Civiltà contadina",
+  "titoloEn": "The Peasant Heritage",
+  "sezione": "cantinone",
+  "piano": "Cantinone",
+  "descrizione": "Nel Cantinone, uno spazio dedicato agli oggetti e alla memoria della civiltà contadina.",
+  "foto": {
+   "hero": "/img/23/hero.webp",
+   "heroSmall": "/img/23/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 574,
+   "galleria": []
   },
-  {
-    "numero": 18,
-    "titolo": "Banda e piazza",
-    "sezione": "strumenti",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 24,
+  "titolo": "La Sala delle volte a botte",
+  "titoloEn": "The Barrel Vaults Hall",
+  "sezione": "cantinone",
+  "piano": "Cantinone",
+  "descrizione": "Si apre a sorpresa la sala delle volte a botte, con la mostra di camino lombarda del Cinquecento sorretta da erme di satiri, i quattro putti delle stagioni e un angolo dedicato al Medio Oriente.",
+  "foto": {
+   "hero": "/img/24/hero.webp",
+   "heroSmall": "/img/24/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 576,
+   "galleria": [
+    {
+     "src": "/img/24/g1.webp",
+     "thumb": "/img/24/g1-s.webp",
+     "w": 948,
+     "h": 870,
+     "pagina": 579
+    },
+    {
+     "src": "/img/24/g2.webp",
+     "thumb": "/img/24/g2-s.webp",
+     "w": 437,
+     "h": 741,
+     "pagina": 580
+    },
+    {
+     "src": "/img/24/g3.webp",
+     "thumb": "/img/24/g3-s.webp",
+     "w": 437,
+     "h": 741,
+     "pagina": 580
+    },
+    {
+     "src": "/img/24/g4.webp",
+     "thumb": "/img/24/g4-s.webp",
+     "w": 437,
+     "h": 741,
+     "pagina": 581
+    },
+    {
+     "src": "/img/24/g5.webp",
+     "thumb": "/img/24/g5-s.webp",
+     "w": 436,
+     "h": 741,
+     "pagina": 581
+    },
+    {
+     "src": "/img/24/g6.webp",
+     "thumb": "/img/24/g6-s.webp",
+     "w": 1400,
+     "h": 724,
+     "pagina": 582
+    }
+   ]
   },
-  {
-    "numero": 19,
-    "titolo": "Macchine musicali",
-    "sezione": "strumenti",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   112,
+   113
+  ],
+  "approfondimento": "Il camino, acquistato sul mercato antiquario, è sorretto ai lati da due erme maschili dall’aspetto di satiri che poggiano su un pilastro a tronco di piramide: tra la parte figurata e il sostegno piramidale è scolpita una naturalistica fascia di foglie e frutti. Le erme sorreggono una severa trabeazione dorica decorata con triglifi intervallati da bucrani, mascheroni e rosette."
+ },
+ {
+  "numero": 25,
+  "titolo": "La Sala giochi",
+  "titoloEn": "The Games Room",
+  "sezione": "cantinone",
+  "piano": "Cantinone",
+  "descrizione": "Una sala per il gioco e la musica d’insieme, con pianoforti digitali e una coppia di vasi di Delft dipinti in bianco e blu.",
+  "foto": {
+   "hero": "/img/25/hero.webp",
+   "heroSmall": "/img/25/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 586,
+   "galleria": [
+    {
+     "src": "/img/25/g1.webp",
+     "thumb": "/img/25/g1-s.webp",
+     "w": 720,
+     "h": 499,
+     "pagina": 588
+    },
+    {
+     "src": "/img/25/g2.webp",
+     "thumb": "/img/25/g2-s.webp",
+     "w": 948,
+     "h": 806,
+     "pagina": 589
+    }
+   ]
   },
-  {
-    "numero": 20,
-    "titolo": "Strumenti elettrici",
-    "sezione": "strumenti",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   110,
+   111
+  ],
+  "approfondimento": "I due vasi con coperchio riprendono un’antica tradizione di Delft, la pittura a motivi blu su fondo bianco che – imitando la porcellana cinese in bianco e blu – rese famosa questa città dell’Olanda per la sua produzione ceramica: la Koninklijke Porceleyne Fles costituisce oggi l’unica manifattura rimanente delle trentadue manifatture di maiolica che erano attive a Delft nel XVII secolo. Seppur non si possa stabilire con certezza una data di inizio della produzione ceramica di Delft, nella seconda metà del XVI secolo alcuni maiolicari italiani raggiunsero l’Olanda e la fabbricazione della maiolica ebbe inizio a Delft."
+ },
+ {
+  "numero": 26,
+  "titolo": "La Sala del biliardo e della carambola",
+  "titoloEn": "Billiard and Carambole Room",
+  "sezione": "cantinone",
+  "piano": "Cantinone",
+  "descrizione": "La sala del biliardo, con una console lombarda del tardo Settecento il cui profilo richiama la sagoma stilizzata di un’arpa.",
+  "foto": {
+   "hero": "/img/26/hero.webp",
+   "heroSmall": "/img/26/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 590,
+   "galleria": [
+    {
+     "src": "/img/26/g1.webp",
+     "thumb": "/img/26/g1-s.webp",
+     "w": 717,
+     "h": 870,
+     "pagina": 592
+    },
+    {
+     "src": "/img/26/g2.webp",
+     "thumb": "/img/26/g2-s.webp",
+     "w": 948,
+     "h": 790,
+     "pagina": 593
+    }
+   ]
   },
-  {
-    "numero": 21,
-    "titolo": "Il respiro",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 27,
+  "titolo": "L’Oratorio di San Giuseppe",
+  "titoloEn": "The Oratory of Saint Joseph",
+  "sezione": "cappella",
+  "piano": "Cappella",
+  "descrizione": "La piccola cappella adiacente alla villa custodisce oreficerie sacre ottocentesche della fabbrica Bertarelli, la Sacra Famiglia con San Francesco di Antonio Busca e una rara tela con Scene e simboli della Passione.",
+  "foto": {
+   "hero": "/img/27/hero.webp",
+   "heroSmall": "/img/27/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 596,
+   "galleria": [
+    {
+     "src": "/img/27/g1.webp",
+     "thumb": "/img/27/g1-s.webp",
+     "w": 779,
+     "h": 1127,
+     "pagina": 595
+    },
+    {
+     "src": "/img/27/g3.webp",
+     "thumb": "/img/27/g3-s.webp",
+     "w": 437,
+     "h": 771,
+     "pagina": 598
+    },
+    {
+     "src": "/img/27/g6.webp",
+     "thumb": "/img/27/g6-s.webp",
+     "w": 948,
+     "h": 629,
+     "pagina": 600
+    }
+   ]
   },
-  {
-    "numero": 22,
-    "titolo": "La ninna nanna",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 28,
+  "titolo": "L’Accoglienza",
+  "titoloEn": "The Reception",
+  "sezione": "ospitalita",
+  "piano": "Pianterreno",
+  "descrizione": "L’ingresso dal cortile d’onore: si viene accolti tra le vedute di Roma incise da Morel, Acquaroni e Parboni.",
+  "foto": {
+   "hero": "/img/28/hero.webp",
+   "heroSmall": "/img/28/hero-s.webp",
+   "w": 1558,
+   "h": 1125,
+   "pagina": 622,
+   "galleria": [
+    {
+     "src": "/img/28/g1.webp",
+     "thumb": "/img/28/g1-s.webp",
+     "w": 720,
+     "h": 942,
+     "pagina": 625
+    }
+   ]
   },
-  {
-    "numero": 23,
-    "titolo": "Il coro",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 29,
+  "titolo": "La Sala Musica",
+  "titoloEn": "The Music Hall",
+  "sezione": "ospitalita",
+  "piano": "Pianterreno",
+  "descrizione": "La Sala Musica si affaccia sul portico e riprende il tema di Villa Giulini, gli strumenti a tastiera in quasi tutte le sale. Due pianoforti a coda sono dedicati alle masterclasses, sotto i papiers peints di Amore e Psiche.",
+  "foto": {
+   "hero": "/img/29/hero.webp",
+   "heroSmall": "/img/29/hero-s.webp",
+   "w": 1800,
+   "h": 1125,
+   "pagina": 626,
+   "galleria": [
+    {
+     "src": "/img/29/g1.webp",
+     "thumb": "/img/29/g1-s.webp",
+     "w": 616,
+     "h": 645,
+     "pagina": 631
+    }
+   ]
   },
-  {
-    "numero": 24,
-    "titolo": "Lavoro e canto",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   76,
+   77
+  ],
+  "approfondimento": ""
+ },
+ {
+  "numero": 30,
+  "titolo": "Il Salotto dedicato a Mercurio",
+  "titoloEn": "The Room dedicated to Mercury",
+  "sezione": "ospitalita",
+  "piano": "Pianterreno",
+  "descrizione": "Un salotto dedicato a Mercurio: il papier peint Virtuti Fortuna comes intreccia il caduceo e la cornucopia, simboli di virtù e di fortuna.",
+  "foto": {
+   "hero": "/img/30/hero.webp",
+   "heroSmall": "/img/30/hero-s.webp",
+   "w": 511,
+   "h": 1045,
+   "pagina": 633,
+   "galleria": [
+    {
+     "src": "/img/30/g2.webp",
+     "thumb": "/img/30/g2-s.webp",
+     "w": 720,
+     "h": 612,
+     "pagina": 639
+    }
+   ]
   },
-  {
-    "numero": 25,
-    "titolo": "L’opera",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": "Il caduceo e la cornucopia, nell’elenco redatto da Ripa, compaiono entrambi nella “Tavola d’Ordigni diversi e altre cose Artificiali”7 rispettivamente in cinque e in ventidue disegni, che concretizzano singolarmente altrettanti significati, tutti diversi tranne la Felicità Pubblica, in cui sono presenti entrambi gli oggetti, accessori di una figura di donna seduta che regge con la mano sinistra la cornucopia e con la destra il caduceo (Fig. 3). “La Felicità è riposo dell’animo in un bene sommamente conosciuto, & desiderato, & desiderabile, però si dipinge a sedere, col Caduceo in segno di pace, & di sapienza."
+ },
+ {
+  "numero": 31,
+  "titolo": "La Sala di Amore e Psiche",
+  "titoloEn": "The Hall of Cupid and Psyche",
+  "sezione": "ospitalita",
+  "piano": "Pianterreno",
+  "descrizione": "Luminosità discreta e leggerezza dell’arredo: qui continuano i papiers peints in grisaille di Dufour che raccontano la storia di Amore e Psiche.",
+  "foto": {
+   "hero": "/img/31/hero.webp",
+   "heroSmall": "/img/31/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 642,
+   "galleria": [
+    {
+     "src": "/img/31/g1.webp",
+     "thumb": "/img/31/g1-s.webp",
+     "w": 948,
+     "h": 1185,
+     "pagina": 651
+    },
+    {
+     "src": "/img/31/g2.webp",
+     "thumb": "/img/31/g2-s.webp",
+     "w": 1400,
+     "h": 866,
+     "pagina": 652
+    },
+    {
+     "src": "/img/31/g3.webp",
+     "thumb": "/img/31/g3-s.webp",
+     "w": 720,
+     "h": 513,
+     "pagina": 655
+    },
+    {
+     "src": "/img/31/g4.webp",
+     "thumb": "/img/31/g4-s.webp",
+     "w": 720,
+     "h": 511,
+     "pagina": 655
+    }
+   ]
   },
-  {
-    "numero": 26,
-    "titolo": "Il recitar cantando",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 32,
+  "titolo": "La Sala delle Scènes turques",
+  "titoloEn": "The Hall of the Scènes turques",
+  "sezione": "ospitalita",
+  "piano": "Pianterreno",
+  "descrizione": "Il grande papier panoramique Scènes turques della manifattura Dufour fa da sfondo ai pianoforti Kaps e Tallone.",
+  "foto": {
+   "hero": "/img/32/hero.webp",
+   "heroSmall": "/img/32/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 656,
+   "galleria": [
+    {
+     "src": "/img/32/g1.webp",
+     "thumb": "/img/32/g1-s.webp",
+     "w": 948,
+     "h": 800,
+     "pagina": 659
+    },
+    {
+     "src": "/img/32/g2.webp",
+     "thumb": "/img/32/g2-s.webp",
+     "w": 720,
+     "h": 597,
+     "pagina": 662
+    },
+    {
+     "src": "/img/32/g3.webp",
+     "thumb": "/img/32/g3-s.webp",
+     "w": 948,
+     "h": 1185,
+     "pagina": 664
+    }
+   ]
   },
-  {
-    "numero": 27,
-    "titolo": "Voci di strada",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   75,
+   80
+  ],
+  "approfondimento": ""
+ },
+ {
+  "numero": 33,
+  "titolo": "Il Baricentro",
+  "titoloEn": "The Core Hall",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "Il cuore del primo piano, con i fondali di teatro piemontesi dell’Ottocento: la Villa Pagliotti di Marco Fagiani e il Giardino con fabbricato di Giovanni Bruno (1853).",
+  "foto": {
+   "hero": "/img/33/hero.webp",
+   "heroSmall": "/img/33/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 668,
+   "galleria": [
+    {
+     "src": "/img/33/g1.webp",
+     "thumb": "/img/33/g1-s.webp",
+     "w": 948,
+     "h": 727,
+     "pagina": 671
+    },
+    {
+     "src": "/img/33/g2.webp",
+     "thumb": "/img/33/g2-s.webp",
+     "w": 947,
+     "h": 629,
+     "pagina": 673
+    },
+    {
+     "src": "/img/33/g3.webp",
+     "thumb": "/img/33/g3-s.webp",
+     "w": 1400,
+     "h": 623,
+     "pagina": 674
+    }
+   ]
   },
-  {
-    "numero": 28,
-    "titolo": "Dialetti e cantilene",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": "Nel Piemonte sabaudo, fin dal XVIII secolo, si susseguono diverse generazioni della famiglia Galliari2 – quadraturisti, architetti e scenografi – che tra fine secolo e inizio dell’Ottocento raggiungono l’apice della notorietà e delle committenze pubbliche e private, espandendo la propria attività anche in Lombardia e in Veneto."
+ },
+ {
+  "numero": 34,
+  "titolo": "La Camera Bach",
+  "titoloEn": "The Bach Room",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "La camera è dominata dal fondale di teatro di Andrea Gastaldi (1860), con Andromeda, Diana e Atteone, Diana ed Endimione.",
+  "foto": {
+   "hero": "/img/34/hero.webp",
+   "heroSmall": "/img/34/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 676,
+   "galleria": [
+    {
+     "src": "/img/34/g1.webp",
+     "thumb": "/img/34/g1-s.webp",
+     "w": 1400,
+     "h": 1064,
+     "pagina": 678
+    },
+    {
+     "src": "/img/34/g2.webp",
+     "thumb": "/img/34/g2-s.webp",
+     "w": 720,
+     "h": 966,
+     "pagina": 681
+    },
+    {
+     "src": "/img/34/g3.webp",
+     "thumb": "/img/34/g3-s.webp",
+     "w": 467,
+     "h": 580,
+     "pagina": 682
+    }
+   ]
   },
-  {
-    "numero": 29,
-    "titolo": "La radio",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 35,
+  "titolo": "La Camera Beethoven",
+  "titoloEn": "The Beethoven Room",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "Un fondale di Andrea Gastaldi con l’uccisione dei figli di Niobe e i funerali di Ettore, accanto a una coppia di cassettoni parmensi in stile Impero.",
+  "foto": {
+   "hero": "/img/35/hero.webp",
+   "heroSmall": "/img/35/hero-s.webp",
+   "w": 1556,
+   "h": 918,
+   "pagina": 684,
+   "galleria": [
+    {
+     "src": "/img/35/g1.webp",
+     "thumb": "/img/35/g1-s.webp",
+     "w": 948,
+     "h": 655,
+     "pagina": 687
+    },
+    {
+     "src": "/img/35/g2.webp",
+     "thumb": "/img/35/g2-s.webp",
+     "w": 1400,
+     "h": 802,
+     "pagina": 688
+    },
+    {
+     "src": "/img/35/g3.webp",
+     "thumb": "/img/35/g3-s.webp",
+     "w": 720,
+     "h": 685,
+     "pagina": 690
+    }
+   ]
   },
-  {
-    "numero": 30,
-    "titolo": "La voce registrata",
-    "sezione": "voce",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 36,
+  "titolo": "La Camera Schubert",
+  "titoloEn": "The Schubert Room",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "Il fondale di Rodolfo Morgari (1876) racconta Artemide e Agamennone: il sacrificio di Ifigenia e l’arrivo dei doni nuziali.",
+  "foto": {
+   "hero": "/img/36/hero.webp",
+   "heroSmall": "/img/36/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 692,
+   "galleria": [
+    {
+     "src": "/img/36/g1.webp",
+     "thumb": "/img/36/g1-s.webp",
+     "w": 948,
+     "h": 689,
+     "pagina": 695
+    },
+    {
+     "src": "/img/36/g2.webp",
+     "thumb": "/img/36/g2-s.webp",
+     "w": 889,
+     "h": 388,
+     "pagina": 697
+    }
+   ]
   },
-  {
-    "numero": 31,
-    "titolo": "Il cinema muto",
-    "sezione": "immagine",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": "Il fondale rappresenta il Sacrificio di Ifigenia e l’Arrivo dei doni nuziali, episodi strettamente concatenati, tratti dalla Ifigenia in Aulide di Euripide. Agamennone ha offeso Artemide uccidendo una delle sue cerve sacre e lei si vendica, impedendo che soffi un vento propizio, necessario affinché le navi greche possano salpare alla volta di Troia. Soltanto il sacrificio di Ifigenia, figlia di Agamennone e di Clitennestra, avrebbe placato la dea e dato luogo all’avvio della spedizione. Con l’animo attraversato dal dolore e dal dubbio, il re decide di uccidere la figlia e la trae in Aulide con l’inganno di darla in sposa ad Achille."
+ },
+ {
+  "numero": 37,
+  "titolo": "Il Salotto delle porcellane",
+  "titoloEn": "A Sitting Room with the porcelains",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "Un salotto con i serviti da tavola della collezione e l’harmonium Kaslier di Parigi, del 1930 circa.",
+  "foto": {
+   "hero": "/img/37/hero.webp",
+   "heroSmall": "/img/37/hero-s.webp",
+   "w": 776,
+   "h": 437,
+   "pagina": 700,
+   "galleria": []
   },
-  {
-    "numero": 32,
-    "titolo": "Colonne sonore",
-    "sezione": "immagine",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   86
+  ],
+  "approfondimento": "Il servito, che oggi comprende trentanove pezzi, è decorato sulla falda dei piatti con un fregio a festoni grigioazzurri composti da un motivo fogliaceo che si alterna a una fruttiera ricolma: il tutto è contornato da una filettatura nel medesimo colore. Questo servito include alcune rimanenze di un più vasto servizio da tavola eseguito nella manifattura inglese di Johnson Brothers, che prende il nome dai suoi fondatori, Alfred, Frederick, Henry e Robert Johnson i quali aprirono la manifattura nel 1883 iniziando una produzione di terraglia dura."
+ },
+ {
+  "numero": 38,
+  "titolo": "La Galleria dei tessuti indiani",
+  "titoloEn": "A Gallery of ancient Indian fabrics",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "Una galleria di palampore, antichi tessuti indiani di cotone tinto e dipinto, provenienti da Masulipatam.",
+  "foto": {
+   "hero": "/img/38/hero.webp",
+   "heroSmall": "/img/38/hero-s.webp",
+   "w": 778,
+   "h": 572,
+   "pagina": 702,
+   "galleria": []
   },
-  {
-    "numero": 33,
-    "titolo": "Rumoristi",
-    "sezione": "immagine",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 39,
+  "titolo": "La Sala dell’Organo napoletano",
+  "titoloEn": "The Neapolitan Organ Hall",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "L’organo napoletano del Settecento attribuito a Dominicus Antonius Rossi e dieci tele a spicchio decorate con strumenti musicali, nastri e fiocchi, forse in origine il soffitto di una sala da musica.",
+  "foto": {
+   "hero": "/img/39/hero.webp",
+   "heroSmall": "/img/39/hero-s.webp",
+   "w": 1800,
+   "h": 1125,
+   "pagina": 102,
+   "galleria": [
+    {
+     "src": "/img/39/g1.webp",
+     "thumb": "/img/39/g1-s.webp",
+     "w": 779,
+     "h": 453,
+     "pagina": 704
+    }
+   ]
   },
-  {
-    "numero": 34,
-    "titolo": "Il suono della paura",
-    "sezione": "immagine",
-    "piano": 1,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   41
+  ],
+  "approfondimento": "I dipinti sono su tela di forma trapezoidale – denominati per consuetudine ‘spicchi’ – e hanno le medesime dimensioni. Raffigurano strumenti musicali inseriti su una superficie decorata con elementi vegetali, pressoché simili per struttura ma di differenti tonalità di colori; tra loro risaltano vivaci fiocchi e nastri pendenti. Il comparto superiore è uguale per tutti: un lineare intreccio di foglie collega due arabeschi laterali."
+ },
+ {
+  "numero": 40,
+  "titolo": "La Sala dell’Organo toscano",
+  "titoloEn": "The Tuscan Organ Hall",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "L’organo di Bartolomeo Ravani, costruito a Lucca nella seconda metà del Seicento, e un grande tappeto persiano Moshkabad.",
+  "foto": {
+   "hero": "/img/40/hero.webp",
+   "heroSmall": "/img/40/hero-s.webp",
+   "w": 912,
+   "h": 838,
+   "pagina": 104,
+   "galleria": []
   },
-  {
-    "numero": 35,
-    "titolo": "Il suono della gioia",
-    "sezione": "immagine",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [
+   39
+  ],
+  "approfondimento": ""
+ },
+ {
+  "numero": 41,
+  "titolo": "La Camera Verdi",
+  "titoloEn": "The Verdi Room",
+  "sezione": "ospitalita",
+  "piano": "Primo piano",
+  "descrizione": "Le camere di un’antica dimora dedicata alla musica, intitolate a Verdi, Puccini, Cherubini e Paganini, con testiere di letto siciliane intagliate.",
+  "foto": {
+   "hero": "/img/41/hero.webp",
+   "heroSmall": "/img/41/hero-s.webp",
+   "w": 1466,
+   "h": 1125,
+   "pagina": 708,
+   "galleria": []
   },
-  {
-    "numero": 36,
-    "titolo": "Videoclip",
-    "sezione": "immagine",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 42,
+  "titolo": "La Sala dei Cavalieri",
+  "titoloEn": "The Knights’ Hall",
+  "sezione": "ospitalita",
+  "piano": "Secondo piano",
+  "descrizione": "Un’audace soluzione di spazio ritmata dagli spicchi del soffitto: la sala più ampia, con un’acustica naturalmente favorevole, accoglie pianoforti a coda viennesi, francesi e tedeschi.",
+  "foto": {
+   "hero": "/img/42/hero.webp",
+   "heroSmall": "/img/42/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 710,
+   "galleria": [
+    {
+     "src": "/img/42/g1.webp",
+     "thumb": "/img/42/g1-s.webp",
+     "w": 1400,
+     "h": 673,
+     "pagina": 712
+    },
+    {
+     "src": "/img/42/g2.webp",
+     "thumb": "/img/42/g2-s.webp",
+     "w": 720,
+     "h": 597,
+     "pagina": 714
+    },
+    {
+     "src": "/img/42/g3.webp",
+     "thumb": "/img/42/g3-s.webp",
+     "w": 720,
+     "h": 597,
+     "pagina": 715
+    },
+    {
+     "src": "/img/42/g4.webp",
+     "thumb": "/img/42/g4-s.webp",
+     "w": 720,
+     "h": 419,
+     "pagina": 717
+    },
+    {
+     "src": "/img/42/g5.webp",
+     "thumb": "/img/42/g5-s.webp",
+     "w": 720,
+     "h": 930,
+     "pagina": 719
+    },
+    {
+     "src": "/img/42/g6.webp",
+     "thumb": "/img/42/g6-s.webp",
+     "w": 680,
+     "h": 934,
+     "pagina": 721
+    }
+   ]
   },
-  {
-    "numero": 37,
-    "titolo": "Cartoni animati",
-    "sezione": "immagine",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 43,
+  "titolo": "La Sala della Cappuccina",
+  "titoloEn": "The Cappuccina Lounge",
+  "sezione": "cappuccine",
+  "piano": "Pianterreno",
+  "descrizione": "Una collezione dedicata al mare: librerie marchigiane del Settecento, modellini di navi e incisioni a tema marino.",
+  "foto": {
+   "hero": "/img/43/hero.webp",
+   "heroSmall": "/img/43/hero-s.webp",
+   "w": 1800,
+   "h": 1125,
+   "pagina": 196,
+   "galleria": [
+    {
+     "src": "/img/43/g1.webp",
+     "thumb": "/img/43/g1-s.webp",
+     "w": 1400,
+     "h": 812,
+     "pagina": 198
+    },
+    {
+     "src": "/img/43/g2.webp",
+     "thumb": "/img/43/g2-s.webp",
+     "w": 1400,
+     "h": 610,
+     "pagina": 200
+    },
+    {
+     "src": "/img/43/g3.webp",
+     "thumb": "/img/43/g3-s.webp",
+     "w": 1400,
+     "h": 701,
+     "pagina": 202
+    }
+   ]
   },
-  {
-    "numero": 38,
-    "titolo": "Il suono nei videogiochi",
-    "sezione": "immagine",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 44,
+  "titolo": "La Sala da pranzo della Cappuccina",
+  "titoloEn": "The Cappuccina Dining Room",
+  "sezione": "cappuccine",
+  "piano": "Pianterreno",
+  "descrizione": "La sala da pranzo della Cappuccina, con incisioni dell’Ottocento e una console rococò sormontata da una specchiera.",
+  "foto": {
+   "hero": "/img/44/hero.webp",
+   "heroSmall": "/img/44/hero-s.webp",
+   "w": 1800,
+   "h": 1124,
+   "pagina": 204,
+   "galleria": []
   },
-  {
-    "numero": 39,
-    "titolo": "Pubblicità e jingle",
-    "sezione": "immagine",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 45,
+  "titolo": "Lo Studio della Cappuccina",
+  "titoloEn": "The Cappuccina Studio",
+  "sezione": "cappuccine",
+  "piano": "Pianterreno",
+  "descrizione": "Una scenografia di giardino: lo studio è dominato da un grande paesaggio emiliano con architettura e fontana.",
+  "foto": {
+   "hero": "/img/45/hero.webp",
+   "heroSmall": "/img/45/hero-s.webp",
+   "w": 1556,
+   "h": 966,
+   "pagina": 208,
+   "galleria": [
+    {
+     "src": "/img/45/g1.webp",
+     "thumb": "/img/45/g1-s.webp",
+     "w": 617,
+     "h": 886,
+     "pagina": 211
+    }
+   ]
   },
-  {
-    "numero": 40,
-    "titolo": "Televisione",
-    "sezione": "immagine",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 46,
+  "titolo": "Le geometrie gastronomiche",
+  "titoloEn": "The Gourmet Geometries",
+  "sezione": "cappuccine",
+  "piano": "Pianterreno",
+  "descrizione": "Un ambiente dedicato ai serviti da tavola, tra cui un servito Johnson Brothers degli anni Sessanta.",
+  "foto": {
+   "hero": "/img/46/hero.webp",
+   "heroSmall": "/img/46/hero-s.webp",
+   "w": 779,
+   "h": 525,
+   "pagina": 212,
+   "galleria": []
   },
-  {
-    "numero": 41,
-    "titolo": "La città che suona",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 47,
+  "titolo": "La Camera verde salvia",
+  "titoloEn": "The Sage Green Room",
+  "sezione": "cappuccine",
+  "piano": "Primo piano",
+  "descrizione": "Una camera nei toni del verde salvia, con i ritratti inglesi incisi da Jacobus Houbraken e una scrivania lombarda dell’Ottocento.",
+  "foto": {
+   "hero": "/img/47/hero.webp",
+   "heroSmall": "/img/47/hero-s.webp",
+   "w": 1800,
+   "h": 931,
+   "pagina": 214,
+   "galleria": []
   },
-  {
-    "numero": 42,
-    "titolo": "Paesaggi sonori",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 48,
+  "titolo": "La Camera del cotto antico",
+  "titoloEn": "The Antique Terracotta Room",
+  "sezione": "cappuccine",
+  "piano": "Primo piano",
+  "descrizione": "Nei toni del cotto antico, la camera accoglie un cassettone siriano e le incisioni dalle pitture di Pellegrino Tibaldi e Nicolò dell’Abate a Bologna.",
+  "foto": {
+   "hero": "/img/48/hero.webp",
+   "heroSmall": "/img/48/hero-s.webp",
+   "w": 1556,
+   "h": 998,
+   "pagina": 218,
+   "galleria": [
+    {
+     "src": "/img/48/g1.webp",
+     "thumb": "/img/48/g1-s.webp",
+     "w": 1400,
+     "h": 840,
+     "pagina": 220
+    },
+    {
+     "src": "/img/48/g2.webp",
+     "thumb": "/img/48/g2-s.webp",
+     "w": 720,
+     "h": 501,
+     "pagina": 223
+    },
+    {
+     "src": "/img/48/g3.webp",
+     "thumb": "/img/48/g3-s.webp",
+     "w": 720,
+     "h": 501,
+     "pagina": 223
+    },
+    {
+     "src": "/img/48/g4.webp",
+     "thumb": "/img/48/g4-s.webp",
+     "w": 720,
+     "h": 1109,
+     "pagina": 224
+    },
+    {
+     "src": "/img/48/g5.webp",
+     "thumb": "/img/48/g5-s.webp",
+     "w": 720,
+     "h": 1109,
+     "pagina": 225
+    }
+   ]
   },
-  {
-    "numero": 43,
-    "titolo": "Il suono della natura",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 49,
+  "titolo": "La Sala dedicata alla moda",
+  "titoloEn": "The Hall dedicated to fashion",
+  "sezione": "cappuccine",
+  "piano": "Cappuccina sul giardino, pianterreno",
+  "descrizione": "Affacciata sul giardino, la sala è dedicata alla moda: rosso e cobalto si alternano al nero e al bianco, i colori prediletti da Vera Giulini.",
+  "foto": {
+   "hero": "/img/49/hero.webp",
+   "heroSmall": "/img/49/hero-s.webp",
+   "w": 776,
+   "h": 1126,
+   "pagina": 227,
+   "galleria": [
+    {
+     "src": "/img/49/g1.webp",
+     "thumb": "/img/49/g1-s.webp",
+     "w": 647,
+     "h": 648,
+     "pagina": 226
+    },
+    {
+     "src": "/img/49/g2.webp",
+     "thumb": "/img/49/g2-s.webp",
+     "w": 720,
+     "h": 1014,
+     "pagina": 228
+    },
+    {
+     "src": "/img/49/g3.webp",
+     "thumb": "/img/49/g3-s.webp",
+     "w": 720,
+     "h": 1124,
+     "pagina": 229
+    }
+   ]
   },
-  {
-    "numero": 44,
-    "titolo": "Ascoltare il corpo",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
+  "strumenti": [],
+  "approfondimento": ""
+ },
+ {
+  "numero": 50,
+  "titolo": "Abiti da gran sera",
+  "titoloEn": "Gala dresses",
+  "sezione": "cappuccine",
+  "piano": "Cappuccina sul giardino, primo piano",
+  "descrizione": "Abiti da sogno di Saint Laurent, Valentino, Krizia e altri, in sete preziose, raccolti intorno a un camino antico.",
+  "foto": {
+   "hero": "/img/50/hero.webp",
+   "heroSmall": "/img/50/hero-s.webp",
+   "w": 1476,
+   "h": 909,
+   "pagina": 230,
+   "galleria": []
   },
-  {
-    "numero": 45,
-    "titolo": "Musica e memoria",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
-  },
-  {
-    "numero": 46,
-    "titolo": "Sintetizzatori",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
-  },
-  {
-    "numero": 47,
-    "titolo": "Campionare il mondo",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
-  },
-  {
-    "numero": 48,
-    "titolo": "Suono e spazio",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
-  },
-  {
-    "numero": 49,
-    "titolo": "La tua playlist",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
-  },
-  {
-    "numero": 50,
-    "titolo": "Cosa resta",
-    "sezione": "oggi",
-    "piano": 2,
-    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
-    "immagine": ""
-  }
+  "strumenti": [],
+  "approfondimento": ""
+ }
 ]

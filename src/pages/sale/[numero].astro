@@ -1,60 +1,64 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Spettro from '../../components/Spettro.astro';
+import Galleria from '../../components/Galleria.astro';
+import CartaStrumento from '../../components/CartaStrumento.astro';
 import VideoCard from '../../components/VideoCard.astro';
-import {
-  NOME_MUSEO, PIANI, asset, linkSala, saleDellaSezione, salaPer, sezionePer, stileSezione,
-  tutteLeSale, url, videoDellaSala, type Sala
-} from '../../lib/museo';
-
-export function getStaticPaths() {
-  return tutteLeSale.map((sala) => ({ params: { numero: String(sala.numero) }, props: { sala } }));
-}
-
+import { NOME, TITOLO_LIBRO, asset, linkSala, salaPer, sezionePer, stileSezione, strumentoPer, tutteLeSale, url, videoDellaSala, type Sala } from '../../lib/museo';
+export function getStaticPaths() { return tutteLeSale.map((sala) => ({ params: { numero: String(sala.numero) }, props: { sala } })); }
 const { sala } = Astro.props as { sala: Sala };
 const sez = sezionePer(sala.sezione);
+const strumenti = sala.strumenti.map(strumentoPer).filter((s): s is NonNullable<typeof s> => !!s);
 const video = videoDellaSala(sala.numero);
-const prima = salaPer(sala.numero - 1);
-const dopo = salaPer(sala.numero + 1);
+const prima = salaPer(sala.numero - 1), dopo = salaPer(sala.numero + 1);
+const f = sala.foto;
 ---
-<Layout title={`Sala ${sala.numero}, ${sala.titolo} | ${NOME_MUSEO}`} description={sala.descrizione} sezione="sale">
+<Layout title={`Sala ${sala.numero}, ${sala.titolo} | ${NOME}`} description={sala.descrizione} sezione="sale" trasparente={!!f}>
   <article class="sala" style={stileSezione(sez)}>
-    <header class="sala-testa">
-      <p class="sala-numero" aria-hidden="true">{sala.numero}</p>
-      <div>
-        <p class="sala-dove">
-          <span class="sr-only">Sala {sala.numero}.</span>
-          <a href={url(`/sale/#${sez.id}`)}>{sez.nome}</a>, {PIANI[sala.piano].toLocaleLowerCase('it')}
-        </p>
-        <h1>{sala.titolo}</h1>
+    <header class:list={['sala-hero', { 'senza-foto': !f }]}>
+      {f && <img src={asset(f.hero)} alt="" width={f.w} height={f.h} fetchpriority="high" />}
+      <div class="sala-hero-testo">
+        <p class="sala-numero" aria-hidden="true">{sala.numero}</p>
+        <div>
+          <h1><span class="sr-only">Sala {sala.numero}: </span>{sala.titolo}</h1>
+          <p class="sala-en" lang="en">{sala.titoloEn}</p>
+        </div>
       </div>
     </header>
+    <div class="sala-corpo">
+      <p class="sala-dove"><a href={url(`/sale/#${sez.id}`)}>{sez.nome}</a>{!['cantinone','cappella'].includes(sala.piano.toLocaleLowerCase('it')) && `, ${sala.piano.toLocaleLowerCase('it')}`}</p>
+      <p class="sala-intro">{sala.descrizione}</p>
+      {f && <p class="didascalia">Fotografia dal volume {TITOLO_LIBRO}, p. {f.pagina}.</p>}
 
-    <Spettro sale={saleDellaSezione(sez.id)} attiva={sala.numero} compatto etichetta={`Sale della sezione ${sez.nome}`} />
-
-    {sala.immagine && <img class="sala-immagine" src={asset(sala.immagine)} alt="" />}
-    <p class="sala-descrizione">{sala.descrizione}</p>
-
-    <section class="sala-video" aria-labelledby="t-video-sala">
-      <h2 id="t-video-sala">{video.length > 0 ? `Video della sala (${video.length})` : 'Video della sala'}</h2>
-      {video.length > 0 ? (
-        <div class="griglia-video">
-          {video.map((v) => <VideoCard video={v} mostraSala={false} />)}
-        </div>
-      ) : (
-        <p class="vuoto">I video di questa sala sono in preparazione. Intanto puoi <a href={url('/video/')}>guardare quelli delle altre sale</a>.</p>
+      {strumenti.length > 0 && (
+        <section class="sezione-sala" aria-labelledby="t-str">
+          <h2 id="t-str">Gli strumenti della sala</h2>
+          <div class="griglia-strumenti">{strumenti.map((s) => <CartaStrumento s={s} mostraSala={false} />)}</div>
+        </section>
       )}
-    </section>
+      {f && f.galleria.length > 0 && (
+        <section class="sezione-sala" aria-labelledby="t-gal">
+          <h2 id="t-gal">Nella sala</h2>
+          <Galleria foto={f.galleria} titolo={`Sala ${sala.numero}, ${sala.titolo}`} />
+        </section>
+      )}
+      {sala.approfondimento && (
+        <section class="sezione-sala dal-volume" aria-labelledby="t-vol">
+          <h2 id="t-vol">Dal volume</h2>
+          <blockquote><p>{sala.approfondimento}</p></blockquote>
+          <p class="didascalia">Estratto dalle schede del catalogo {TITOLO_LIBRO}.</p>
+        </section>
+      )}
+      {video.length > 0 && (
+        <section class="sezione-sala" aria-labelledby="t-vid">
+          <h2 id="t-vid">Video</h2>
+          <div class="griglia-video">{video.map((v) => <VideoCard video={v} mostraSala={false} />)}</div>
+        </section>
+      )}
+      {!f && <p class="nota">Le fotografie di questa sala saranno pubblicate con la versione definitiva del volume.</p>}
+    </div>
   </article>
-
-  <nav class="passo" aria-label="Sala precedente e successiva" style={stileSezione(sez)}>
-    {prima ? (
-      <a href={linkSala(prima.numero)} rel="prev"><span class="passo-dir">Sala {prima.numero}</span><span class="passo-tit">{prima.titolo}</span></a>
-    ) : <span />}
-    {dopo ? (
-      <a href={linkSala(dopo.numero)} rel="next" class="avanti"><span class="passo-dir">Sala {dopo.numero}</span><span class="passo-tit">{dopo.titolo}</span></a>
-    ) : (
-      <a href={url('/')} class="avanti"><span class="passo-dir">Fine del percorso</span><span class="passo-tit">Torna all’inizio</span></a>
-    )}
+  <nav class="passo" style={stileSezione(sez)} aria-label="Sala precedente e successiva">
+    {prima ? <a href={linkSala(prima.numero)} rel="prev"><span>Sala {prima.numero}</span>{prima.titolo}</a> : <a href={url('/sale/')}><span>Inizio</span>Tutte le sale</a>}
+    {dopo ? <a href={linkSala(dopo.numero)} rel="next" class="avanti"><span>Sala {dopo.numero}</span>{dopo.titolo}</a> : <a href={url('/teatrino/')} class="avanti"><span>Fine del percorso</span>Il Teatrino</a>}
   </nav>
 </Layout>

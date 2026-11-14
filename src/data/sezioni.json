@@ -1,37 +1,37 @@
 [
-  {
-    "id": "origini",
-    "nome": "Le origini del suono",
-    "colore": "#2F6F73",
-    "coloreScuro": "#6FB3B6",
-    "descrizione": "Dai primi ritmi del corpo alle pietre che risuonano: come l’uomo ha scoperto il suono."
-  },
-  {
-    "id": "strumenti",
-    "nome": "Strumenti e mani",
-    "colore": "#A8741A",
-    "coloreScuro": "#E0B25A",
-    "descrizione": "Corde, fiati, tasti e percussioni: gli strumenti e le mani che li costruiscono."
-  },
-  {
-    "id": "voce",
-    "nome": "La voce",
-    "colore": "#7A3E65",
-    "coloreScuro": "#CF8DB7",
-    "descrizione": "Il primo strumento di tutti: respiro, canto, parola e voce registrata."
-  },
-  {
-    "id": "immagine",
-    "nome": "Suono e immagine",
-    "colore": "#3D5A99",
-    "coloreScuro": "#8EA6E0",
-    "descrizione": "Cinema, televisione, videogiochi: come il suono cambia quello che vediamo."
-  },
-  {
-    "id": "oggi",
-    "nome": "Ascoltare oggi",
-    "colore": "#5E7340",
-    "coloreScuro": "#A9C27F",
-    "descrizione": "La città, la natura, la memoria: il paesaggio sonoro in cui viviamo."
-  }
+ {
+  "id": "villa",
+  "nome": "La Villa",
+  "descrizione": "La dimora principale: il pianterreno con i saloni e il primo piano con le camere, la biblioteca dorata e il salone affrescato da Zuccarelli.",
+  "colore": "#2E4A3B",
+  "coloreScuro": "#9CC3A8"
+ },
+ {
+  "id": "cantinone",
+  "nome": "Il Cantinone",
+  "descrizione": "Sotto le volte a botte, la memoria della civiltà contadina e le sale del gioco.",
+  "colore": "#6B4B2E",
+  "coloreScuro": "#D2AE85"
+ },
+ {
+  "id": "cappella",
+  "nome": "La Cappella",
+  "descrizione": "L’Oratorio di San Giuseppe, adiacente al corpo principale della villa.",
+  "colore": "#8A6A1F",
+  "coloreScuro": "#E2C579"
+ },
+ {
+  "id": "ospitalita",
+  "nome": "L’Ospitalità",
+  "descrizione": "Le sale dell’accoglienza, i papiers peints di Dufour, i fondali di teatro e la grande Sala dei Cavalieri.",
+  "colore": "#2D3F66",
+  "coloreScuro": "#9FB2E3"
+ },
+ {
+  "id": "cappuccine",
+  "nome": "Le Cappuccine",
+  "descrizione": "Due edifici sul giardino: la collezione dedicata al mare, le incisioni e gli abiti da gran sera.",
+  "colore": "#7A3443",
+  "coloreScuro": "#E59AAA"
+ }
 ]

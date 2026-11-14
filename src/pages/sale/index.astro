@@ -1,64 +1,34 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import SalaRiga from '../../components/SalaRiga.astro';
-import { NOME_MUSEO, PIANI, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni } from '../../lib/museo';
+import CartaSala from '../../components/CartaSala.astro';
+import { NOME, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni } from '../../lib/museo';
 ---
-<Layout title={`Le sale | ${NOME_MUSEO}`} sezione="sale">
+<Layout title={`Le sale | ${NOME}`} sezione="sale">
   <header class="pagina-testa">
     <h1>Le {tutteLeSale.length} sale</h1>
-    <p class="lead">In ordine di visita, divise per sezione. Cerca per nome o filtra per piano.</p>
-  </header>
-
-  <div class="filtri" role="search">
-    <label class="filtro-cerca">
-      <span class="sr-only">Cerca una sala</span>
-      <input id="cerca-sala" type="search" placeholder="Cerca per nome o numero" autocomplete="off" />
+    <p class="lead">Nell’ordine della visita, divise per edificio. Il numero è lo stesso del cartello in sala e delle planimetrie del volume.</p>
+    <label class="cerca"><span class="sr-only">Cerca una sala</span>
+      <input id="cerca-sala" type="search" placeholder="Cerca per nome, per esempio organo o camera" autocomplete="off" />
     </label>
-    <fieldset class="filtro-piani">
-      <legend class="sr-only">Piano</legend>
-      <label><input type="radio" name="piano" value="" checked /><span>Tutti i piani</span></label>
-      {Object.entries(PIANI).map(([v, nome]) => (
-        <label><input type="radio" name="piano" value={v} /><span>{nome}</span></label>
-      ))}
-    </fieldset>
-  </div>
-  <p class="conteggio" id="conteggio-sale" aria-live="polite">{tutteLeSale.length} sale</p>
-
+    <p class="conteggio" id="conteggio" aria-live="polite"></p>
+  </header>
   {tutteLeSezioni.map((sez) => (
     <section class="gruppo" id={sez.id} style={stileSezione(sez)} data-gruppo>
-      <h2>{sez.nome}</h2>
-      <p class="gruppo-desc">{sez.descrizione}</p>
-      <ol class="sale-lista">
-        {saleDellaSezione(sez.id).map((s) => <SalaRiga sala={s} />)}
+      <div class="gruppo-testa"><h2>{sez.nome}</h2><p>{sez.descrizione}</p></div>
+      <ol class="griglia-sale">
+        {saleDellaSezione(sez.id).map((s) => <li data-voce data-testo={`${s.numero} ${s.titolo} ${s.titoloEn} ${s.piano} ${s.descrizione}`.toLocaleLowerCase('it')}><CartaSala sala={s} /></li>)}
       </ol>
     </section>
   ))}
-  <p class="vuoto" id="nessuna-sala" hidden>
-    Nessuna sala corrisponde alla ricerca. Prova con un’altra parola o scegli «Tutti i piani».
-  </p>
+  <p class="vuoto" id="vuoto" hidden>Nessuna sala corrisponde alla ricerca. Prova con un’altra parola, oppure scrivi il numero nella casella Sala in alto.</p>
 </Layout>
-
 <script>
-  const cerca = document.querySelector<HTMLInputElement>('#cerca-sala')!;
-  const piani = [...document.querySelectorAll<HTMLInputElement>('input[name="piano"]')];
-  const righe = [...document.querySelectorAll<HTMLElement>('[data-sala]')];
-  const gruppi = [...document.querySelectorAll<HTMLElement>('[data-gruppo]')];
-  const conteggio = document.querySelector<HTMLElement>('#conteggio-sale')!;
-  const vuoto = document.querySelector<HTMLElement>('#nessuna-sala')!;
-
-  function filtra() {
-    const termine = cerca.value.trim().toLocaleLowerCase('it');
-    const piano = piani.find((p) => p.checked)?.value ?? '';
-    let visibili = 0;
-    righe.forEach((r) => {
-      const ok = (!termine || r.dataset.testo!.includes(termine)) && (!piano || r.dataset.piano === piano);
-      r.hidden = !ok;
-      if (ok) visibili++;
-    });
-    gruppi.forEach((g) => (g.hidden = !g.querySelector('[data-sala]:not([hidden])')));
-    conteggio.textContent = visibili === 1 ? '1 sala' : `${visibili} sale`;
-    vuoto.hidden = visibili > 0;
-  }
-  cerca.addEventListener('input', filtra);
-  piani.forEach((p) => p.addEventListener('change', filtra));
+  const c = document.querySelector<HTMLInputElement>('#cerca-sala')!, voci = [...document.querySelectorAll<HTMLElement>('[data-voce]')];
+  const gruppi = [...document.querySelectorAll<HTMLElement>('[data-gruppo]')], cont = document.querySelector('#conteggio')!, vuoto = document.querySelector<HTMLElement>('#vuoto')!;
+  c.addEventListener('input', () => {
+    const t = c.value.trim().toLocaleLowerCase('it'); let n = 0;
+    voci.forEach((v) => { const ok = !t || v.dataset.testo!.includes(t); v.hidden = !ok; if (ok) n++; });
+    gruppi.forEach((g) => (g.hidden = !g.querySelector('[data-voce]:not([hidden])')));
+    cont.textContent = t ? (n === 1 ? '1 sala trovata' : `${n} sale trovate`) : ''; vuoto.hidden = n > 0;
+  });
 </script>
