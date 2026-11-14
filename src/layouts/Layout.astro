@@ -1,9 +1,9 @@
 ---
 import '../styles/global.css';
-import { NOME, LUOGO, crediti, tutteLeSale, url } from '../lib/museo';
+import { NOME, LUOGO, SITO_ASCOLTO, crediti, tutteLeSale, url } from '../lib/museo';
 interface Props { title?: string; description?: string; sezione?: string; trasparente?: boolean }
 const { title = `${NOME}, invito all’arte e alla musica a ${LUOGO}`, description = `Le ${tutteLeSale.length} sale di Villa Medici Giulini a Briosco: strumenti musicali, arredi e opere d’arte.`, sezione, trasparente = false } = Astro.props;
-const voci = [['sale', 'Le sale', '/sale/'], ['strumenti', 'Strumenti', '/strumenti/'], ['teatrino', 'Teatrino', '/teatrino/'], ['giardino', 'Giardino', '/giardino/'], ['video', 'Video', '/video/']];
+const voci = [['sale', 'Le sale', '/sale/'], ['teatrino', 'Teatrino', '/teatrino/'], ['giardino', 'Giardino', '/giardino/'], ['video', 'Video', '/video/']];
 ---
 <!doctype html>
 <html lang="it">
@@ -30,6 +30,7 @@ const voci = [['sale', 'Le sale', '/sale/'], ['strumenti', 'Strumenti', '/strume
       <a class="marchio" href={url('/')}>Suoni ed emozioni</a>
       <nav aria-label="Navigazione principale">
         {voci.map(([id, nome, path]) => <a href={url(path)} aria-current={sezione === id ? 'page' : undefined}>{nome}</a>)}
+        <a href={SITO_ASCOLTO} target="_blank" rel="noopener">Ascolta gli strumenti</a>
       </nav>
       <form class="vai-sala" data-vai-sala data-max={tutteLeSale.length} data-base={url('/sale/')}>
         <label for="vai-sala">Sala</label>

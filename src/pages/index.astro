@@ -1,11 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CartaSala from '../components/CartaSala.astro';
-import CartaStrumento from '../components/CartaStrumento.astro';
-import { TITOLO_LIBRO, asset, fotoSpeciali, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni, tuttiGliStrumenti, url } from '../lib/museo';
+import { TITOLO_LIBRO, asset, fotoSpeciali, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni, url } from '../lib/museo';
 const intro = fotoSpeciali.intro!;
 const teatrino = fotoSpeciali.teatrino!, giardino = fotoSpeciali.giardino!;
-const scelti = [22, 15, 10, 39, 8].map((n) => tuttiGliStrumenti.find((s) => s.numero === n)!).filter((s) => s?.foto);
 ---
 <Layout sezione="home" trasparente>
   <section class="copertina">
@@ -48,14 +46,6 @@ const scelti = [22, 15, 10, 39, 8].map((n) => tuttiGliStrumenti.find((s) => s.nu
     </ul>
   </section>
 
-  <section class="blocco" aria-labelledby="t-strumenti">
-    <div class="blocco-testa">
-      <h2 id="t-strumenti">Strumenti da ascoltare</h2>
-      <a href={url('/strumenti/')}>Tutta la collezione</a>
-    </div>
-    <p class="nota">Ogni strumento della collezione è stato registrato, anche in doppio ascolto con un pianoforte Steinway.</p>
-    <div class="griglia-strumenti">{scelti.slice(0, 4).map((s) => <CartaStrumento s={s} />)}</div>
-  </section>
 
   <section class="dittico" aria-label="Il Teatrino e il giardino">
     <a href={url('/teatrino/')} class="pannello">
