@@ -41,6 +41,21 @@ export default async function middleware(req) {
     }
     return pagina(dest, true);
   }
+  // PIN nell'indirizzo (?PIN=… dai QR code in sala): salva il cookie e ricarica la pagina senza parametro.
+  const chiave = [...url.searchParams.keys()].find((k) => k.toLowerCase() === 'pin');
+  if (chiave) {
+    const pin = (url.searchParams.get(chiave) || '').trim();
+    url.searchParams.delete(chiave);
+    const pulito = url.pathname + (url.search || '');
+    if (await pinValido(pin)) {
+      return new Response(null, { status: 302, headers: {
+        Location: pulito,
+        'Set-Cookie': `${COOKIE}=${pin}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`,
+        'Cache-Control': 'no-store',
+      } });
+    }
+    return pagina(pulito, true);
+  }
   const m = (req.headers.get('cookie') || '').match(/(?:^|;\s*)vmg_pin=(\d{4,8})/);
   if (m && (await pinValido(m[1]))) return next();
   return pagina(url.pathname + url.search, false);
