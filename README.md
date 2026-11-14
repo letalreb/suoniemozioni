@@ -33,5 +33,5 @@ npm run dev
 
 ## Pubblicazione
 
-Il sito è pubblicato su Vercel (https://suoniemozioni.vercel.app): ogni push su `main` lo aggiorna automaticamente.
+Il sito è pubblicato su Vercel all’indirizzo https://www.suoniemozioni.it: ogni push su `main` lo aggiorna automaticamente.
 Vercel serve il sito dalla radice, quindi non serve alcuna configurazione aggiuntiva.
