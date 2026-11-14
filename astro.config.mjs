@@ -1,3 +1,9 @@
 import { defineConfig } from 'astro/config';
 
-export default defineConfig({});
+// Su Vercel il sito è servito dalla radice: i valori di default vanno bene.
+// BASE_PATH serve solo se un giorno lo si pubblica in una sottocartella.
+export default defineConfig({
+  site: process.env.SITE_URL || undefined,
+  base: process.env.BASE_PATH || '/',
+  trailingSlash: 'always'
+});

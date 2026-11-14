@@ -1,65 +1,60 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Spettro from '../components/Spettro.astro';
 import VideoCard from '../components/VideoCard.astro';
-import videos from '../data/videos.json';
+import {
+  NOME_MUSEO, linkSala, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni, tuttiIVideo, url
+} from '../lib/museo';
 
-const categories = [...new Set(videos.map((video) => video.category))].sort();
+const recenti = [...tuttiIVideo].sort((a, b) => (b.year ?? 0) - (a.year ?? 0)).slice(0, 3);
 ---
-<Layout>
-  <section class="intro">
-    <p class="eyebrow">Archivio multimediale</p>
-    <h1>Catalogo video del museo</h1>
-    <p>Esplora video, storie e contenuti dalle collezioni del museo.</p>
+<Layout sezione="home">
+  <section class="apertura">
+    <h1>Cinquanta sale da ascoltare</h1>
+    <p class="lead">
+      {NOME_MUSEO} è un percorso in {tutteLeSale.length} sale su tre piani. Per ogni sala trovi
+      testi e video da guardare durante la visita o da casa.
+    </p>
+    <Spettro sale={tutteLeSale} />
   </section>
 
-  <section class="catalog" aria-label="Catalogo video">
-    <div class="toolbar">
-      <label class="search-label">
-        <span class="sr-only">Cerca video</span>
-        <input id="search" type="search" placeholder="Cerca per titolo, descrizione o tag..." />
-      </label>
-      <label>
-        <span class="sr-only">Filtra per categoria</span>
-        <select id="category">
-          <option value="">Tutte le categorie</option>
-          {categories.map((category) => <option value={category}>{category}</option>)}
-        </select>
-      </label>
-    </div>
-
-    <p id="result-count" class="result-count">{videos.length} contenuti</p>
-    <div class="video-grid" id="video-grid">
-      {videos.map((video) => <VideoCard video={video} />)}
-    </div>
-    <p id="empty-state" class="empty-state" hidden>Nessun video trovato.</p>
+  <section class="blocco" aria-labelledby="t-sezioni">
+    <h2 id="t-sezioni">Il percorso</h2>
+    <ol class="sezioni">
+      {tutteLeSezioni.map((sez) => {
+        const sale = saleDellaSezione(sez.id);
+        const primo = sale[0].numero, ultimo = sale[sale.length - 1].numero;
+        return (
+          <li class="sezione" style={stileSezione(sez)}>
+            <a href={url(`/sale/#${sez.id}`)}>
+              <span class="sezione-range">Sale {primo}–{ultimo}</span>
+              <span class="sezione-nome">{sez.nome}</span>
+              <span class="sezione-desc">{sez.descrizione}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ol>
   </section>
+
+  <section class="blocco visita" aria-labelledby="t-visita">
+    <h2 id="t-visita">Sei nel museo?</h2>
+    <p>
+      Ogni sala ha un cartello con il suo numero e un codice QR. Inquadra il codice, oppure scrivi il
+      numero in alto nella casella <strong>Sala n°</strong>. Per iniziare dalla prima:
+      <a href={linkSala(1)}>apri la sala 1</a>.
+    </p>
+  </section>
+
+  {recenti.length > 0 && (
+    <section class="blocco" aria-labelledby="t-video">
+      <div class="blocco-testa">
+        <h2 id="t-video">Video</h2>
+        <a href={url('/video/')}>Vedi tutti i {tuttiIVideo.length} video</a>
+      </div>
+      <div class="griglia-video">
+        {recenti.map((v) => <VideoCard video={v} />)}
+      </div>
+    </section>
+  )}
 </Layout>
-
-<script>
-  const search = document.querySelector<HTMLInputElement>('#search');
-  const category = document.querySelector<HTMLSelectElement>('#category');
-  const cards = [...document.querySelectorAll<HTMLElement>('.video-card')];
-  const count = document.querySelector<HTMLElement>('#result-count');
-  const empty = document.querySelector<HTMLElement>('#empty-state');
-
-  function filterVideos() {
-    const term = (search?.value || '').trim().toLocaleLowerCase('it');
-    const selectedCategory = category?.value || '';
-    let visible = 0;
-
-    cards.forEach((card) => {
-      const text = card.textContent?.toLocaleLowerCase('it') || '';
-      const matchesText = text.includes(term);
-      const matchesCategory = !selectedCategory || card.querySelector('.eyebrow')?.textContent?.startsWith(selectedCategory);
-      const show = matchesText && matchesCategory;
-      card.hidden = !show;
-      if (show) visible++;
-    });
-
-    if (count) count.textContent = `${visible} ${visible === 1 ? 'contenuto' : 'contenuti'}`;
-    if (empty) empty.hidden = visible !== 0;
-  }
-
-  search?.addEventListener('input', filterVideos);
-  category?.addEventListener('change', filterVideos);
-</script>

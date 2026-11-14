@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SalaRiga from '../../components/SalaRiga.astro';
+import { NOME_MUSEO, PIANI, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni } from '../../lib/museo';
+---
+<Layout title={`Le sale | ${NOME_MUSEO}`} sezione="sale">
+  <header class="pagina-testa">
+    <h1>Le {tutteLeSale.length} sale</h1>
+    <p class="lead">In ordine di visita, divise per sezione. Cerca per nome o filtra per piano.</p>
+  </header>
+
+  <div class="filtri" role="search">
+    <label class="filtro-cerca">
+      <span class="sr-only">Cerca una sala</span>
+      <input id="cerca-sala" type="search" placeholder="Cerca per nome o numero" autocomplete="off" />
+    </label>
+    <fieldset class="filtro-piani">
+      <legend class="sr-only">Piano</legend>
+      <label><input type="radio" name="piano" value="" checked /><span>Tutti i piani</span></label>
+      {Object.entries(PIANI).map(([v, nome]) => (
+        <label><input type="radio" name="piano" value={v} /><span>{nome}</span></label>
+      ))}
+    </fieldset>
+  </div>
+  <p class="conteggio" id="conteggio-sale" aria-live="polite">{tutteLeSale.length} sale</p>
+
+  {tutteLeSezioni.map((sez) => (
+    <section class="gruppo" id={sez.id} style={stileSezione(sez)} data-gruppo>
+      <h2>{sez.nome}</h2>
+      <p class="gruppo-desc">{sez.descrizione}</p>
+      <ol class="sale-lista">
+        {saleDellaSezione(sez.id).map((s) => <SalaRiga sala={s} />)}
+      </ol>
+    </section>
+  ))}
+  <p class="vuoto" id="nessuna-sala" hidden>
+    Nessuna sala corrisponde alla ricerca. Prova con un’altra parola o scegli «Tutti i piani».
+  </p>
+</Layout>
+
+<script>
+  const cerca = document.querySelector<HTMLInputElement>('#cerca-sala')!;
+  const piani = [...document.querySelectorAll<HTMLInputElement>('input[name="piano"]')];
+  const righe = [...document.querySelectorAll<HTMLElement>('[data-sala]')];
+  const gruppi = [...document.querySelectorAll<HTMLElement>('[data-gruppo]')];
+  const conteggio = document.querySelector<HTMLElement>('#conteggio-sale')!;
+  const vuoto = document.querySelector<HTMLElement>('#nessuna-sala')!;
+
+  function filtra() {
+    const termine = cerca.value.trim().toLocaleLowerCase('it');
+    const piano = piani.find((p) => p.checked)?.value ?? '';
+    let visibili = 0;
+    righe.forEach((r) => {
+      const ok = (!termine || r.dataset.testo!.includes(termine)) && (!piano || r.dataset.piano === piano);
+      r.hidden = !ok;
+      if (ok) visibili++;
+    });
+    gruppi.forEach((g) => (g.hidden = !g.querySelector('[data-sala]:not([hidden])')));
+    conteggio.textContent = visibili === 1 ? '1 sala' : `${visibili} sale`;
+    vuoto.hidden = visibili > 0;
+  }
+  cerca.addEventListener('input', filtra);
+  piani.forEach((p) => p.addEventListener('change', filtra));
+</script>

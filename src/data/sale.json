@@ -1,0 +1,402 @@
+[
+  {
+    "numero": 1,
+    "titolo": "Il primo battito",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 2,
+    "titolo": "Pietre che risuonano",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 3,
+    "titolo": "Ossa e flauti",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 4,
+    "titolo": "Il tamburo",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 5,
+    "titolo": "Richiami e segnali",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 6,
+    "titolo": "Eco e grotte",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 7,
+    "titolo": "Il ritmo del lavoro",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 8,
+    "titolo": "Canti di terra",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 9,
+    "titolo": "La campana",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 10,
+    "titolo": "Il silenzio",
+    "sezione": "origini",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 11,
+    "titolo": "Corde",
+    "sezione": "strumenti",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 12,
+    "titolo": "Fiati",
+    "sezione": "strumenti",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 13,
+    "titolo": "Percussioni dal mondo",
+    "sezione": "strumenti",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 14,
+    "titolo": "La bottega del liutaio",
+    "sezione": "strumenti",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 15,
+    "titolo": "Il pianoforte",
+    "sezione": "strumenti",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 16,
+    "titolo": "L’organo",
+    "sezione": "strumenti",
+    "piano": 0,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 17,
+    "titolo": "Strumenti popolari",
+    "sezione": "strumenti",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 18,
+    "titolo": "Banda e piazza",
+    "sezione": "strumenti",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 19,
+    "titolo": "Macchine musicali",
+    "sezione": "strumenti",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 20,
+    "titolo": "Strumenti elettrici",
+    "sezione": "strumenti",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 21,
+    "titolo": "Il respiro",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 22,
+    "titolo": "La ninna nanna",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 23,
+    "titolo": "Il coro",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 24,
+    "titolo": "Lavoro e canto",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 25,
+    "titolo": "L’opera",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 26,
+    "titolo": "Il recitar cantando",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 27,
+    "titolo": "Voci di strada",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 28,
+    "titolo": "Dialetti e cantilene",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 29,
+    "titolo": "La radio",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 30,
+    "titolo": "La voce registrata",
+    "sezione": "voce",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 31,
+    "titolo": "Il cinema muto",
+    "sezione": "immagine",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 32,
+    "titolo": "Colonne sonore",
+    "sezione": "immagine",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 33,
+    "titolo": "Rumoristi",
+    "sezione": "immagine",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 34,
+    "titolo": "Il suono della paura",
+    "sezione": "immagine",
+    "piano": 1,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 35,
+    "titolo": "Il suono della gioia",
+    "sezione": "immagine",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 36,
+    "titolo": "Videoclip",
+    "sezione": "immagine",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 37,
+    "titolo": "Cartoni animati",
+    "sezione": "immagine",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 38,
+    "titolo": "Il suono nei videogiochi",
+    "sezione": "immagine",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 39,
+    "titolo": "Pubblicità e jingle",
+    "sezione": "immagine",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 40,
+    "titolo": "Televisione",
+    "sezione": "immagine",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 41,
+    "titolo": "La città che suona",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 42,
+    "titolo": "Paesaggi sonori",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 43,
+    "titolo": "Il suono della natura",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 44,
+    "titolo": "Ascoltare il corpo",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 45,
+    "titolo": "Musica e memoria",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 46,
+    "titolo": "Sintetizzatori",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 47,
+    "titolo": "Campionare il mondo",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 48,
+    "titolo": "Suono e spazio",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 49,
+    "titolo": "La tua playlist",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  },
+  {
+    "numero": 50,
+    "titolo": "Cosa resta",
+    "sezione": "oggi",
+    "piano": 2,
+    "descrizione": "Testo introduttivo della sala, da sostituire con il testo curatoriale.",
+    "immagine": ""
+  }
+]

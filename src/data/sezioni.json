@@ -1,0 +1,37 @@
+[
+  {
+    "id": "origini",
+    "nome": "Le origini del suono",
+    "colore": "#2F6F73",
+    "coloreScuro": "#6FB3B6",
+    "descrizione": "Dai primi ritmi del corpo alle pietre che risuonano: come l’uomo ha scoperto il suono."
+  },
+  {
+    "id": "strumenti",
+    "nome": "Strumenti e mani",
+    "colore": "#A8741A",
+    "coloreScuro": "#E0B25A",
+    "descrizione": "Corde, fiati, tasti e percussioni: gli strumenti e le mani che li costruiscono."
+  },
+  {
+    "id": "voce",
+    "nome": "La voce",
+    "colore": "#7A3E65",
+    "coloreScuro": "#CF8DB7",
+    "descrizione": "Il primo strumento di tutti: respiro, canto, parola e voce registrata."
+  },
+  {
+    "id": "immagine",
+    "nome": "Suono e immagine",
+    "colore": "#3D5A99",
+    "coloreScuro": "#8EA6E0",
+    "descrizione": "Cinema, televisione, videogiochi: come il suono cambia quello che vediamo."
+  },
+  {
+    "id": "oggi",
+    "nome": "Ascoltare oggi",
+    "colore": "#5E7340",
+    "coloreScuro": "#A9C27F",
+    "descrizione": "La città, la natura, la memoria: il paesaggio sonoro in cui viviamo."
+  }
+]

@@ -1,43 +1,36 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import videos from '../../data/videos.json';
+import { NOME_MUSEO, linkSala, salaPer, sezionePer, stileSezione, tuttiIVideo, url, type Video } from '../../lib/museo';
 
 export function getStaticPaths() {
-  return videos.map((video) => ({
-    params: { slug: video.slug },
-    props: { video }
-  }));
+  return tuttiIVideo.map((video) => ({ params: { slug: video.slug }, props: { video } }));
 }
-
-const { video } = Astro.props;
+const { video } = Astro.props as { video: Video };
+const sala = salaPer(video.sala);
+const stile = sala ? stileSezione(sezionePer(sala.sezione)) : undefined;
 ---
-<Layout title={`${video.title} | Catalogo video`} description={video.description}>
-  <article class="video-detail">
-    <a class="back-link" href="/">← Torna al catalogo</a>
-    <p class="eyebrow">{video.category}{video.year ? ` · ${video.year}` : ''}</p>
+<Layout title={`${video.title} | ${NOME_MUSEO}`} description={video.description} sezione="video">
+  <article class="video-dettaglio" style={stile}>
+    {sala ? (
+      <a class="indietro" href={linkSala(sala.numero)}>Torna alla sala {sala.numero}, {sala.titolo}</a>
+    ) : (
+      <a class="indietro" href={url('/video/')}>Torna ai video</a>
+    )}
     <h1>{video.title}</h1>
-    <p class="detail-description">{video.description}</p>
+    <p class="lead">{video.description}</p>
 
     <div class="player">
-      <iframe
-        src={video.videoUrl}
-        title={video.title}
-        loading="lazy"
+      <iframe src={video.videoUrl} title={video.title} loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
+        allowfullscreen></iframe>
     </div>
 
-    <dl class="metadata">
+    <dl class="metadati">
+      {sala && <div><dt>Sala</dt><dd><a href={linkSala(sala.numero)}>{sala.numero}, {sala.titolo}</a></dd></div>}
       {video.duration && <div><dt>Durata</dt><dd>{video.duration}</dd></div>}
       {video.language && <div><dt>Lingua</dt><dd>{video.language.toUpperCase()}</dd></div>}
       {video.year && <div><dt>Anno</dt><dd>{video.year}</dd></div>}
     </dl>
-
-    {video.tags?.length > 0 && (
-      <div class="tags">
-        {video.tags.map((tag) => <span>#{tag}</span>)}
-      </div>
-    )}
+    {video.tags?.length > 0 && <ul class="tag">{video.tags.map((t) => <li>{t}</li>)}</ul>}
   </article>
 </Layout>

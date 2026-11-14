@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import { NOME_MUSEO, salaPer, tuttiIVideo } from '../../lib/museo';
+
+const saleConVideo = [...new Set(tuttiIVideo.map((v) => v.sala).filter(Boolean))]
+  .sort((a, b) => a! - b!)
+  .map((n) => salaPer(n)!);
+---
+<Layout title={`Video | ${NOME_MUSEO}`} sezione="video">
+  <header class="pagina-testa">
+    <h1>Video</h1>
+    <p class="lead">Tutti i video del museo. Filtra per sala o cerca per argomento.</p>
+  </header>
+
+  <div class="filtri" role="search">
+    <label class="filtro-cerca">
+      <span class="sr-only">Cerca un video</span>
+      <input id="cerca-video" type="search" placeholder="Cerca per titolo, descrizione o tag" autocomplete="off" />
+    </label>
+    <label class="filtro-select">
+      <span class="sr-only">Filtra per sala</span>
+      <select id="filtro-sala">
+        <option value="">Tutte le sale</option>
+        {saleConVideo.map((s) => <option value={s.numero}>Sala {s.numero}, {s.titolo}</option>)}
+      </select>
+    </label>
+  </div>
+  <p class="conteggio" id="conteggio-video" aria-live="polite">{tuttiIVideo.length} video</p>
+  <div class="griglia-video">
+    {tuttiIVideo.map((v) => <VideoCard video={v} />)}
+  </div>
+  <p class="vuoto" id="nessun-video" hidden>Nessun video corrisponde alla ricerca. Prova con un’altra parola o scegli «Tutte le sale».</p>
+</Layout>
+
+<script>
+  const cerca = document.querySelector<HTMLInputElement>('#cerca-video')!;
+  const sala = document.querySelector<HTMLSelectElement>('#filtro-sala')!;
+  const schede = [...document.querySelectorAll<HTMLElement>('[data-video]')];
+  const conteggio = document.querySelector<HTMLElement>('#conteggio-video')!;
+  const vuoto = document.querySelector<HTMLElement>('#nessun-video')!;
+  function filtra() {
+    const t = cerca.value.trim().toLocaleLowerCase('it');
+    let n = 0;
+    schede.forEach((c) => {
+      const ok = (!t || c.dataset.testo!.includes(t)) && (!sala.value || c.dataset.sala === sala.value);
+      c.hidden = !ok;
+      if (ok) n++;
+    });
+    conteggio.textContent = `${n} video`;
+    vuoto.hidden = n > 0;
+  }
+  cerca.addEventListener('input', filtra);
+  sala.addEventListener('change', filtra);
+</script>

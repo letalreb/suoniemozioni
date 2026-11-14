@@ -1,32 +1,78 @@
 ---
 import '../styles/global.css';
+import { NOME_MUSEO, url, tutteLeSale } from '../lib/museo';
 
 interface Props {
   title?: string;
   description?: string;
+  sezione?: 'home' | 'sale' | 'video';
 }
 
 const {
-  title = 'Catalogo video del museo',
-  description = 'Esplora i contenuti video del museo.'
+  title = NOME_MUSEO,
+  description = `Le 50 sale del museo ${NOME_MUSEO}, con video e contenuti di approfondimento.`,
+  sezione
 } = Astro.props;
+const totale = tutteLeSale.length;
 ---
 <!doctype html>
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#E7EAEC" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#161A22" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+    />
     <title>{title}</title>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="/">Catalogo video</a>
-      <span>Archivio multimediale</span>
+    <a class="skip" href="#contenuto">Vai al contenuto</a>
+    <header class="testata">
+      <a class="marchio" href={url('/')}>{NOME_MUSEO}</a>
+      <nav aria-label="Navigazione principale">
+        <a href={url('/sale/')} aria-current={sezione === 'sale' ? 'page' : undefined}>Sale</a>
+        <a href={url('/video/')} aria-current={sezione === 'video' ? 'page' : undefined}>Video</a>
+      </nav>
+      <form class="vai-sala" data-vai-sala data-max={totale} data-base={url('/sale/')}>
+        <label for="vai-sala-input">Sala n°</label>
+        <input id="vai-sala-input" name="n" type="number" inputmode="numeric" min="1" max={totale} placeholder="1–50" required />
+        <button type="submit">Vai</button>
+      </form>
     </header>
-    <main>
+    <main id="contenuto">
       <slot />
     </main>
-    <footer class="site-footer">© {new Date().getFullYear()} Museo</footer>
+    <footer class="piede">
+      <p>{NOME_MUSEO}</p>
+      <p>{totale} sale su tre piani</p>
+    </footer>
+
+    <script>
+      // "Vai alla sala": chi è nel museo legge il numero sul cartello e salta lì.
+      document.querySelectorAll<HTMLFormElement>('[data-vai-sala]').forEach((form) => {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const input = form.querySelector('input')!;
+          const n = Number(input.value);
+          const max = Number(form.dataset.max);
+          if (!Number.isInteger(n) || n < 1 || n > max) {
+            input.setCustomValidity(`Scrivi un numero da 1 a ${max}`);
+            input.reportValidity();
+            return;
+          }
+          window.location.href = `${form.dataset.base}${n}/`;
+        });
+        form.querySelector('input')!.addEventListener('input', (e) =>
+          (e.target as HTMLInputElement).setCustomValidity('')
+        );
+      });
+    </script>
   </body>
 </html>

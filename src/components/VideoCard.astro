@@ -1,23 +1,18 @@
 ---
-interface Props {
-  video: {
-    slug: string;
-    title: string;
-    description: string;
-    category: string;
-    year?: number;
-    duration?: string;
-    thumbnail: string;
-  };
-}
-const { video } = Astro.props;
+import { asset, salaPer, url, type Video } from '../lib/museo';
+interface Props { video: Video; mostraSala?: boolean }
+const { video, mostraSala = true } = Astro.props;
+const sala = salaPer(video.sala);
 ---
-<a class="video-card" href={`/video/${video.slug}/`}>
-  <img src={video.thumbnail} alt="" loading="lazy" />
-  <div class="video-card-content">
-    <span class="eyebrow">{video.category}{video.year ? ` · ${video.year}` : ''}</span>
-    <h2>{video.title}</h2>
+<a class="video-card" href={url(`/video/${video.slug}/`)} data-video
+   data-sala={video.sala ?? ''} data-testo={`${video.title} ${video.description} ${(video.tags ?? []).join(' ')} ${sala?.titolo ?? ''}`.toLocaleLowerCase('it')}>
+  <div class="video-anteprima">
+    <img src={asset(video.thumbnail)} alt="" loading="lazy" />
+    {video.duration && <span class="durata">{video.duration}</span>}
+  </div>
+  <div class="video-testo">
+    {mostraSala && sala && <span class="video-sala">Sala {sala.numero}, {sala.titolo}</span>}
+    <h3>{video.title}</h3>
     <p>{video.description}</p>
-    {video.duration && <span class="duration">{video.duration}</span>}
   </div>
 </a>

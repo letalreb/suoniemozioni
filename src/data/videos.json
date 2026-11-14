@@ -13,7 +13,8 @@
       "storia",
       "museo",
       "collezione"
-    ]
+    ],
+    "sala": 1
   },
   {
     "slug": "dietro-le-quinte",
@@ -29,6 +30,7 @@
       "staff",
       "lavoro",
       "museo"
-    ]
+    ],
+    "sala": 14
   }
 ]

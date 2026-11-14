@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Spettro from '../../components/Spettro.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import {
+  NOME_MUSEO, PIANI, asset, linkSala, saleDellaSezione, salaPer, sezionePer, stileSezione,
+  tutteLeSale, url, videoDellaSala, type Sala
+} from '../../lib/museo';
+
+export function getStaticPaths() {
+  return tutteLeSale.map((sala) => ({ params: { numero: String(sala.numero) }, props: { sala } }));
+}
+
+const { sala } = Astro.props as { sala: Sala };
+const sez = sezionePer(sala.sezione);
+const video = videoDellaSala(sala.numero);
+const prima = salaPer(sala.numero - 1);
+const dopo = salaPer(sala.numero + 1);
+---
+<Layout title={`Sala ${sala.numero}, ${sala.titolo} | ${NOME_MUSEO}`} description={sala.descrizione} sezione="sale">
+  <article class="sala" style={stileSezione(sez)}>
+    <header class="sala-testa">
+      <p class="sala-numero" aria-hidden="true">{sala.numero}</p>
+      <div>
+        <p class="sala-dove">
+          <span class="sr-only">Sala {sala.numero}.</span>
+          <a href={url(`/sale/#${sez.id}`)}>{sez.nome}</a>, {PIANI[sala.piano].toLocaleLowerCase('it')}
+        </p>
+        <h1>{sala.titolo}</h1>
+      </div>
+    </header>
+
+    <Spettro sale={saleDellaSezione(sez.id)} attiva={sala.numero} compatto etichetta={`Sale della sezione ${sez.nome}`} />
+
+    {sala.immagine && <img class="sala-immagine" src={asset(sala.immagine)} alt="" />}
+    <p class="sala-descrizione">{sala.descrizione}</p>
+
+    <section class="sala-video" aria-labelledby="t-video-sala">
+      <h2 id="t-video-sala">{video.length > 0 ? `Video della sala (${video.length})` : 'Video della sala'}</h2>
+      {video.length > 0 ? (
+        <div class="griglia-video">
+          {video.map((v) => <VideoCard video={v} mostraSala={false} />)}
+        </div>
+      ) : (
+        <p class="vuoto">I video di questa sala sono in preparazione. Intanto puoi <a href={url('/video/')}>guardare quelli delle altre sale</a>.</p>
+      )}
+    </section>
+  </article>
+
+  <nav class="passo" aria-label="Sala precedente e successiva" style={stileSezione(sez)}>
+    {prima ? (
+      <a href={linkSala(prima.numero)} rel="prev"><span class="passo-dir">Sala {prima.numero}</span><span class="passo-tit">{prima.titolo}</span></a>
+    ) : <span />}
+    {dopo ? (
+      <a href={linkSala(dopo.numero)} rel="next" class="avanti"><span class="passo-dir">Sala {dopo.numero}</span><span class="passo-tit">{dopo.titolo}</span></a>
+    ) : (
+      <a href={url('/')} class="avanti"><span class="passo-dir">Fine del percorso</span><span class="passo-tit">Torna all’inizio</span></a>
+    )}
+  </nav>
+</Layout>
