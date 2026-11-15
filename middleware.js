@@ -109,6 +109,12 @@ button{width:100%;height:3.4rem;margin-top:1rem;font-family:inherit;font-weight:
 button[disabled]{opacity:.6}
 .esito{margin-top:1rem;font-weight:600;min-height:1.6em}.ok{color:var(--ok)}.err{color:var(--err)}
 .attuale{font-size:.95rem}.attuale strong{color:var(--ink);letter-spacing:.15em}
+.secondario{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.oppure{text-align:center;margin:1.4rem 0 .2rem;font-size:.9rem}
+.condividi{margin-top:1.4rem;padding:1.1rem;border:1px solid var(--filo);border-radius:2px}
+.condividi p{margin:0 0 .2rem;color:var(--ink)}.condividi .grande{font-family:inherit;font-weight:600;font-size:2rem;line-height:1.2;letter-spacing:.2em}
+.azioni{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.azioni button,.azioni a{margin-top:.8rem}
+.azioni a{display:flex;align-items:center;justify-content:center;height:3.4rem;border:1px solid var(--ink);border-radius:2px;color:var(--ink);text-decoration:none;font-weight:600}
 .piccolo{margin-top:2rem;font-size:.9rem}.piccolo a{color:var(--tenue)}
 :focus-visible{outline:2px solid #2457C5;outline-offset:3px}
 </style></head><body><main>
@@ -119,8 +125,19 @@ button[disabled]{opacity:.6}
 <label for="pin">Nuovo PIN</label>
 <input id="pin" name="pin" inputmode="numeric" pattern="[0-9]{4,8}" maxlength="8" autocomplete="off" required>
 <button type="submit" id="invia">Cambia PIN</button>
+<p class="oppure">oppure</p>
+<button type="button" class="secondario" id="genera">Genera un PIN casuale</button>
 <p class="esito" id="esito" role="status" aria-live="polite"></p>
 </form>
+<section class="condividi" id="condividi" hidden aria-label="Condividi il PIN">
+<p>Nuovo PIN da comunicare:</p>
+<p class="grande" id="pin-nuovo"></p>
+<div class="azioni">
+<button type="button" id="share">Condividi</button>
+<a id="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+<button type="button" class="secondario" id="copia">Copia il messaggio</button>
+</section>
 <p class="piccolo"><a href="/admin" id="dimentica">Togli la chiave da questo dispositivo</a></p>
 </main><script>
 const K='vmg_admin_key';
@@ -136,14 +153,28 @@ async function leggi(){const k=chiave();if(!k)return;
     else if(r.status===401){document.getElementById('blocco-chiave').hidden=false;mostra('La chiave salvata non è valida. Inseriscila di nuovo.',false)}
     else if(!r.ok)mostra(d.messaggio||'Errore '+r.status,false)}catch(e){}}
 leggi();
+function testo(pin){return 'Il PIN per visitare il sito Suoni ed emozioni di Villa Medici Giulini è '+pin+'. Apri www.suoniemozioni.it e inseriscilo quando richiesto.'}
+function preparaCondivisione(pin){
+  document.getElementById('pin-nuovo').textContent=pin;
+  document.getElementById('whatsapp').href='https://wa.me/?text='+encodeURIComponent(testo(pin));
+  document.getElementById('share').hidden=!navigator.share;
+  document.querySelector('.azioni').style.gridTemplateColumns=navigator.share?'1fr 1fr':'1fr';
+  document.getElementById('condividi').hidden=false;
+}
+document.getElementById('share').addEventListener('click',async()=>{const pin=document.getElementById('pin-nuovo').textContent;
+  try{await navigator.share({title:'PIN Suoni ed emozioni',text:testo(pin)})}catch(e){}});
+document.getElementById('copia').addEventListener('click',async()=>{const pin=document.getElementById('pin-nuovo').textContent;
+  try{await navigator.clipboard.writeText(testo(pin));mostra('Messaggio copiato: incollalo dove vuoi.',true)}catch(e){mostra('Copia non riuscita: tieni premuto sul PIN per copiarlo.',false)}});
+function casuale(){const a=new Uint32Array(1);let p;do{crypto.getRandomValues(a);p=String(a[0]%1000000).padStart(6,'0')}while(new Set(p).size===1||'0123456789'.includes(p)||'9876543210'.includes(p));return p}
+document.getElementById('genera').addEventListener('click',()=>{document.getElementById('pin').value=casuale();document.getElementById('f').requestSubmit()});
 document.getElementById('f').addEventListener('submit',async e=>{e.preventDefault();
   const pin=document.getElementById('pin').value.trim();const k=chiave();
   if(!k){document.getElementById('blocco-chiave').hidden=false;mostra('Inserisci la chiave di accesso.',false);return}
   if(!/^[0-9]{4,8}$/.test(pin)){mostra('Il PIN deve avere da 4 a 8 cifre.',false);return}
-  const b=document.getElementById('invia');b.disabled=true;mostra('Salvataggio…',true);
+  const b=document.getElementById('invia');b.disabled=true;document.getElementById('condividi').hidden=true;mostra('Salvataggio…',true);
   try{const r=await fetch('/api/pin',{method:'POST',headers:{Authorization:'Bearer '+k,'Content-Type':'application/json'},body:JSON.stringify({pin})});
     const d=await r.json();mostra(d.messaggio||('Errore '+r.status),r.ok);
-    if(r.ok){try{if(!dalLink)localStorage.setItem(K,k)}catch(e){}document.getElementById('pin').value='';document.getElementById('attuale').innerHTML='PIN attuale: <strong>'+d.pin+'</strong>'}
+    if(r.ok){try{if(!dalLink)localStorage.setItem(K,k)}catch(e){}document.getElementById('pin').value='';document.getElementById('attuale').innerHTML='PIN attuale: <strong>'+d.pin+'</strong>';preparaCondivisione(d.pin)}
     else if(r.status===401)document.getElementById('blocco-chiave').hidden=false}
   catch(err){mostra('Connessione non riuscita. Riprova.',false)}finally{b.disabled=false}});
 document.getElementById('dimentica').addEventListener('click',()=>{try{localStorage.removeItem(K)}catch(e){}});
