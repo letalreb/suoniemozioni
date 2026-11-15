@@ -43,7 +43,7 @@ p { margin: 0; }
 .testata nav { display: flex; flex-wrap: wrap; gap: .3rem 1.4rem; font-size: .98rem; }
 .testata nav a { text-decoration: none; padding: .2rem 0; border-bottom: 1px solid transparent; opacity: .85; }
 .testata nav a:hover, .testata nav a[aria-current='page'] { opacity: 1; border-color: currentColor; }
-.vai-sala { display: flex; align-items: center; gap: .45rem; font-size: .95rem; }
+.vai-sala { display: flex; align-items: center; gap: .45rem; font-size: .95rem; margin-left: auto; }
 .vai-sala input { width: 4.2rem; height: 2.3rem; padding: 0 .55rem; font: 500 1.05rem var(--testo); color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 2px; }
 .vai-sala input::placeholder { color: inherit; opacity: .6; }
 .vai-sala button { height: 2.3rem; padding: 0 .9rem; font: 600 .95rem var(--testo); border: 0; border-radius: 2px; background: var(--inchiostro); color: var(--carta); cursor: pointer; }
@@ -201,6 +201,19 @@ main { min-height: 60vh; }
 .piede-crediti { max-width: 48ch; }
 main:has(.passo) + .piede { margin-top: 0; }
 
+@media (min-width: 761px) and (max-width: 1060px) {
+  .testata { gap: .6rem 1.2rem; }
+  .testata nav { gap: .3rem 1rem; font-size: .93rem; }
+  .marchio { font-size: 1.3rem; }
+}
+/* Telefoni in orizzontale e pieghevoli aperti in orizzontale: schermo basso */
+@media (max-height: 520px) and (orientation: landscape) {
+  .sala-hero { min-height: 100svh; }
+  .passo { position: static; }
+  .sala-numero { font-size: clamp(4.5rem, 14vh, 7rem); }
+  .copertina { min-height: 100svh; height: 100svh; }
+  .copertina h1 { font-size: clamp(2.6rem, 9vh, 4.5rem); }
+}
 @media (max-width: 760px) {
   .testata nav { order: 3; width: 100%; overflow-x: auto; flex-wrap: nowrap; gap: 1rem; font-size: .93rem; padding-bottom: .1rem; }
   .testata nav a { white-space: nowrap; }
