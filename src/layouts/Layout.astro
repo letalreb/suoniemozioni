@@ -4,7 +4,7 @@ import Marchio from '../components/Marchio.astro';
 import { NOME, LUOGO, SITO_ASCOLTO, crediti, tutteLeSale, url } from '../lib/museo';
 interface Props { title?: string; description?: string; sezione?: string; trasparente?: boolean }
 const { title = `${NOME}, invito all’arte e alla musica a ${LUOGO}`, description = `Le ${tutteLeSale.length} sale di Villa Medici Giulini a Briosco: strumenti musicali, arredi e opere d’arte.`, sezione, trasparente = false } = Astro.props;
-const voci = [['sale', 'Le sale', '/sale/'], ['teatrino', 'Teatrino', '/teatrino/'], ['giardino', 'Giardino', '/giardino/'], ['video', 'Video', '/video/']];
+const voci = [['sale', 'Le sale', '/sale/'], ['teatrino', 'Teatrino', '/teatrino/'], ['giardino', 'Giardino', '/giardino/']];
 ---
 <!doctype html>
 <html lang="it">

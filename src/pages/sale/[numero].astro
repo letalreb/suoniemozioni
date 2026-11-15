@@ -3,13 +3,11 @@ import Layout from '../../layouts/Layout.astro';
 import Galleria from '../../components/Galleria.astro';
 import CartaStrumento from '../../components/CartaStrumento.astro';
 import Scheda from '../../components/Scheda.astro';
-import VideoCard from '../../components/VideoCard.astro';
-import { NOME, TITOLO_LIBRO, SITO_ASCOLTO, asset, linkSala, salaPer, sezionePer, stileSezione, strumentoPer, tutteLeSale, url, videoDellaSala, type Sala } from '../../lib/museo';
+import { NOME, TITOLO_LIBRO, SITO_ASCOLTO, asset, linkSala, salaPer, sezionePer, stileSezione, strumentoPer, tutteLeSale, url, type Sala } from '../../lib/museo';
 export function getStaticPaths() { return tutteLeSale.map((sala) => ({ params: { numero: String(sala.numero) }, props: { sala } })); }
 const { sala } = Astro.props as { sala: Sala };
 const sez = sezionePer(sala.sezione);
 const strumenti = sala.strumenti.map(strumentoPer).filter((s): s is NonNullable<typeof s> => !!s);
-const video = videoDellaSala(sala.numero);
 const prima = salaPer(sala.numero - 1), dopo = salaPer(sala.numero + 1);
 const f = sala.foto;
 const al = sala.allestimento;
@@ -82,12 +80,6 @@ const pag = (p: number[]) => (p[0] === p[1] ? `p. ${p[0]}` : `pp. ${p[0]}–${p[
           <h2 id="t-vol">Dal volume</h2>
           <blockquote><p>{sala.approfondimento}</p></blockquote>
           <p class="didascalia">Estratto dalle schede del catalogo {TITOLO_LIBRO}.</p>
-        </section>
-      )}
-      {video.length > 0 && (
-        <section class="sezione-sala" aria-labelledby="t-vid">
-          <h2 id="t-vid">Video</h2>
-          <div class="griglia-video">{video.map((v) => <VideoCard video={v} mostraSala={false} />)}</div>
         </section>
       )}
       {!f && sala.copertina && (

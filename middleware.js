@@ -24,6 +24,9 @@ async function pinValido(pin) {
 
 export default async function middleware(req) {
   const url = new URL(req.url);
+  if (url.pathname === '/video' || url.pathname.startsWith('/video/')) {
+    return Response.redirect(new URL('/', url), 301);
+  }
   if (url.pathname === '/strumenti' || url.pathname.startsWith('/strumenti/')) {
     return Response.redirect('https://www.allaricercadeisuoniperduti.com/', 301);
   }

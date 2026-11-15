@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
-  <rect width="1280" height="720" fill="#e8e5df"/>
-  <circle cx="640" cy="360" r="74" fill="#fff" opacity=".8"/>
-  <path d="M620 315 L690 360 L620 405 Z" fill="#82633c"/>
-  <text x="640" y="500" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" fill="#66543b">Anteprima video</text>
-</svg>

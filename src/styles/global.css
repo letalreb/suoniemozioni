@@ -50,7 +50,7 @@ p { margin: 0; }
 .con-hero .vai-sala button { background: var(--bianco); color: #1D2420; }
 
 main { min-height: 60vh; }
-.pagina-testa, .blocco, .gruppo, .griglia-strumenti.ampia, .vuoto, main > .griglia-video { width: min(var(--larghezza), 100% - 2 * var(--margine)); margin-inline: auto; }
+.pagina-testa, .blocco, .gruppo, .griglia-strumenti.ampia, .vuoto { width: min(var(--larghezza), 100% - 2 * var(--margine)); margin-inline: auto; }
 .pagina-testa { padding: clamp(2.5rem, 7vw, 5rem) 0 1.5rem; }
 
 /* Copertina */
@@ -174,28 +174,6 @@ main { min-height: 60vh; }
 .passo a:hover { background: var(--carta-2); }
 .passo .avanti { text-align: right; align-items: flex-end; border-left: 1px solid var(--filo); }
 
-/* Video (dal tema precedente) */
-.griglia-video { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem 1.4rem; padding-bottom: 1rem; }
-.video-card { text-decoration: none; display: block; }
-.video-card[hidden] { display: none; }
-.video-anteprima { position: relative; overflow: hidden; background: var(--carta-2); }
-.video-anteprima img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.durata { position: absolute; right: .5rem; bottom: .5rem; background: rgb(0 0 0 / .75); color: #fff; font-size: .8rem; padding: .1rem .45rem; }
-.video-testo { padding-top: .8rem; }
-.video-sala { font-size: .9rem; color: var(--tenue); }
-.video-card h3 { font: 400 1.3rem/1.2 var(--display); margin: .2rem 0 .3rem; }
-.video-card p { color: var(--tenue); font-size: .95rem; }
-.filtro-cerca { flex: 1 1 280px; } .filtro-select { flex: 0 1 320px; }
-.filtri input[type='search'], .filtri select { width: 100%; height: 3rem; padding: 0 1rem; font: inherit; color: inherit; background: var(--carta-2); border: 1px solid var(--filo); border-radius: 2px; }
-.video-dettaglio { width: min(900px, 100% - 2 * var(--margine)); margin: 0 auto; padding: 2.5rem 0 4rem; }
-.indietro { display: inline-block; margin-bottom: 1.4rem; color: var(--s); font-weight: 600; }
-.player { position: relative; aspect-ratio: 16 / 9; margin: 2rem 0; background: #000; }
-.player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.metadati { display: flex; flex-wrap: wrap; gap: 1.2rem 2.4rem; margin: 0; padding: 1rem 0; border-block: 1px solid var(--filo); }
-.metadati dt { font-size: .85rem; color: var(--tenue); } .metadati dd { margin: 0; font-weight: 600; }
-.tag { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 1.2rem 0 0; }
-.tag li { padding: .2rem .7rem; border: 1px solid var(--filo); border-radius: 999px; font-size: .9rem; color: var(--tenue); }
-
 .piede { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem 3rem; flex-wrap: wrap; padding: 2.5rem var(--margine) 2rem; margin-top: 3rem; border-top: 1px solid var(--filo); color: var(--tenue); font-size: .92rem; }
 .piede-nome { font: italic 400 1.5rem var(--display); color: var(--inchiostro); }
 .piede-crediti { max-width: 48ch; }
@@ -234,7 +212,7 @@ main:has(.passo) + .piede { margin-top: 0; }
   :root { --seg2: env(viewport-segment-left 1 0, 50vw); }
   .copertina-testo, .sala-hero-testo, .percorso-testa { margin-left: calc(var(--seg2) + 1.5rem); margin-right: 1.5rem; width: auto; left: 0; right: 0; }
   .copertina-testo { position: absolute; }
-  .sala-corpo, .pagina-testa, .blocco, .gruppo, .video-dettaglio { width: auto; margin-left: calc(var(--seg2) + 1.5rem); margin-right: 1.5rem; }
+  .sala-corpo, .pagina-testa, .blocco, .gruppo { width: auto; margin-left: calc(var(--seg2) + 1.5rem); margin-right: 1.5rem; }
   .sala-numero { font-size: 7rem; }
   .passo a:first-child { padding-right: calc(100vw - var(--seg2) + 1rem); }
 }
