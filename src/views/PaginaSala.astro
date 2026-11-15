@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Galleria from '../components/Galleria.astro';
 import CartaStrumento from '../components/CartaStrumento.astro';
 import Scheda from '../components/Scheda.astro';
-import { NOME, SITO_ASCOLTO, asset, salaPer, sezionePer, stileSezione, strumentoPer, type Sala } from '../lib/museo';
+import { NOME, ascoltoStrumento, asset, salaPer, sezionePer, stileSezione, strumentoPer, type Sala } from '../lib/museo';
 import { t, percorso, titoloSala, titoloSalaAlt, descrizioneSala, pianoSala, nomeSezione, type Lingua } from '../lib/i18n';
 interface Props { sala: Sala; lang: Lingua }
 const { sala, lang } = Astro.props; const T = t(lang);
@@ -45,11 +45,16 @@ const titolo = titoloSala(sala, lang);
                 <ul>
                   {z.voci.map((v) => {
                     const m = v.match(/^(N\. ?\d+|[\dA-Z][\w.]*(?: (?:e|and) [\dA-Z][\w.]*)?)\s+(.*)$/);
-                    const ascolto = /^N\. ?(\d+)/.exec(v);
+                    const num = /^N\. ?(\d+)/.exec(v);
+                    const ascolto = num ? ascoltoStrumento(Number(num[1]), lang) : null;
                     return (
                       <li>
                         {m ? <><span class="voce-codice">{m[1]}</span> {m[2]}</> : v}
-                        {ascolto && Number(ascolto[1]) <= 41 && <> <a class="ascolta-mini" href={SITO_ASCOLTO} target="_blank" rel="noopener">{T.ascolta}</a></>}
+                        {ascolto && (
+                          <a class:list={['ascolta-voce', { 'in-arrivo': ascolto.inArrivo }]} href={ascolto.url} target="_blank" rel="noopener" title={T.ascoltaTitolo}>
+                            {ascolto.inArrivo ? <>{T.schedaStrumento} <span>({T.audioInArrivo})</span></> : T.ascoltaStrumento}
+                          </a>
+                        )}
                       </li>
                     );
                   })}

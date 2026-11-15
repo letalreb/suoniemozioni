@@ -27,7 +27,7 @@ const D = {
     nessunaSala: 'Nessuna sala corrisponde alla ricerca. Prova con un’altra parola, oppure scrivi il numero nella casella Sala in alto.',
     // sala
     fotoDalVolume: 'Fotografia dal volume Suoni ed emozioni', dalVolume: 'Dal volume Suoni ed emozioni',
-    strumentiArredi: 'Strumenti e arredi', ascolta: 'Ascolta', ascoltaStrumento: 'Ascolta lo strumento',
+    strumentiArredi: 'Strumenti e arredi', ascolta: 'Ascolta', ascoltaStrumento: 'Ascolta lo strumento', schedaStrumento: 'Scheda dello strumento', audioInArrivo: 'audio in arrivo', ascoltaTitolo: 'Apre la pagina dello strumento su Alla ricerca dei suoni perduti',
     schede: 'Le schede delle opere', schedeNota: 'Tocca un titolo per leggere la scheda del catalogo con le fotografie.',
     strumentiSala: 'Gli strumenti della sala', nellaSala: 'Nella sala', scheda: 'Scheda',
     fotoNota: 'Le fotografie di questa sala saranno pubblicate con la versione definitiva del volume.',
@@ -65,7 +65,7 @@ const D = {
     trovate: (n: number) => (n === 1 ? '1 room found' : `${n} rooms found`),
     nessunaSala: 'No room matches your search. Try another word, or enter the number in the Room box at the top.',
     fotoDalVolume: 'Photograph from the book Suoni ed emozioni', dalVolume: 'From the book Suoni ed emozioni',
-    strumentiArredi: 'Instruments and furnishings', ascolta: 'Listen', ascoltaStrumento: 'Listen to the instrument',
+    strumentiArredi: 'Instruments and furnishings', ascolta: 'Listen', ascoltaStrumento: 'Listen to the instrument', schedaStrumento: 'Instrument page', audioInArrivo: 'audio coming soon', ascoltaTitolo: 'Opens the instrument page on In Search of Lost Sounds',
     schede: 'The catalogue entries', schedeNota: 'Tap a title to read the catalogue entry with its photographs.',
     strumentiSala: 'The instruments in the room', nellaSala: 'In the room', scheda: 'Entry',
     fotoNota: 'The photographs of this room will be published with the final edition of the book.',

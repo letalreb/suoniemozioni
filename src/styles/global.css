@@ -246,3 +246,12 @@ main:has(.passo) + .piede { margin-top: 0; }
   text-shadow: 0 1px 2px rgb(0 0 0 / .6), 0 2px 16px rgb(0 0 0 / .5), 0 0 40px rgb(0 0 0 / .35);
 }
 .carta-tit, .copertina p, .pannello span { text-shadow: 0 1px 1px rgb(0 0 0 / .8), 0 1px 6px rgb(0 0 0 / .7), 0 2px 18px rgb(0 0 0 / .55); }
+
+/* Ascolto dello strumento sul sito dei suoni perduti */
+.ascolta-voce { display: flex; width: fit-content; align-items: center; gap: .45rem; margin-top: .45rem; padding: .3rem .75rem .3rem .6rem; border: 1px solid var(--s); border-radius: 999px; color: var(--s); font-weight: 600; font-size: .88rem; text-decoration: none; }
+.ascolta-voce::before { content: ''; width: 0; height: 0; border-style: solid; border-width: .36em 0 .36em .6em; border-color: transparent transparent transparent currentColor; }
+.ascolta-voce:hover { background: var(--s); color: var(--carta); }
+.ascolta-voce.in-arrivo, .ascolta.in-arrivo { border-style: dashed; }
+.ascolta-voce.in-arrivo::before, .ascolta.in-arrivo::before { border-width: .3em; border-radius: 50%; border-color: currentColor; }
+.ascolta-voce span, .ascolta span { font-weight: 400; opacity: .85; }
+.elenco li .ascolta-voce { display: flex; width: fit-content; }

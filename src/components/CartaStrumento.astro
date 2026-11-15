@@ -1,9 +1,9 @@
 ---
-import { SITO_ASCOLTO, asset, salaPer, type Strumento } from '../lib/museo';
+import { ascoltoStrumento, asset, salaPer, type Strumento } from '../lib/museo';
 import { t, percorso, titoloSala, nomeStrumento, type Lingua } from '../lib/i18n';
 interface Props { s: Strumento; mostraSala?: boolean; lang?: Lingua }
 const { s, mostraSala = true, lang = 'it' } = Astro.props;
-const sala = salaPer(s.sala); const T = t(lang);
+const sala = salaPer(s.sala); const T = t(lang); const ascolto = ascoltoStrumento(s.numero, lang);
 ---
 <article class="strumento">
   <div class="strumento-foto">
@@ -12,6 +12,6 @@ const sala = salaPer(s.sala); const T = t(lang);
   <div class="strumento-testo">
     <h3><span class="strumento-cat">N. {s.numero}</span> {nomeStrumento(s.nome, lang)}</h3>
     {mostraSala && sala && <p><a href={percorso(lang, `/sale/${sala.numero}/`)}>{T.sala} {sala.numero}, {titoloSala(sala, lang)}</a></p>}
-    {s.ascolto && <a class="ascolta" href={SITO_ASCOLTO} target="_blank" rel="noopener">{T.ascoltaStrumento}</a>}
+    {ascolto && <a class:list={['ascolta', { 'in-arrivo': ascolto.inArrivo }]} href={ascolto.url} target="_blank" rel="noopener" title={T.ascoltaTitolo}>{ascolto.inArrivo ? <>{T.schedaStrumento} <span>({T.audioInArrivo})</span></> : T.ascoltaStrumento}</a>}
   </div>
 </article>
