@@ -1,7 +1,10 @@
 // Accesso con PIN, eseguito da Vercel prima di servire qualsiasi file del sito.
-// Nel codice c'è solo l'impronta del PIN, non il PIN. Per cambiarlo senza toccare
-// il codice, imposta la variabile d'ambiente SITE_PIN nel progetto Vercel.
+// Dove sta il PIN, in ordine di priorità:
+//   1. Edge Config di Vercel, voce "pin": si cambia al volo dal comando rapido dell'iPhone (POST /api/pin)
+//   2. variabile d'ambiente SITE_PIN
+//   3. il PIN predefinito, di cui qui c'è solo l'impronta
 import { next } from '@vercel/functions';
+import { get } from '@vercel/edge-config';
 
 export const config = { matcher: ['/((?!favicon\\.svg|favicon\\.ico|apple-touch-icon\\.png|icon-192\\.png|icon-512\\.png|og\\.png|site\\.webmanifest).*)'] };
 
@@ -11,8 +14,20 @@ const COOKIE = 'vmg_pin';
 const enc = new TextEncoder();
 const verificati = new Set();
 
+async function pinCorrente() {
+  if (!process.env.EDGE_CONFIG) return null;
+  try {
+    const v = await get('pin');
+    return typeof v === 'string' && /^\d{4,8}$/.test(v) ? v : null;
+  } catch {
+    return null;
+  }
+}
+
 async function pinValido(pin) {
   if (!/^\d{4,8}$/.test(pin)) return false;
+  const dinamico = await pinCorrente();
+  if (dinamico) return pin === dinamico;
   if (process.env.SITE_PIN) return pin === process.env.SITE_PIN;
   if (verificati.has(pin)) return true;
   const k = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
@@ -22,8 +37,51 @@ async function pinValido(pin) {
   return ok;
 }
 
+const json = (stato, dati) => new Response(JSON.stringify(dati), { status: stato, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
+
+function uguali(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let d = 0;
+  for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return d === 0;
+}
+
+// Comando rapido dell'iPhone: GET legge il PIN attuale, POST {"pin":"1234"} lo cambia.
+async function apiPin(req) {
+  const chiave = process.env.PIN_ADMIN_KEY;
+  const data = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
+  if (!chiave || !uguali(data, chiave)) return json(401, { ok: false, messaggio: 'Chiave non valida.' });
+  if (!process.env.EDGE_CONFIG || !process.env.EDGE_CONFIG_ID || !process.env.VERCEL_API_TOKEN) {
+    return json(503, { ok: false, messaggio: 'Edge Config non ancora configurato su Vercel.' });
+  }
+  if (req.method === 'GET') {
+    const p = await pinCorrente();
+    return json(200, { ok: true, pin: p, messaggio: p ? `Il PIN attuale è ${p}.` : 'Nessun PIN impostato in Edge Config.' });
+  }
+  if (req.method !== 'POST') return json(405, { ok: false, messaggio: 'Usa GET o POST.' });
+  let pin = '';
+  try {
+    const tipo = req.headers.get('content-type') || '';
+    if (tipo.includes('application/json')) pin = String((await req.json()).pin ?? '');
+    else pin = String((await req.formData()).get('pin') ?? '');
+  } catch {
+    return json(400, { ok: false, messaggio: 'Richiesta non leggibile.' });
+  }
+  pin = pin.trim();
+  if (!/^\d{4,8}$/.test(pin)) return json(400, { ok: false, messaggio: 'Il PIN deve avere da 4 a 8 cifre.' });
+  const team = process.env.VERCEL_TEAM_ID ? `?teamId=${encodeURIComponent(process.env.VERCEL_TEAM_ID)}` : '';
+  const r = await fetch(`https://api.vercel.com/v1/edge-config/${process.env.EDGE_CONFIG_ID}/items${team}`, {
+    method: 'PATCH',
+    headers: { Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ items: [{ operation: 'upsert', key: 'pin', value: pin }] }),
+  });
+  if (!r.ok) return json(502, { ok: false, messaggio: `Vercel ha rifiutato la modifica (${r.status}).` });
+  return json(200, { ok: true, pin, messaggio: `Nuovo PIN attivo: ${pin}. Chi era già entrato dovrà inserirlo di nuovo.` });
+}
+
 export default async function middleware(req) {
   const url = new URL(req.url);
+  if (url.pathname === '/api/pin' || url.pathname === '/api/pin/') return apiPin(req);
   if (url.pathname === '/video' || url.pathname.startsWith('/video/')) {
     return Response.redirect(new URL('/', url), 301);
   }
