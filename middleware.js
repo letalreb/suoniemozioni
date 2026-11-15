@@ -48,9 +48,12 @@ function uguali(a, b) {
 
 // Comando rapido dell'iPhone: GET legge il PIN attuale, POST {"pin":"1234"} lo cambia.
 async function apiPin(req) {
-  const chiave = process.env.PIN_ADMIN_KEY;
-  const data = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
-  if (!chiave || !uguali(data, chiave)) return json(401, { ok: false, messaggio: 'Chiave non valida.' });
+  // tolgo spazi, a capo e virgolette eventualmente incollati insieme alla chiave
+  const pulisci = (v) => String(v || '').trim().replace(/^["']+|["']+$/g, '').trim();
+  const chiave = pulisci(process.env.PIN_ADMIN_KEY);
+  const data = pulisci((req.headers.get('authorization') || '').replace(/^Bearer\s+/i, ''));
+  if (!chiave) return json(503, { ok: false, messaggio: 'Su Vercel manca la variabile PIN_ADMIN_KEY nell’ambiente Production, oppure non è stato rifatto il deploy dopo averla aggiunta.' });
+  if (!uguali(data, chiave)) return json(401, { ok: false, messaggio: 'Chiave non valida: quella del link non coincide con PIN_ADMIN_KEY su Vercel.' });
   if (!process.env.EDGE_CONFIG || !process.env.EDGE_CONFIG_ID || !process.env.VERCEL_API_TOKEN) {
     return json(503, { ok: false, messaggio: 'Edge Config non ancora configurato su Vercel.' });
   }
@@ -150,7 +153,7 @@ function mostra(t,ok){esito.textContent=t;esito.className='esito '+(ok?'ok':'err
 async function leggi(){const k=chiave();if(!k)return;
   try{const r=await fetch('/api/pin',{headers:{Authorization:'Bearer '+k},cache:'no-store'});const d=await r.json();
     if(r.ok&&d.pin)document.getElementById('attuale').innerHTML='PIN attuale: <strong>'+d.pin+'</strong>';
-    else if(r.status===401){document.getElementById('blocco-chiave').hidden=false;mostra('La chiave salvata non è valida. Inseriscila di nuovo.',false)}
+    else if(r.status===401){document.getElementById('blocco-chiave').hidden=false;mostra((d.messaggio||'Chiave non valida.')+' Puoi anche inserirla qui sotto.',false)}
     else if(!r.ok)mostra(d.messaggio||'Errore '+r.status,false)}catch(e){}}
 leggi();
 function testo(pin){return 'Il PIN per visitare il sito Suoni ed emozioni di Villa Medici Giulini è '+pin+'. Apri www.suoniemozioni.it e inseriscilo quando richiesto.'}
