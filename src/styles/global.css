@@ -6,7 +6,7 @@
   --sez: #2E4A3B; --sez-scuro: #9CC3A8;
   --display: 'Bodoni Moda', 'Bodoni 72', Didot, 'Times New Roman', serif;
   --testo: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
-  --larghezza: 1240px; --margine: max(5vw, 1.1rem);
+  --larghezza: 1240px; --margine: max(5vw, 1.1rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
   color-scheme: light; box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -213,4 +213,15 @@ main:has(.passo) + .piede { margin-top: 0; }
   .griglia-sale .carta-num { font-size: 2.4rem; } .griglia-sale .carta-tit { font-size: .98rem; }
   .sala-hero-testo { padding-top: 10rem; }
   .passo a { font-size: 1rem; }
+}
+
+/* Dispositivi a doppio schermo o pieghevoli aperti (Surface Duo, Galaxy Fold, Pixel Fold):
+   i testi stanno tutti nel secondo schermo, così la cerniera non taglia le righe. */
+@media (horizontal-viewport-segments: 2) {
+  :root { --seg2: env(viewport-segment-left 1 0, 50vw); }
+  .copertina-testo, .sala-hero-testo, .percorso-testa { margin-left: calc(var(--seg2) + 1.5rem); margin-right: 1.5rem; width: auto; left: 0; right: 0; }
+  .copertina-testo { position: absolute; }
+  .sala-corpo, .pagina-testa, .blocco, .gruppo, .video-dettaglio { width: auto; margin-left: calc(var(--seg2) + 1.5rem); margin-right: 1.5rem; }
+  .sala-numero { font-size: 7rem; }
+  .passo a:first-child { padding-right: calc(100vw - var(--seg2) + 1rem); }
 }
