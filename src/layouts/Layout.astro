@@ -1,57 +1,71 @@
 ---
 import '../styles/global.css';
 import Marchio from '../components/Marchio.astro';
-import { NOME, LUOGO, SITO_ASCOLTO, crediti, tutteLeSale, url } from '../lib/museo';
-interface Props { title?: string; description?: string; sezione?: string; trasparente?: boolean }
-const { title = `${NOME}, invito all’arte e alla musica a ${LUOGO}`, description = `Le ${tutteLeSale.length} sale di Villa Medici Giulini a Briosco: strumenti musicali, arredi e opere d’arte.`, sezione, trasparente = false } = Astro.props;
-const voci = [['sale', 'Le sale', '/sale/'], ['teatrino', 'Teatrino', '/teatrino/'], ['giardino', 'Giardino', '/giardino/']];
+import { NOME, SITO_ASCOLTO, tutteLeSale } from '../lib/museo';
+import { t, percorso, altra, type Lingua } from '../lib/i18n';
+interface Props { lang?: Lingua; title?: string; description?: string; sezione?: string; trasparente?: boolean }
+const { lang = 'it', sezione, trasparente = false } = Astro.props;
+const T = t(lang);
+const title = Astro.props.title ?? `${NOME}, ${T.sottotitolo.charAt(0).toLowerCase()}${T.sottotitolo.slice(1)}`;
+const description = Astro.props.description ?? T.descrizioneSito(tutteLeSale.length);
+// pagina equivalente nell'altra lingua
+const qui = Astro.url.pathname;
+const base = lang === 'en' ? (qui.replace(/^\/en(?=\/|$)/, '') || '/') : qui;
+const urlIt = base, urlEn = percorso('en', base);
+const altroUrl = lang === 'it' ? urlEn : urlIt;
+const voci: [string, string, string][] = [['sale', T.nav.sale, '/sale/'], ['teatrino', T.nav.teatrino, '/teatrino/'], ['giardino', T.nav.giardino, '/giardino/']];
+const sito = (p: string) => new URL(p, Astro.site).href;
 ---
 <!doctype html>
-<html lang="it">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#EDEFEA" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#141814" media="(prefers-color-scheme: dark)" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={sito(qui)} />
+    <link rel="alternate" hreflang="it" href={sito(urlIt)} />
+    <link rel="alternate" hreflang="en" href={sito(urlEn)} />
+    <link rel="alternate" hreflang="x-default" href={sito(urlIt)} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
-    <meta property="og:locale" content="it_IT" />
-    <link rel="icon" href={url('/favicon.ico')} sizes="48x48" />
-    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
-    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
-    <link rel="manifest" href={url('/site.webmanifest')} />
-    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <meta property="og:url" content={sito(qui)} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'it_IT'} />
+    <meta property="og:image" content={sito('/og.png')} />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" />
     <title>{title}</title>
   </head>
   <body class:list={{ 'con-hero': trasparente }}>
-    <a class="skip" href="#contenuto">Vai al contenuto</a>
+    <a class="skip" href="#contenuto">{T.vaiContenuto}</a>
     <header class="testata">
-      <a class="marchio" href={url('/')}><Marchio /><span>Suoni ed emozioni</span></a>
-      <nav aria-label="Navigazione principale">
-        {voci.map(([id, nome, path]) => <a href={url(path)} aria-current={sezione === id ? 'page' : undefined}>{nome}</a>)}
-        <a href={SITO_ASCOLTO} target="_blank" rel="noopener">Ascolta gli strumenti</a>
+      <a class="marchio" href={percorso(lang, '/')}><Marchio /><span>Suoni ed emozioni</span></a>
+      <nav aria-label={T.navPrincipale}>
+        {voci.map(([id, nome, path]) => <a href={percorso(lang, path)} aria-current={sezione === id ? 'page' : undefined}>{nome}</a>)}
+        <a href={SITO_ASCOLTO} target="_blank" rel="noopener">{T.nav.ascolta}</a>
       </nav>
-      <form class="vai-sala" data-vai-sala data-max={tutteLeSale.length} data-base={url('/sale/')}>
-        <label for="vai-sala">Sala</label>
-        <input id="vai-sala" type="number" inputmode="numeric" min="1" max={tutteLeSale.length} placeholder="n°" required />
-        <button type="submit">Vai</button>
+      <a class="lingua" href={`${altroUrl}?lingua=${altra(lang)}`} hreflang={altra(lang)} lang={altra(lang)} title={T.altraLinguaNome}>{T.altraLingua}</a>
+      <form class="vai-sala" data-vai-sala data-max={tutteLeSale.length} data-base={percorso(lang, '/sale/')} data-errore={T.erroreNumero(tutteLeSale.length)}>
+        <label for="vai-sala">{T.sala}</label>
+        <input id="vai-sala" type="number" inputmode="numeric" min="1" max={tutteLeSale.length} placeholder={T.numero} required />
+        <button type="submit">{T.vai}</button>
       </form>
     </header>
     <main id="contenuto"><slot /></main>
     <footer class="piede">
       <div>
         <p class="piede-nome">Suoni ed emozioni</p>
-        <p>Villa Medici Giulini, via Medici 6, 20836 Briosco (MB)</p>
+        <p>{T.indirizzo}</p>
       </div>
-      <p class="piede-crediti">{crediti}</p>
-      <p class="piede-diritti">© Villa Medici Giulini S.r.l. Proprietà artistica e letteraria riservata per tutti i paesi. Ogni riproduzione, anche parziale, è vietata.</p>
+      <p class="piede-crediti">{T.crediti}</p>
+      <p class="piede-diritti">{T.diritti}</p>
     </footer>
     <script>
       document.querySelectorAll<HTMLFormElement>('[data-vai-sala]').forEach((form) => {
@@ -59,9 +73,7 @@ const voci = [['sale', 'Le sale', '/sale/'], ['teatrino', 'Teatrino', '/teatrino
         form.addEventListener('submit', (e) => {
           e.preventDefault();
           const n = Number(input.value), max = Number(form.dataset.max);
-          if (!Number.isInteger(n) || n < 1 || n > max) {
-            input.setCustomValidity(`Scrivi un numero da 1 a ${max}`); input.reportValidity(); return;
-          }
+          if (!Number.isInteger(n) || n < 1 || n > max) { input.setCustomValidity(form.dataset.errore!); input.reportValidity(); return; }
           location.href = `${form.dataset.base}${n}/`;
         });
         input.addEventListener('input', () => input.setCustomValidity(''));

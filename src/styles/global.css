@@ -43,7 +43,9 @@ p { margin: 0; }
 .testata nav { display: flex; flex-wrap: wrap; gap: .3rem 1.4rem; font-size: .98rem; }
 .testata nav a { text-decoration: none; padding: .2rem 0; border-bottom: 1px solid transparent; opacity: .85; }
 .testata nav a:hover, .testata nav a[aria-current='page'] { opacity: 1; border-color: currentColor; }
-.vai-sala { display: flex; align-items: center; gap: .45rem; font-size: .95rem; margin-left: auto; }
+.lingua { font-size: .9rem; font-weight: 600; text-decoration: none; padding: .35rem .7rem; border: 1px solid currentColor; border-radius: 999px; opacity: .9; margin-left: auto; }
+.lingua:hover { opacity: 1; }
+.vai-sala { display: flex; align-items: center; gap: .45rem; font-size: .95rem; }
 .vai-sala input { width: 4.2rem; height: 2.3rem; padding: 0 .55rem; font: 500 1.05rem var(--testo); color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 2px; }
 .vai-sala input::placeholder { color: inherit; opacity: .6; }
 .vai-sala button { height: 2.3rem; padding: 0 .9rem; font: 600 .95rem var(--testo); border: 0; border-radius: 2px; background: var(--inchiostro); color: var(--carta); cursor: pointer; }

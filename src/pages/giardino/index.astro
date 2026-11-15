@@ -1,21 +1,4 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Galleria from '../../components/Galleria.astro';
-import { NOME, TITOLO_LIBRO, asset, fotoSpeciali } from '../../lib/museo';
-const f = fotoSpeciali['giardino']!;
-const testi = fotoSpeciali.testi['giardino'] ?? [];
+import Speciale from '../../views/Speciale.astro';
 ---
-<Layout title={`Il giardino incantato | ${NOME}`} description="Si entra dal cancellino nella siepe di carpini e compare il giardino all’italiana." sezione="giardino" trasparente>
-  <article class="sala speciale">
-    <header class="sala-hero">
-      <img src={asset(f.hero)} alt="" width={f.w} height={f.h} fetchpriority="high" />
-      <div class="sala-hero-testo"><div><h1>Il giardino incantato</h1><p class="sala-en" lang="en">The enchanted garden</p></div></div>
-    </header>
-    <div class="sala-corpo">
-      <p class="sala-intro">Si entra dal cancellino nella siepe di carpini e compare il giardino all’italiana.</p>
-      <div class="testo-lungo">{testi.map((t) => <p>{t}</p>)}</div>
-      <p class="didascalia">Testo e fotografie dal volume {TITOLO_LIBRO}.</p>
-      <section class="sezione-sala" aria-labelledby="t-gal"><h2 id="t-gal">Fotografie</h2><Galleria foto={f.galleria} titolo="Il giardino incantato" /></section>
-    </div>
-  </article>
-</Layout>
+<Speciale lang="it" chiave="giardino" />

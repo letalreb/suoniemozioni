@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CartaSala from '../components/CartaSala.astro';
+import { TITOLO_LIBRO, asset, fotoSpeciali, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni } from '../lib/museo';
+import { t, percorso, nomeSezione, descrizioneSezione, type Lingua } from '../lib/i18n';
+interface Props { lang: Lingua }
+const { lang } = Astro.props; const T = t(lang);
+const intro = fotoSpeciali.intro!, teatrino = fotoSpeciali.teatrino!, giardino = fotoSpeciali.giardino!;
+---
+<Layout lang={lang} sezione="home" trasparente>
+  <section class="copertina">
+    <img src={asset(intro.hero)} alt={T.altCopertina} width={intro.w} height={intro.h} fetchpriority="high" />
+    <div class="copertina-testo">
+      <h1>{TITOLO_LIBRO}</h1>
+      <p>{T.introHome}</p>
+    </div>
+  </section>
+  <section class="percorso" aria-labelledby="t-percorso">
+    <div class="percorso-testa">
+      <h2 id="t-percorso">{T.percorso}</h2>
+      <p>{T.percorsoTesto}</p>
+      <div class="percorso-frecce">
+        <button type="button" data-scorri="-1" aria-label={T.precedenti}>‹</button>
+        <button type="button" data-scorri="1" aria-label={T.successive}>›</button>
+      </div>
+    </div>
+    <ol class="striscia" data-striscia>
+      {tutteLeSale.map((s, i) => <li><CartaSala sala={s} lang={lang} carica={i < 6 ? 'eager' : 'lazy'} /></li>)}
+    </ol>
+  </section>
+  <section class="blocco" aria-labelledby="t-edifici">
+    <h2 id="t-edifici">{T.edifici}</h2>
+    <ul class="edifici">
+      {tutteLeSezioni.map((sez) => {
+        const ss = saleDellaSezione(sez.id); const a = ss[0].numero, b = ss[ss.length - 1].numero;
+        return (
+          <li style={stileSezione(sez)}>
+            <a href={percorso(lang, `/sale/#${sez.id}`)}>
+              <span class="edificio-range">{a === b ? `${T.sala} ${a}` : `${T.sale} ${a}–${b}`}</span>
+              <span class="edificio-nome">{nomeSezione(sez, lang)}</span>
+              <span class="edificio-desc">{descrizioneSezione(sez, lang)}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+  <section class="dittico" aria-label={T.teatrinoGiardino}>
+    <a href={percorso(lang, '/teatrino/')} class="pannello">
+      <img src={asset(teatrino.heroSmall)} alt="" loading="lazy" />
+      <span><strong>{T.teatrino}</strong>{T.teatrinoTesto}</span>
+    </a>
+    <a href={percorso(lang, '/giardino/')} class="pannello">
+      <img src={asset(giardino.heroSmall)} alt="" loading="lazy" />
+      <span><strong>{T.giardino}</strong>{T.giardinoTesto}</span>
+    </a>
+  </section>
+</Layout>
+<script>
+  const s = document.querySelector<HTMLElement>('[data-striscia]')!;
+  document.querySelectorAll<HTMLButtonElement>('[data-scorri]').forEach((b) =>
+    b.addEventListener('click', () => s.scrollBy({ left: Number(b.dataset.scorri) * s.clientWidth * 0.8, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })));
+</script>

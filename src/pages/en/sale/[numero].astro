@@ -1,0 +1,7 @@
+---
+import PaginaSala from '../../../views/PaginaSala.astro';
+import { tutteLeSale, type Sala } from '../../../lib/museo';
+export function getStaticPaths() { return tutteLeSale.map((sala) => ({ params: { numero: String(sala.numero) }, props: { sala } })); }
+const { sala } = Astro.props as { sala: Sala };
+---
+<PaginaSala sala={sala} lang="en" />

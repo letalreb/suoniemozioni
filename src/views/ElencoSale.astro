@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CartaSala from '../components/CartaSala.astro';
+import { NOME, saleDellaSezione, stileSezione, tutteLeSale, tutteLeSezioni } from '../lib/museo';
+import { t, nomeSezione, descrizioneSezione, descrizioneSala, pianoSala, type Lingua } from '../lib/i18n';
+interface Props { lang: Lingua }
+const { lang } = Astro.props; const T = t(lang);
+---
+<Layout lang={lang} title={`${T.leSale(tutteLeSale.length)} | ${NOME}`} sezione="sale">
+  <header class="pagina-testa">
+    <h1>{T.leSale(tutteLeSale.length)}</h1>
+    <p class="lead">{T.leSaleTesto}</p>
+    <label class="cerca"><span class="sr-only">{T.cercaSala}</span>
+      <input id="cerca-sala" type="search" placeholder={T.cercaPlaceholder} autocomplete="off" />
+    </label>
+    <p class="conteggio" id="conteggio" aria-live="polite" data-una={T.trovate(1)} data-molte={T.trovate(999)}></p>
+  </header>
+  {tutteLeSezioni.map((sez) => (
+    <section class="gruppo" id={sez.id} style={stileSezione(sez)} data-gruppo>
+      <div class="gruppo-testa"><h2>{nomeSezione(sez, lang)}</h2><p>{descrizioneSezione(sez, lang)}</p></div>
+      <ol class="griglia-sale">
+        {saleDellaSezione(sez.id).map((s) => <li data-voce data-testo={`${s.numero} ${s.titolo} ${s.titoloEn} ${pianoSala(s, lang)} ${descrizioneSala(s, lang)}`.toLocaleLowerCase(lang)}><CartaSala sala={s} lang={lang} /></li>)}
+      </ol>
+    </section>
+  ))}
+  <p class="vuoto" id="vuoto" hidden>{T.nessunaSala}</p>
+</Layout>
+<script>
+  const c = document.querySelector<HTMLInputElement>('#cerca-sala')!, voci = [...document.querySelectorAll<HTMLElement>('[data-voce]')];
+  const gruppi = [...document.querySelectorAll<HTMLElement>('[data-gruppo]')], cont = document.querySelector<HTMLElement>('#conteggio')!, vuoto = document.querySelector<HTMLElement>('#vuoto')!;
+  c.addEventListener('input', () => {
+    const t = c.value.trim().toLocaleLowerCase(); let n = 0;
+    voci.forEach((v) => { const ok = !t || v.dataset.testo!.includes(t); v.hidden = !ok; if (ok) n++; });
+    gruppi.forEach((g) => (g.hidden = !g.querySelector('[data-voce]:not([hidden])')));
+    cont.textContent = t ? (n === 1 ? cont.dataset.una! : cont.dataset.molte!.replace('999', String(n))) : ''; vuoto.hidden = n > 0;
+  });
+</script>

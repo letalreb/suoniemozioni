@@ -194,10 +194,37 @@ document.getElementById('dimentica').addEventListener('click',()=>{try{localStor
   return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex', 'Referrer-Policy': 'no-referrer' } });
 }
 
+const COOKIE_LINGUA = 'vmg_lingua';
+const leggiCookie = (req, nome) => (req.headers.get('cookie') || '').match(new RegExp('(?:^|;\\s*)' + nome + '=([^;]+)'))?.[1];
+function linguaBrowser(req) {
+  const prima = (req.headers.get('accept-language') || '').split(',')[0].trim().toLowerCase();
+  return !prima || prima.startsWith('it') ? 'it' : 'en';
+}
+const inInglese = (p) => p === '/en' || p.startsWith('/en/');
+const versione = (p, l) => (l === 'en' ? (inInglese(p) ? p : p === '/' ? '/en/' : '/en' + p) : (inInglese(p) ? p.replace(/^\/en(?=\/|$)/, '') || '/' : p));
+const ePagina = (p) => !/\.[a-z0-9]{2,5}$/i.test(p) || p.endsWith('.html');
+
 export default async function middleware(req) {
   const url = new URL(req.url);
   if (url.pathname === '/api/pin' || url.pathname === '/api/pin/') return apiPin(req);
   if (url.pathname === '/admin' || url.pathname === '/admin/') return paginaAdmin();
+  // Lingua: scelta esplicita (?lingua=it|en, dal selettore) oppure lingua del browser al primo accesso
+  const sceltaLingua = url.searchParams.get('lingua');
+  if (sceltaLingua === 'it' || sceltaLingua === 'en') {
+    url.searchParams.delete('lingua');
+    return new Response(null, { status: 302, headers: {
+      Location: versione(url.pathname, sceltaLingua) + url.search,
+      'Set-Cookie': `${COOKIE_LINGUA}=${sceltaLingua}; Path=/; Max-Age=31536000; Secure; SameSite=Lax`,
+      'Cache-Control': 'no-store',
+    } });
+  }
+  if (req.method === 'GET' && ePagina(url.pathname) && url.pathname !== '/accesso') {
+    const cookie = leggiCookie(req, COOKIE_LINGUA);
+    const voluta = cookie === 'it' || cookie === 'en' ? cookie : (linguaBrowser(req) === 'en' ? 'en' : null);
+    if (voluta && versione(url.pathname, voluta) !== url.pathname) {
+      return new Response(null, { status: 302, headers: { Location: versione(url.pathname, voluta) + url.search, 'Cache-Control': 'no-store', Vary: 'Accept-Language, Cookie' } });
+    }
+  }
   if (url.pathname === '/admin/manifest.webmanifest') return new Response(MANIFEST_ADMIN, { headers: { 'Content-Type': 'application/manifest+json', 'Cache-Control': 'no-store' } });
   if (url.pathname === '/video' || url.pathname.startsWith('/video/')) {
     return Response.redirect(new URL('/', url), 301);
@@ -217,7 +244,7 @@ export default async function middleware(req) {
         'Cache-Control': 'no-store',
       } });
     }
-    return pagina(dest, true);
+    return pagina(dest, true, inInglese(dest) ? 'en' : 'it');
   }
   // PIN nell'indirizzo (?PIN=… dai QR code in sala): salva il cookie e ricarica la pagina senza parametro.
   const chiave = [...url.searchParams.keys()].find((k) => k.toLowerCase() === 'pin');
@@ -232,18 +259,19 @@ export default async function middleware(req) {
         'Cache-Control': 'no-store',
       } });
     }
-    return pagina(pulito, true);
+    return pagina(pulito, true, inInglese(url.pathname) ? 'en' : 'it');
   }
   const m = (req.headers.get('cookie') || '').match(/(?:^|;\s*)vmg_pin=(\d{4,8})/);
   if (m && (await pinValido(m[1]))) return next();
-  return pagina(url.pathname + url.search, false);
+  return pagina(url.pathname + url.search, false, inInglese(url.pathname) ? 'en' : 'it');
 }
 
-function pagina(dest, errore) {
+function pagina(dest, errore, lang = 'it') {
+  const EN = lang === 'en';
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-  const html = `<!doctype html><html lang="it"><head><meta charset="utf-8">
+  const html = `<!doctype html><html lang="${EN ? 'en' : 'it'}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex"><title>Accesso | Suoni ed emozioni</title>
+<meta name="robots" content="noindex"><title>${EN ? 'Access' : 'Accesso'} | Suoni ed emozioni</title>
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Hanken+Grotesk:wght@400;600&display=swap">
 <style>
@@ -260,16 +288,18 @@ input{flex:1;min-width:0;height:3.2rem;padding:0 1rem;font-family:inherit;font-w
 button{height:3.2rem;padding:0 1.3rem;font-family:inherit;font-weight:600;font-size:1rem;border:0;border-radius:2px;background:var(--ink);color:var(--carta);cursor:pointer}
 :focus-visible{outline:2px solid #2457C5;outline-offset:3px}
 .err{color:var(--err);margin:.8rem 0 0}
+.lingua{margin-top:2rem;font-size:.95rem}.lingua a{color:var(--tenue)}
 </style></head><body><main>
 <svg width="80" height="80" aria-hidden="true" style="display:block;margin-bottom:1.4rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160"><rect width="160" height="160" rx="30" fill="#22382D"/><g transform="translate(14 8) scale(.825)"><g fill="none" stroke="#F4EFE3" stroke-width="3.4" stroke-linejoin="miter"><path d="M30,150 V64 H130 V150"/><path d="M24,56 H136 M27,64 H133 M24,56 L27,64 M136,56 L133,64"/><rect x="45" y="78" width="18" height="26"/><rect x="97" y="78" width="18" height="26"/><path d="M41,73 H67 M93,73 H119"/><rect x="45" y="116" width="18" height="24"/><rect x="97" y="116" width="18" height="24"/><path d="M71,150 V114 H89 V150 M68,109 H92"/><path d="M16,150 H144"/></g><g fill="#F4EFE3" stroke="none"><rect x="25.5" y="53.5" width="9.0" height="2.5"/><rect x="28.5" y="51.5" width="3.0" height="2.25"/><ellipse cx="30" cy="47.75" rx="4.25" ry="4.0"/><rect x="28.12" y="42.75" width="3.75" height="2.0"/><rect x="26.75" y="41.5" width="6.5" height="1.5"/><circle cx="30" cy="39.879999999999995" r="1.38"/></g><g fill="#F4EFE3" stroke="none"><rect x="125.5" y="53.5" width="9.0" height="2.5"/><rect x="128.5" y="51.5" width="3.0" height="2.25"/><ellipse cx="130" cy="47.75" rx="4.25" ry="4.0"/><rect x="128.12" y="42.75" width="3.75" height="2.0"/><rect x="126.75" y="41.5" width="6.5" height="1.5"/><circle cx="130" cy="39.879999999999995" r="1.38"/></g></g></svg>
 <h1>Suoni ed emozioni</h1>
-<p>Invito all’arte e alla musica a Villa Medici Giulini. Il sito è in anteprima. Scrivi il PIN che ti è stato comunicato per entrare.</p>
+<p>${EN ? 'An invitation to art and music at Villa Medici Giulini. The website is in preview. Enter the PIN you were given to come in.' : 'Invito all’arte e alla musica a Villa Medici Giulini. Il sito è in anteprima. Scrivi il PIN che ti è stato comunicato per entrare.'}</p>
 <form method="post" action="/accesso">
 <label for="pin">PIN</label>
 <div class="riga"><input id="pin" name="pin" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{4,8}" required autofocus ${errore ? 'aria-describedby="err" aria-invalid="true"' : ''}>
-<button type="submit">Entra</button></div>
+<button type="submit">${EN ? 'Enter' : 'Entra'}</button></div>
 <input type="hidden" name="dest" value="${esc(dest)}">
-${errore ? '<p class="err" id="err" role="alert">PIN non corretto. Controlla le cifre e riprova.</p>' : ''}
+${errore ? `<p class="err" id="err" role="alert">${EN ? 'Incorrect PIN. Check the digits and try again.' : 'PIN non corretto. Controlla le cifre e riprova.'}</p>` : ''}
+<p class="lingua"><a href="${esc(EN ? dest.replace(/^\/en(?=\/|$)/, '') || '/' : (dest === '/' ? '/en/' : '/en' + dest))}${(EN ? '?lingua=it' : '?lingua=en')}">${EN ? 'Italiano' : 'English'}</a></p>
 </form></main></body></html>`;
   return new Response(html, { status: 401, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
 }

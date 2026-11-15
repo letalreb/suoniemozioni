@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Galleria from '../components/Galleria.astro';
+import CartaStrumento from '../components/CartaStrumento.astro';
+import Scheda from '../components/Scheda.astro';
+import { NOME, SITO_ASCOLTO, asset, salaPer, sezionePer, stileSezione, strumentoPer, type Sala } from '../lib/museo';
+import { t, percorso, titoloSala, titoloSalaAlt, descrizioneSala, pianoSala, nomeSezione, type Lingua } from '../lib/i18n';
+interface Props { sala: Sala; lang: Lingua }
+const { sala, lang } = Astro.props; const T = t(lang);
+const sez = sezionePer(sala.sezione);
+const strumenti = sala.strumenti.map(strumentoPer).filter((s): s is NonNullable<typeof s> => !!s);
+const prima = salaPer(sala.numero - 1), dopo = salaPer(sala.numero + 1);
+const f = sala.foto, al = sala.allestimento as any;
+const pag = (p: number[]) => (p[0] === p[1] ? `p. ${p[0]}` : `pp. ${p[0]}–${p[1]}`);
+const sezioniAll = al ? (lang === 'en' && al.sezioniEn?.length ? al.sezioniEn : al.sezioni) : [];
+const titoloAll = al ? (lang === 'en' ? al.titoloEn : al.titolo) || T.strumentiArredi : '';
+const piano = pianoSala(sala, lang);
+const mostraPiano = !['cantinone', 'cappella', 'chapel'].includes(piano.toLocaleLowerCase());
+const titolo = titoloSala(sala, lang);
+---
+<Layout lang={lang} title={`${T.sala} ${sala.numero}, ${titolo} | ${NOME}`} description={descrizioneSala(sala, lang)} sezione="sale" trasparente={!!f}>
+  <article class="sala" style={stileSezione(sez)}>
+    <header class:list={['sala-hero', { 'senza-foto': !f }]}>
+      {f && <img src={asset(f.hero)} alt="" width={f.w} height={f.h} fetchpriority="high" />}
+      <div class="sala-hero-testo">
+        <p class="sala-numero" aria-hidden="true">{sala.numero}</p>
+        <div>
+          <h1><span class="sr-only">{T.sala} {sala.numero}: </span>{titolo}</h1>
+          <p class="sala-en" lang={lang === 'it' ? 'en' : 'it'}>{titoloSalaAlt(sala, lang)}</p>
+        </div>
+      </div>
+    </header>
+    <div class="sala-corpo">
+      <p class="sala-dove"><a href={percorso(lang, `/sale/#${sez.id}`)}>{nomeSezione(sez, lang)}</a>{mostraPiano && `, ${lang === 'it' ? piano.toLocaleLowerCase('it') : piano.charAt(0).toLowerCase() + piano.slice(1)}`}</p>
+      <p class="sala-intro">{descrizioneSala(sala, lang)}</p>
+      {f && <p class="didascalia">{T.fotoDalVolume}, {al || sala.schede.length ? `pp. ${f.pagina}–${f.pagina + 1}` : `p. ${f.pagina}`}.</p>}
+      {al && (
+        <section class="sezione-sala allestimento" aria-labelledby="t-all">
+          <h2 id="t-all">{titoloAll}</h2>
+          {al.foto && <img class="allestimento-foto" src={asset(al.foto.src)} alt="" width={al.foto.w} height={al.foto.h} loading="lazy" />}
+          <div class="elenchi">
+            {sezioniAll.map((z: { titolo: string; voci: string[] }) => (
+              <div class="elenco">
+                <h3>{z.titolo}</h3>
+                <ul>
+                  {z.voci.map((v) => {
+                    const m = v.match(/^(N\. ?\d+|[\dA-Z][\w.]*(?: (?:e|and) [\dA-Z][\w.]*)?)\s+(.*)$/);
+                    const ascolto = /^N\. ?(\d+)/.exec(v);
+                    return (
+                      <li>
+                        {m ? <><span class="voce-codice">{m[1]}</span> {m[2]}</> : v}
+                        {ascolto && Number(ascolto[1]) <= 41 && <> <a class="ascolta-mini" href={SITO_ASCOLTO} target="_blank" rel="noopener">{T.ascolta}</a></>}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p class="didascalia">{T.dalVolume}, {pag(al.pagine)}.</p>
+        </section>
+      )}
+      {sala.schede.length > 0 && (
+        <section class="sezione-sala" aria-labelledby="t-sch">
+          <h2 id="t-sch">{T.schede}</h2>
+          <p class="nota">{T.schedeNota}</p>
+          <div class="schede">{sala.schede.map((sc, i) => <Scheda scheda={sc} indice={i + 1} sala={sala.numero} lang={lang} />)}</div>
+        </section>
+      )}
+      {!al && strumenti.length > 0 && (
+        <section class="sezione-sala" aria-labelledby="t-str">
+          <h2 id="t-str">{T.strumentiSala}</h2>
+          <div class="griglia-strumenti">{strumenti.map((s) => <CartaStrumento s={s} mostraSala={false} lang={lang} />)}</div>
+        </section>
+      )}
+      {f && f.galleria.length > 0 && (
+        <section class="sezione-sala" aria-labelledby="t-gal">
+          <h2 id="t-gal">{T.nellaSala}</h2>
+          <Galleria lang={lang} foto={f.galleria} titolo={`${T.sala} ${sala.numero}, ${titolo}`} />
+        </section>
+      )}
+      {!f && <p class="nota">{T.fotoNota}</p>}
+    </div>
+  </article>
+  <nav class="passo" style={stileSezione(sez)} aria-label={T.passo}>
+    {prima ? <a href={percorso(lang, `/sale/${prima.numero}/`)} rel="prev"><span>{T.sala} {prima.numero}</span>{titoloSala(prima, lang)}</a> : <a href={percorso(lang, '/sale/')}><span>{T.inizio}</span>{T.tutteLeSale}</a>}
+    {dopo ? <a href={percorso(lang, `/sale/${dopo.numero}/`)} rel="next" class="avanti"><span>{T.sala} {dopo.numero}</span>{titoloSala(dopo, lang)}</a> : <a href={percorso(lang, '/teatrino/')} class="avanti"><span>{T.fine}</span>{T.teatrino}</a>}
+  </nav>
+</Layout>

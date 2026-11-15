@@ -1,21 +1,22 @@
 ---
-import { TITOLO_LIBRO, asset } from '../lib/museo';
-interface Props { foto: { src: string; thumb: string; w: number; h: number; pagina: number }[]; titolo: string }
-const { foto, titolo } = Astro.props;
+import { asset } from '../lib/museo';
+import { t, type Lingua } from '../lib/i18n';
+interface Props { foto: { src: string; thumb: string; w: number; h: number; pagina: number }[]; titolo: string; lang?: Lingua }
+const { foto, titolo, lang = 'it' } = Astro.props; const T = t(lang);
 ---
 {foto.length > 0 && (
   <div class="galleria" data-galleria>
     {foto.map((f, i) => (
-      <button type="button" class="galleria-voce" data-i={i} data-src={asset(f.src)} data-didascalia={`${titolo}. Dal volume ${TITOLO_LIBRO}, p. ${f.pagina}`}
-        style={`aspect-ratio:${f.w}/${f.h}`} aria-label={`Ingrandisci la fotografia ${i + 1} di ${foto.length}`}>
+      <button type="button" class="galleria-voce" data-i={i} data-src={asset(f.src)} data-didascalia={`${titolo}. ${T.dalVolume}, p. ${f.pagina}`}
+        style={`aspect-ratio:${f.w}/${f.h}`} aria-label={T.ingrandisci(i + 1, foto.length)}>
         <img src={asset(f.thumb)} alt="" loading="lazy" decoding="async" />
       </button>
     ))}
-    <dialog class="lightbox" aria-label="Fotografia ingrandita">
+    <dialog class="lightbox" aria-label={T.ingrandita}>
       <figure><img alt="" /><figcaption></figcaption></figure>
-      <button type="button" class="lb-chiudi" data-chiudi>Chiudi</button>
-      <button type="button" class="lb-prec" data-passo="-1" aria-label="Fotografia precedente">‹</button>
-      <button type="button" class="lb-succ" data-passo="1" aria-label="Fotografia successiva">›</button>
+      <button type="button" class="lb-chiudi" data-chiudi>{T.chiudi}</button>
+      <button type="button" class="lb-prec" data-passo="-1" aria-label={T.fotoPrec}>‹</button>
+      <button type="button" class="lb-succ" data-passo="1" aria-label={T.fotoSucc}>›</button>
     </dialog>
   </div>
 )}

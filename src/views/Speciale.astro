@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Galleria from '../components/Galleria.astro';
+import { NOME, asset, fotoSpeciali } from '../lib/museo';
+import { t, type Lingua } from '../lib/i18n';
+interface Props { lang: Lingua; chiave: 'teatrino' | 'giardino' }
+const { lang, chiave } = Astro.props; const T = t(lang);
+const f = fotoSpeciali[chiave]!;
+const sp = fotoSpeciali as any;
+const testi: string[] = (lang === 'en' ? sp.testiEn?.[chiave] : sp.testi?.[chiave]) ?? [];
+const titolo = chiave === 'teatrino' ? T.teatrino : T.giardino;
+const titoloAlt = chiave === 'teatrino' ? t(lang === 'it' ? 'en' : 'it').teatrino : t(lang === 'it' ? 'en' : 'it').giardino;
+const intro = chiave === 'teatrino' ? T.teatrinoIntro : T.giardinoIntro;
+---
+<Layout lang={lang} title={`${titolo} | ${NOME}`} description={intro} sezione={chiave} trasparente>
+  <article class="sala speciale">
+    <header class="sala-hero">
+      <img src={asset(f.hero)} alt="" width={f.w} height={f.h} fetchpriority="high" />
+      <div class="sala-hero-testo"><div><h1>{titolo}</h1><p class="sala-en" lang={lang === 'it' ? 'en' : 'it'}>{titoloAlt}</p></div></div>
+    </header>
+    <div class="sala-corpo">
+      <p class="sala-intro">{intro}</p>
+      <div class="testo-lungo">{testi.map((x) => <p>{x}</p>)}</div>
+      <p class="didascalia">{T.testoFotoVolume}</p>
+      <section class="sezione-sala" aria-labelledby="t-gal"><h2 id="t-gal">{T.fotografie}</h2><Galleria lang={lang} foto={f.galleria} titolo={titolo} /></section>
+    </div>
+  </article>
+</Layout>

@@ -1,20 +1,23 @@
 ---
 import Galleria from './Galleria.astro';
 import { type Scheda } from '../lib/museo';
-interface Props { scheda: Scheda; indice: number; sala: number }
-const { scheda: s, indice, sala } = Astro.props;
+import { t, testiScheda, type Lingua } from '../lib/i18n';
+interface Props { scheda: Scheda; indice: number; sala: number; lang?: Lingua }
+const { scheda: s, indice, sala, lang = 'it' } = Astro.props;
+const T = t(lang); const x = testiScheda(s, lang);
 const pp = s.pagine[0] === s.pagine[1] ? `p. ${s.pagine[0]}` : `pp. ${s.pagine[0]}–${s.pagine[1]}`;
-const titolo = s.titolo || 'Scheda';
+const titolo = x.titolo || T.scheda;
 ---
 <details class="scheda" id={`scheda-${indice}`}>
   <summary>
     {s.codice && <span class="scheda-codice">{s.codice}</span>}
     <span class="scheda-titolo">{titolo}</span>
-    {s.dettagli && <span class="scheda-dettagli">{s.dettagli}</span>}
+    {x.dettagli && <span class="scheda-dettagli">{x.dettagli}</span>}
   </summary>
   <div class="scheda-corpo">
-    {s.immagini.length > 0 && <Galleria foto={s.immagini.map((i) => ({ src: i.src, thumb: i.src, w: i.w, h: i.h, pagina: i.pagina }))} titolo={`Sala ${sala}, ${titolo}`} />}
-    <div class="scheda-testo">{s.testo.map((p) => <p>{p}</p>)}</div>
-    <p class="didascalia">Dal volume Suoni ed emozioni, {pp}.</p>
+    {s.immagini.length > 0 && <Galleria lang={lang} foto={s.immagini.map((i) => ({ src: i.src, thumb: i.src, w: i.w, h: i.h, pagina: i.pagina }))} titolo={`${T.sala} ${sala}, ${titolo}`} />}
+    {x.soloItaliano && <p class="nota">{T.testoNonTradotto}</p>}
+    <div class="scheda-testo" lang={x.soloItaliano ? 'it' : lang}>{x.testo.map((p) => <p>{p}</p>)}</div>
+    <p class="didascalia">{T.dalVolume}, {pp}.</p>
   </div>
 </details>

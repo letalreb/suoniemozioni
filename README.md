@@ -13,6 +13,10 @@ Sito di Villa Medici Giulini (Briosco) costruito sul volume *Suoni ed emozioni*:
 
 Il menu «Ascolta gli strumenti» porta a https://www.allaricercadeisuoniperduti.com.
 
+## Lingue
+
+Il sito è in italiano (alla radice) e in inglese (sotto `/en/`), generati dalle stesse viste in `src/views/` con i testi di `src/lib/i18n.ts`. Al primo accesso, per esempio dal QR code, `middleware.js` legge la lingua del browser: se non è l’italiano porta alla versione inglese. Il pulsante English/Italiano nella testata salva la scelta per un anno (cookie `vmg_lingua`). La pagina `/admin` resta solo in italiano.
+
 ## Contenuti
 
 In `src/data/`: `sale.json` (sale, foto, strumenti e arredi, schede), `sezioni.json` (i cinque edifici), `strumenti.json`, `speciali.json` (Teatrino e giardino). Le immagini sono in `public/img/<numero sala>/`.

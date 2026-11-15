@@ -1,16 +1,17 @@
 ---
-import { SITO_ASCOLTO, asset, linkSala, salaPer, type Strumento } from '../lib/museo';
-interface Props { s: Strumento; mostraSala?: boolean }
-const { s, mostraSala = true } = Astro.props;
-const sala = salaPer(s.sala);
+import { SITO_ASCOLTO, asset, salaPer, type Strumento } from '../lib/museo';
+import { t, percorso, titoloSala, nomeStrumento, type Lingua } from '../lib/i18n';
+interface Props { s: Strumento; mostraSala?: boolean; lang?: Lingua }
+const { s, mostraSala = true, lang = 'it' } = Astro.props;
+const sala = salaPer(s.sala); const T = t(lang);
 ---
-<article class="strumento" data-strumento data-ascolto={s.ascolto ? '1' : ''} data-testo={`${s.numero} ${s.nome}`.toLocaleLowerCase('it')}>
+<article class="strumento">
   <div class="strumento-foto">
     {s.foto ? <img src={asset(s.foto)} alt="" loading="lazy" decoding="async" /> : <span class="strumento-n" aria-hidden="true">{s.numero}</span>}
   </div>
   <div class="strumento-testo">
-    <h3><span class="strumento-cat">N. {s.numero}</span> {s.nome}</h3>
-    {mostraSala && sala && <p>Nella <a href={linkSala(sala.numero)}>sala {sala.numero}, {sala.titolo}</a></p>}
-    {s.ascolto && <a class="ascolta" href={SITO_ASCOLTO} target="_blank" rel="noopener">Ascolta lo strumento</a>}
+    <h3><span class="strumento-cat">N. {s.numero}</span> {nomeStrumento(s.nome, lang)}</h3>
+    {mostraSala && sala && <p><a href={percorso(lang, `/sale/${sala.numero}/`)}>{T.sala} {sala.numero}, {titoloSala(sala, lang)}</a></p>}
+    {s.ascolto && <a class="ascolta" href={SITO_ASCOLTO} target="_blank" rel="noopener">{T.ascoltaStrumento}</a>}
   </div>
 </article>

@@ -1,13 +1,14 @@
 ---
-import { asset, linkSala, sezionePer, stileSezione, type Sala } from '../lib/museo';
-interface Props { sala: Sala; carica?: 'lazy' | 'eager' }
-const { sala, carica = 'lazy' } = Astro.props;
-const sez = sezionePer(sala.sezione);
+import { asset, sezionePer, stileSezione, type Sala } from '../lib/museo';
+import { t, percorso, titoloSala, type Lingua } from '../lib/i18n';
+interface Props { sala: Sala; carica?: 'lazy' | 'eager'; lang?: Lingua }
+const { sala, carica = 'lazy', lang = 'it' } = Astro.props;
+const sez = sezionePer(sala.sezione); const T = t(lang);
 ---
-<a class="carta" href={linkSala(sala.numero)} style={stileSezione(sez)} data-carta>
+<a class="carta" href={percorso(lang, `/sale/${sala.numero}/`)} style={stileSezione(sez)} data-carta>
   {sala.foto || sala.copertina
     ? <img src={asset(sala.foto ? sala.foto.heroSmall : sala.copertina!.src)} alt="" loading={carica} decoding="async" />
-    : <span class="carta-vuota" aria-hidden="true"><span>Fotografie in arrivo</span></span>}
+    : <span class="carta-vuota" aria-hidden="true"><span>{T.fotoInArrivo}</span></span>}
   <span class="carta-num" aria-hidden="true">{sala.numero}</span>
-  <span class="carta-tit"><span class="sr-only">Sala {sala.numero}: </span>{sala.titolo}</span>
+  <span class="carta-tit"><span class="sr-only">{T.sala} {sala.numero}: </span>{titoloSala(sala, lang)}</span>
 </a>
