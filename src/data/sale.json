@@ -663,7 +663,14 @@
     "titolo": "Piatti da parata “Arcadia sonora”",
     "dettagli": "",
     "testo": [],
-    "immagini": [],
+    "immagini": [
+     {
+      "src": "/img/3/s7-1.webp",
+      "w": 1364,
+      "h": 853,
+      "pagina": 354
+     }
+    ],
     "pagine": [
      354,
      355
@@ -782,7 +789,14 @@
     "titolo": "L’armonia di una tavola",
     "dettagli": "",
     "testo": [],
-    "immagini": [],
+    "immagini": [
+     {
+      "src": "/img/4/s1-1.webp",
+      "w": 1363,
+      "h": 853,
+      "pagina": 364
+     }
+    ],
     "pagine": [
      364,
      365
@@ -1254,7 +1268,14 @@
     "titolo": "Una tavola lombarda",
     "dettagli": "",
     "testo": [],
-    "immagini": [],
+    "immagini": [
+     {
+      "src": "/img/8/s2-1.webp",
+      "w": 1363,
+      "h": 853,
+      "pagina": 400
+     }
+    ],
     "pagine": [
      400,
      401
