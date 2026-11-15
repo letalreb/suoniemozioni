@@ -38,7 +38,7 @@ p { margin: 0; }
 .testata { position: relative; z-index: 10; display: flex; align-items: center; flex-wrap: wrap; gap: .8rem 2rem; padding: 1.1rem var(--margine); border-bottom: 1px solid var(--filo); }
 .con-hero .testata { position: absolute; inset: 0 0 auto; padding-top: calc(env(safe-area-inset-top, 0px) + 1.1rem); color: var(--bianco); border-color: rgb(255 255 255 / .22); background: linear-gradient(rgb(10 14 12 / .55), rgb(10 14 12 / 0)); }
 .marchio { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--display); font-size: 1.45rem; font-style: italic; text-decoration: none; margin-right: auto; font-weight: 400; }
-.marchio-segno { width: 2.6rem; height: 2.6rem; flex: none; }
+.marchio-segno { width: 2.7rem; height: 2.7rem; flex: none; margin-top: -.25rem; }
 
 .testata nav { display: flex; flex-wrap: wrap; gap: .3rem 1.4rem; font-size: .98rem; }
 .testata nav a { text-decoration: none; padding: .2rem 0; border-bottom: 1px solid transparent; opacity: .85; }
