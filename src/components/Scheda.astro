@@ -1,0 +1,20 @@
+---
+import Galleria from './Galleria.astro';
+import { type Scheda } from '../lib/museo';
+interface Props { scheda: Scheda; indice: number; sala: number }
+const { scheda: s, indice, sala } = Astro.props;
+const pp = s.pagine[0] === s.pagine[1] ? `p. ${s.pagine[0]}` : `pp. ${s.pagine[0]}–${s.pagine[1]}`;
+const titolo = s.titolo || 'Scheda';
+---
+<details class="scheda" id={`scheda-${indice}`}>
+  <summary>
+    {s.codice && <span class="scheda-codice">{s.codice}</span>}
+    <span class="scheda-titolo">{titolo}</span>
+    {s.dettagli && <span class="scheda-dettagli">{s.dettagli}</span>}
+  </summary>
+  <div class="scheda-corpo">
+    {s.immagini.length > 0 && <Galleria foto={s.immagini.map((i) => ({ src: i.src, thumb: i.src, w: i.w, h: i.h, pagina: i.pagina }))} titolo={`Sala ${sala}, ${titolo}`} />}
+    <div class="scheda-testo">{s.testo.map((p) => <p>{p}</p>)}</div>
+    <p class="didascalia">Dal volume Suoni ed emozioni, {pp}.</p>
+  </div>
+</details>

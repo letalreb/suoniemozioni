@@ -7,7 +7,10 @@ import speciali from '../data/speciali.json';
 export type Sezione = (typeof sezioni)[number];
 export type Foto = { hero: string; heroSmall: string; w: number; h: number; pagina: number; galleria: { src: string; thumb: string; w: number; h: number; pagina: number }[] };
 export type Copertina = { src: string; w: number; h: number; pagina: number; didascalia: string };
-export type Sala = Omit<(typeof sale)[number], 'foto' | 'copertina'> & { foto: Foto | null; copertina: Copertina | null };
+export type Immagine = { src: string; w: number; h: number; pagina: number };
+export type Scheda = { codice: string | null; titolo: string; dettagli: string; testo: string[]; immagini: Immagine[]; pagine: number[] };
+export type Allestimento = { titolo: string; foto: { src: string; w: number; h: number } | null; sezioni: { titolo: string; voci: string[] }[]; pagine: number[] };
+export type Sala = Omit<(typeof sale)[number], 'foto' | 'copertina' | 'allestimento' | 'schede'> & { foto: Foto | null; copertina: Copertina | null; allestimento: Allestimento | null; schede: Scheda[] };
 export type Strumento = (typeof strumenti)[number];
 export type Video = (typeof videos)[number] & { sala?: number };
 

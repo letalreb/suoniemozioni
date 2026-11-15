@@ -2,8 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import Galleria from '../../components/Galleria.astro';
 import CartaStrumento from '../../components/CartaStrumento.astro';
+import Scheda from '../../components/Scheda.astro';
 import VideoCard from '../../components/VideoCard.astro';
-import { NOME, TITOLO_LIBRO, asset, linkSala, salaPer, sezionePer, stileSezione, strumentoPer, tutteLeSale, url, videoDellaSala, type Sala } from '../../lib/museo';
+import { NOME, TITOLO_LIBRO, SITO_ASCOLTO, asset, linkSala, salaPer, sezionePer, stileSezione, strumentoPer, tutteLeSale, url, videoDellaSala, type Sala } from '../../lib/museo';
 export function getStaticPaths() { return tutteLeSale.map((sala) => ({ params: { numero: String(sala.numero) }, props: { sala } })); }
 const { sala } = Astro.props as { sala: Sala };
 const sez = sezionePer(sala.sezione);
@@ -11,6 +12,8 @@ const strumenti = sala.strumenti.map(strumentoPer).filter((s): s is NonNullable<
 const video = videoDellaSala(sala.numero);
 const prima = salaPer(sala.numero - 1), dopo = salaPer(sala.numero + 1);
 const f = sala.foto;
+const al = sala.allestimento;
+const pag = (p: number[]) => (p[0] === p[1] ? `p. ${p[0]}` : `pp. ${p[0]}–${p[1]}`);
 ---
 <Layout title={`Sala ${sala.numero}, ${sala.titolo} | ${NOME}`} description={sala.descrizione} sezione="sale" trasparente={!!f}>
   <article class="sala" style={stileSezione(sez)}>
@@ -27,9 +30,42 @@ const f = sala.foto;
     <div class="sala-corpo">
       <p class="sala-dove"><a href={url(`/sale/#${sez.id}`)}>{sez.nome}</a>{!['cantinone','cappella'].includes(sala.piano.toLocaleLowerCase('it')) && `, ${sala.piano.toLocaleLowerCase('it')}`}</p>
       <p class="sala-intro">{sala.descrizione}</p>
-      {f && <p class="didascalia">Fotografia dal volume {TITOLO_LIBRO}, p. {f.pagina}.</p>}
+      {f && <p class="didascalia">Fotografia dal volume {TITOLO_LIBRO}, {sala.allestimento || sala.schede.length ? `pp. ${f.pagina}–${f.pagina + 1}` : `p. ${f.pagina}`}.</p>}
 
-      {strumenti.length > 0 && (
+      {al && (
+        <section class="sezione-sala allestimento" aria-labelledby="t-all">
+          <h2 id="t-all">{al.titolo || 'Strumenti e arredi'}</h2>
+          {al.foto && <img class="allestimento-foto" src={asset(al.foto.src)} alt="" width={al.foto.w} height={al.foto.h} loading="lazy" />}
+          <div class="elenchi">
+            {al.sezioni.map((z) => (
+              <div class="elenco">
+                <h3>{z.titolo}</h3>
+                <ul>
+                  {z.voci.map((v) => {
+                    const m = v.match(/^(N\. ?\d+|[\dA-Z][\w.]*(?: e [\dA-Z][\w.]*)?)\s+(.*)$/);
+                    const ascolto = /^N\. ?(\d+)/.exec(v);
+                    return (
+                      <li>
+                        {m ? <><span class="voce-codice">{m[1]}</span> {m[2]}</> : v}
+                        {ascolto && Number(ascolto[1]) <= 41 && <> <a class="ascolta-mini" href={SITO_ASCOLTO} target="_blank" rel="noopener">Ascolta</a></>}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p class="didascalia">Dal volume {TITOLO_LIBRO}, {pag(al.pagine)}.</p>
+        </section>
+      )}
+      {sala.schede.length > 0 && (
+        <section class="sezione-sala" aria-labelledby="t-sch">
+          <h2 id="t-sch">Le schede delle opere</h2>
+          <p class="nota">Tocca un titolo per leggere la scheda del catalogo con le fotografie.</p>
+          <div class="schede">{sala.schede.map((sc, i) => <Scheda scheda={sc} indice={i + 1} sala={sala.numero} />)}</div>
+        </section>
+      )}
+      {!al && strumenti.length > 0 && (
         <section class="sezione-sala" aria-labelledby="t-str">
           <h2 id="t-str">Gli strumenti della sala</h2>
           <div class="griglia-strumenti">{strumenti.map((s) => <CartaStrumento s={s} mostraSala={false} />)}</div>

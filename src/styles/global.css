@@ -238,3 +238,28 @@ main:has(.passo) + .piede { margin-top: 0; }
   .sala-numero { font-size: 7rem; }
   .passo a:first-child { padding-right: calc(100vw - var(--seg2) + 1rem); }
 }
+
+/* Strumenti e arredi, schede del catalogo */
+.allestimento-foto { width: 100%; height: auto; margin-bottom: 1.6rem; }
+.elenchi { display: grid; gap: 1.6rem 2.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+.elenco h3 { font: 400 1.25rem/1.2 var(--display); margin-bottom: .6rem; }
+.elenco ul { list-style: none; margin: 0; padding: 0; }
+.elenco li { padding: .55rem 0; border-top: 1px solid var(--filo); font-size: .95rem; line-height: 1.5; }
+.voce-codice { font-family: var(--display); font-weight: 600; color: var(--oro); margin-right: .2rem; }
+.ascolta-mini { font-weight: 600; font-size: .9rem; white-space: nowrap; }
+.allestimento .didascalia { margin-top: 1rem; }
+.schede { border-top: 1px solid var(--filo); }
+.scheda { border-bottom: 1px solid var(--filo); }
+.scheda summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: auto 1fr auto; gap: .2rem 1rem; align-items: baseline; padding: 1.1rem 0; }
+.scheda summary::-webkit-details-marker { display: none; }
+.scheda summary::after { content: '+'; grid-column: 3; grid-row: 1; font: 300 1.6rem/1 var(--display); color: var(--tenue); }
+.scheda[open] summary::after { content: '–'; }
+.scheda-codice { grid-column: 1; font: 600 .95rem var(--display); color: var(--oro); min-width: 3.2rem; }
+.scheda-titolo { grid-column: 2; font: 400 1.25rem/1.25 var(--display); }
+.scheda-dettagli { grid-column: 2; color: var(--tenue); font-size: .92rem; }
+.scheda summary:hover .scheda-titolo { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.scheda-corpo { padding: .4rem 0 2rem; }
+.scheda-corpo .galleria { margin-bottom: 1.4rem; }
+.scheda-testo { max-width: 66ch; line-height: 1.72; }
+.scheda-testo p + p { margin-top: .9em; }
+.scheda-corpo .didascalia { margin-top: 1rem; }
