@@ -79,9 +79,83 @@ async function apiPin(req) {
   return json(200, { ok: true, pin, messaggio: `Nuovo PIN attivo: ${pin}. Chi era già entrato dovrà inserirlo di nuovo.` });
 }
 
+
+// Pagina riservata per cambiare il PIN dal telefono (Android, iPhone, computer).
+// La chiave arriva nel link dopo il # (il server non la vede mai) e resta salvata sul dispositivo.
+const MANIFEST_ADMIN = JSON.stringify({
+  name: 'Cambia PIN, Suoni ed emozioni', short_name: 'PIN sito', display: 'standalone',
+  background_color: '#EDEFEA', theme_color: '#22382D',
+  icons: [{ src: '/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: '/icon-512.png', sizes: '512x512', type: 'image/png' }],
+});
+function paginaAdmin() {
+  const html = `<!doctype html><html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex"><title>Cambia PIN | Suoni ed emozioni</title>
+<link rel="manifest" href="/admin/manifest.webmanifest"><meta name="theme-color" content="#22382D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Hanken+Grotesk:wght@400;600&display=swap">
+<style>
+:root{--carta:#EDEFEA;--ink:#1D2420;--tenue:#56605A;--filo:#C6CEC4;--ok:#22603A;--err:#9B2C2C;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--carta:#141814;--ink:#E8ECE4;--tenue:#A3ACA4;--filo:#323A32;--ok:#8FD3A6;--err:#F0A3A3;color-scheme:dark}}
+*{box-sizing:border-box}html,body{min-height:100%}
+body{margin:0;display:grid;place-items:center;background:var(--carta);color:var(--ink);font:400 1.05rem/1.55 'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;padding:calc(env(safe-area-inset-top,0px) + 1.5rem) 1.2rem calc(env(safe-area-inset-bottom,0px) + 1.5rem)}
+main{width:min(24rem,100%)}
+h1{font:italic 400 clamp(2rem,8vw,2.6rem)/1.05 'Bodoni Moda','Bodoni 72',Didot,serif;margin:0 0 .5rem}
+p{margin:0 0 1.2rem;color:var(--tenue)}
+label{display:block;font-weight:600;margin:1rem 0 .4rem}
+input{width:100%;height:3.4rem;padding:0 1rem;font-family:inherit;font-weight:600;font-size:1.5rem;letter-spacing:.25em;color:inherit;background:transparent;border:1px solid var(--ink);border-radius:2px}
+#chiave{font-size:1rem;letter-spacing:0}
+button{width:100%;height:3.4rem;margin-top:1rem;font-family:inherit;font-weight:600;font-size:1.05rem;border:0;border-radius:2px;background:var(--ink);color:var(--carta);cursor:pointer}
+button[disabled]{opacity:.6}
+.esito{margin-top:1rem;font-weight:600;min-height:1.6em}.ok{color:var(--ok)}.err{color:var(--err)}
+.attuale{font-size:.95rem}.attuale strong{color:var(--ink);letter-spacing:.15em}
+.piccolo{margin-top:2rem;font-size:.9rem}.piccolo a{color:var(--tenue)}
+:focus-visible{outline:2px solid #2457C5;outline-offset:3px}
+</style></head><body><main>
+<h1>Cambia il PIN</h1>
+<p class="attuale" id="attuale">Scrivi il nuovo PIN da 4 a 8 cifre.</p>
+<form id="f" novalidate>
+<div id="blocco-chiave" hidden><label for="chiave">Chiave di accesso</label><input id="chiave" autocomplete="current-password" type="password"></div>
+<label for="pin">Nuovo PIN</label>
+<input id="pin" name="pin" inputmode="numeric" pattern="[0-9]{4,8}" maxlength="8" autocomplete="off" required>
+<button type="submit" id="invia">Cambia PIN</button>
+<p class="esito" id="esito" role="status" aria-live="polite"></p>
+</form>
+<p class="piccolo"><a href="/admin" id="dimentica">Togli la chiave da questo dispositivo</a></p>
+</main><script>
+const K='vmg_admin_key';
+const dalLink=new URLSearchParams(location.hash.slice(1)).get('k');
+if(dalLink){try{localStorage.setItem(K,dalLink)}catch(e){}}
+const chiave=()=>dalLink||(()=>{try{return localStorage.getItem(K)}catch(e){return null}})()||document.getElementById('chiave').value.trim();
+if(!chiave()) document.getElementById('blocco-chiave').hidden=false;
+const esito=document.getElementById('esito');
+function mostra(t,ok){esito.textContent=t;esito.className='esito '+(ok?'ok':'err')}
+async function leggi(){const k=chiave();if(!k)return;
+  try{const r=await fetch('/api/pin',{headers:{Authorization:'Bearer '+k},cache:'no-store'});const d=await r.json();
+    if(r.ok&&d.pin)document.getElementById('attuale').innerHTML='PIN attuale: <strong>'+d.pin+'</strong>';
+    else if(r.status===401){document.getElementById('blocco-chiave').hidden=false;mostra('La chiave salvata non è valida. Inseriscila di nuovo.',false)}
+    else if(!r.ok)mostra(d.messaggio||'Errore '+r.status,false)}catch(e){}}
+leggi();
+document.getElementById('f').addEventListener('submit',async e=>{e.preventDefault();
+  const pin=document.getElementById('pin').value.trim();const k=chiave();
+  if(!k){document.getElementById('blocco-chiave').hidden=false;mostra('Inserisci la chiave di accesso.',false);return}
+  if(!/^[0-9]{4,8}$/.test(pin)){mostra('Il PIN deve avere da 4 a 8 cifre.',false);return}
+  const b=document.getElementById('invia');b.disabled=true;mostra('Salvataggio…',true);
+  try{const r=await fetch('/api/pin',{method:'POST',headers:{Authorization:'Bearer '+k,'Content-Type':'application/json'},body:JSON.stringify({pin})});
+    const d=await r.json();mostra(d.messaggio||('Errore '+r.status),r.ok);
+    if(r.ok){try{if(!dalLink)localStorage.setItem(K,k)}catch(e){}document.getElementById('pin').value='';document.getElementById('attuale').innerHTML='PIN attuale: <strong>'+d.pin+'</strong>'}
+    else if(r.status===401)document.getElementById('blocco-chiave').hidden=false}
+  catch(err){mostra('Connessione non riuscita. Riprova.',false)}finally{b.disabled=false}});
+document.getElementById('dimentica').addEventListener('click',()=>{try{localStorage.removeItem(K)}catch(e){}});
+</script></body></html>`;
+  return new Response(html, { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex', 'Referrer-Policy': 'no-referrer' } });
+}
+
 export default async function middleware(req) {
   const url = new URL(req.url);
   if (url.pathname === '/api/pin' || url.pathname === '/api/pin/') return apiPin(req);
+  if (url.pathname === '/admin' || url.pathname === '/admin/') return paginaAdmin();
+  if (url.pathname === '/admin/manifest.webmanifest') return new Response(MANIFEST_ADMIN, { headers: { 'Content-Type': 'application/manifest+json', 'Cache-Control': 'no-store' } });
   if (url.pathname === '/video' || url.pathname.startsWith('/video/')) {
     return Response.redirect(new URL('/', url), 301);
   }
@@ -139,8 +213,8 @@ h1{font:italic 400 clamp(2.4rem,9vw,3.4rem)/1 'Bodoni Moda','Bodoni 72',Didot,se
 p{color:var(--tenue);margin:0 0 1.6rem}
 label{display:block;font-weight:600;margin-bottom:.4rem}
 .riga{display:flex;gap:.5rem}
-input{flex:1;min-width:0;height:3.2rem;padding:0 1rem;font:600 1.4rem/1 inherit;letter-spacing:.3em;color:inherit;background:transparent;border:1px solid var(--ink);border-radius:2px}
-button{height:3.2rem;padding:0 1.3rem;font:600 1rem inherit;border:0;border-radius:2px;background:var(--ink);color:var(--carta);cursor:pointer}
+input{flex:1;min-width:0;height:3.2rem;padding:0 1rem;font-family:inherit;font-weight:600;font-size:1.4rem;letter-spacing:.3em;color:inherit;background:transparent;border:1px solid var(--ink);border-radius:2px}
+button{height:3.2rem;padding:0 1.3rem;font-family:inherit;font-weight:600;font-size:1rem;border:0;border-radius:2px;background:var(--ink);color:var(--carta);cursor:pointer}
 :focus-visible{outline:2px solid #2457C5;outline-offset:3px}
 .err{color:var(--err);margin:.8rem 0 0}
 </style></head><body><main>
