@@ -8,8 +8,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@vercel/edge-config": "^1.5.1",
     "@vercel/functions": "^3.11.3",
+    "@vercel/global-config": "1.5.1",
     "astro": "^5.0.0"
   }
 }

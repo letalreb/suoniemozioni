@@ -1,10 +1,10 @@
 // Accesso con PIN, eseguito da Vercel prima di servire qualsiasi file del sito.
 // Dove sta il PIN, in ordine di priorità:
-//   1. Edge Config di Vercel, voce "pin": si cambia al volo dal comando rapido dell'iPhone (POST /api/pin)
+//   1. Global Config di Vercel (ex Edge Config), voce "pin": si cambia al volo da /admin o dal comando rapido (POST /api/pin)
 //   2. variabile d'ambiente SITE_PIN
 //   3. il PIN predefinito, di cui qui c'è solo l'impronta
 import { next } from '@vercel/functions';
-import { get } from '@vercel/edge-config';
+import { createClient } from '@vercel/global-config';
 
 export const config = { matcher: ['/((?!favicon\\.svg|favicon\\.ico|apple-touch-icon\\.png|icon-192\\.png|icon-512\\.png|og\\.png|site\\.webmanifest).*)'] };
 
@@ -14,10 +14,15 @@ const COOKIE = 'vmg_pin';
 const enc = new TextEncoder();
 const verificati = new Set();
 
+// Vercel crea GLOBAL_CONFIG quando colleghi lo store al progetto (EDGE_CONFIG per gli store creati prima del cambio di nome).
+const CONNESSIONE = () => process.env.GLOBAL_CONFIG || process.env.EDGE_CONFIG || '';
+const ID_STORE = () => process.env.GLOBAL_CONFIG_ID || process.env.EDGE_CONFIG_ID || '';
+let client = null;
 async function pinCorrente() {
-  if (!process.env.EDGE_CONFIG) return null;
+  if (!CONNESSIONE()) return null;
   try {
-    const v = await get('pin');
+    client = client || createClient(CONNESSIONE());
+    const v = await client.get('pin');
     return typeof v === 'string' && /^\d{4,8}$/.test(v) ? v : null;
   } catch {
     return null;
@@ -54,12 +59,11 @@ async function apiPin(req) {
   const data = pulisci((req.headers.get('authorization') || '').replace(/^Bearer\s+/i, ''));
   if (!chiave) return json(503, { ok: false, messaggio: 'Su Vercel manca la variabile PIN_ADMIN_KEY nell’ambiente Production, oppure non è stato rifatto il deploy dopo averla aggiunta.' });
   if (!uguali(data, chiave)) return json(401, { ok: false, messaggio: 'Chiave non valida: quella del link non coincide con PIN_ADMIN_KEY su Vercel.' });
-  if (!process.env.EDGE_CONFIG || !process.env.EDGE_CONFIG_ID || !process.env.VERCEL_API_TOKEN) {
-    return json(503, { ok: false, messaggio: 'Edge Config non ancora configurato su Vercel.' });
-  }
+  const mancano = [!CONNESSIONE() && 'lo store Global Config collegato al progetto (variabile GLOBAL_CONFIG)', !ID_STORE() && 'la variabile EDGE_CONFIG_ID', !process.env.VERCEL_API_TOKEN && 'la variabile VERCEL_API_TOKEN'].filter(Boolean);
+  if (mancano.length) return json(503, { ok: false, messaggio: 'Su Vercel manca ancora: ' + mancano.join('; ') + '. Dopo averle aggiunte rifai il deploy.' });
   if (req.method === 'GET') {
     const p = await pinCorrente();
-    return json(200, { ok: true, pin: p, messaggio: p ? `Il PIN attuale è ${p}.` : 'Nessun PIN impostato in Edge Config.' });
+    return json(200, { ok: true, pin: p, messaggio: p ? `Il PIN attuale è ${p}.` : 'Nello store non c’è ancora la voce «pin»: generane uno con il pulsante qui sotto.' });
   }
   if (req.method !== 'POST') return json(405, { ok: false, messaggio: 'Usa GET o POST.' });
   let pin = '';
@@ -73,12 +77,17 @@ async function apiPin(req) {
   pin = pin.trim();
   if (!/^\d{4,8}$/.test(pin)) return json(400, { ok: false, messaggio: 'Il PIN deve avere da 4 a 8 cifre.' });
   const team = process.env.VERCEL_TEAM_ID ? `?teamId=${encodeURIComponent(process.env.VERCEL_TEAM_ID)}` : '';
-  const r = await fetch(`https://api.vercel.com/v1/edge-config/${process.env.EDGE_CONFIG_ID}/items${team}`, {
+  const r = await fetch(`https://api.vercel.com/v1/edge-config/${ID_STORE()}/items${team}`, {
     method: 'PATCH',
     headers: { Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ items: [{ operation: 'upsert', key: 'pin', value: pin }] }),
   });
-  if (!r.ok) return json(502, { ok: false, messaggio: `Vercel ha rifiutato la modifica (${r.status}).` });
+  if (!r.ok) {
+    let dettaglio = '';
+    try { const e = await r.json(); dettaglio = e?.error?.message || e?.error?.code || ''; } catch {}
+    const motivo = r.status === 403 || r.status === 401 ? 'controlla VERCEL_API_TOKEN e, se il progetto è in un team, VERCEL_TEAM_ID' : r.status === 404 ? 'controlla EDGE_CONFIG_ID' : 'riprova tra poco';
+    return json(502, { ok: false, messaggio: `Vercel ha rifiutato la modifica (${r.status}${dettaglio ? ': ' + dettaglio : ''}): ${motivo}.` });
+  }
   return json(200, { ok: true, pin, messaggio: `Nuovo PIN attivo: ${pin}. Chi era già entrato dovrà inserirlo di nuovo.` });
 }
 
