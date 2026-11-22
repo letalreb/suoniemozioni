@@ -53,7 +53,7 @@ button.sec,.btn.sec{background:transparent;color:var(--ink)}
 <h2>Accedi</h2>
 <p>Entra con il tuo account Google. Possono accedere solo gli indirizzi autorizzati.</p>
 <div id="bottone-google"></div>
-<div class="avviso" id="no-google" hidden>L’accesso con Google non è ancora configurato su Vercel: mancano le variabili <code>GOOGLE_CLIENT_ID</code> e <code>ADMIN_EMAILS</code>.</div>
+<div class="avviso" id="no-google" hidden>L’accesso con Google non è ancora configurato su Vercel: manca la variabile <code>GOOGLE_CLIENT_ID</code>.</div>
 <p class="esito err" id="e-login" role="alert"></p>
 </section>
 

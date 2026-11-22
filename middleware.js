@@ -1,6 +1,6 @@
 // Accesso al sito, eseguito da Vercel prima di servire qualsiasi file.
 // - Si entra solo con il PIN; ogni tentativo viene registrato (30 giorni) nell'archivio Redis, se collegato.
-// - L'amministrazione (/admin, solo in italiano) si apre con un account Google autorizzato (ADMIN_EMAILS).
+// - L'amministrazione (/admin, solo in italiano) si apre con un account Google autorizzato (elenco in accesso/google.js o variabile ADMIN_EMAILS).
 // - Lingua: italiano alla radice, inglese sotto /en, scelta dal browser al primo accesso.
 // Il PIN sta, in ordine: nell'archivio Redis, in Global Config (ex Edge Config), nella variabile SITE_PIN, o è quello predefinito (qui solo la sua impronta).
 import { next } from '@vercel/functions';
@@ -121,7 +121,7 @@ const cookieAdmin = (v, maxAge) => `${COOKIE_ADMIN}=${v}; Path=/; Max-Age=${maxA
 async function apiAdmin(req, url) {
   if (url.pathname === '/api/admin/login' && req.method === 'POST') {
     const clientId = process.env.GOOGLE_CLIENT_ID;
-    if (!clientId || !emailAmmesse().length) return json(503, { ok: false, messaggio: 'Su Vercel mancano GOOGLE_CLIENT_ID o ADMIN_EMAILS: aggiungile e rifai il deploy.' });
+    if (!clientId) return json(503, { ok: false, messaggio: 'Su Vercel manca GOOGLE_CLIENT_ID: aggiungila e rifai il deploy.' });
     if (!process.env.PIN_ADMIN_KEY && !process.env.ADMIN_SECRET) return json(503, { ok: false, messaggio: 'Su Vercel manca PIN_ADMIN_KEY, che serve a firmare la sessione di amministrazione.' });
     let d = {}; try { d = await req.json(); } catch { /* vuoto */ }
     let utente = null; try { utente = await verificaTokenGoogle(d.credential, clientId); } catch { /* certificati non raggiungibili */ }

@@ -25,11 +25,11 @@ In `src/data/`: `sale.json` (sale, foto, strumenti e arredi, schede), `sezioni.j
 
 `middleware.js` (con i moduli in `accesso/`) protegge tutto il sito: si entra solo con il PIN, valido 30 giorni sul dispositivo. Cambiando PIN, tutti devono rientrare.
 
-- **Amministrazione** (`/admin`, solo in italiano): accesso con Google per gli indirizzi elencati in `ADMIN_EMAILS`. Permette di cambiare, generare e condividere il PIN e di vedere il registro degli accessi (data, esito, tipo di dispositivo, città della rete; conservato 30 giorni).
+- **Amministrazione** (`/admin`, solo in italiano): accesso con Google per gli amministratori letalreb@gmail.com e info.villamedici@gmail.com (elenco in `accesso/google.js`; la variabile `ADMIN_EMAILS` su Vercel, se presente, lo sostituisce). Permette di cambiare, generare e condividere il PIN e di vedere il registro degli accessi (data, esito, tipo di dispositivo, città della rete; conservato 30 giorni).
 - **Comando rapido dell’iPhone**: `POST /api/pin` con la chiave `PIN_ADMIN_KEY`.
 - **Dove sta il PIN**: nell’archivio Redis, in Global Config, nella variabile `SITE_PIN`, oppure è quello predefinito.
 
-Variabili su Vercel: `GOOGLE_CLIENT_ID` (client OAuth di tipo «Applicazione web» con origine `https://www.suoniemozioni.it`), `ADMIN_EMAILS` (indirizzi separati da virgola), `PIN_ADMIN_KEY` (firma delle sessioni e comando rapido), archivio Upstash Redis (`KV_REST_API_URL`, `KV_REST_API_TOKEN`).
+Variabili su Vercel: `GOOGLE_CLIENT_ID` (client OAuth di tipo «Applicazione web» con origine `https://www.suoniemozioni.it`), `ADMIN_EMAILS` (facoltativa, indirizzi separati da virgola), `PIN_ADMIN_KEY` (firma delle sessioni e comando rapido), archivio Upstash Redis (`KV_REST_API_URL`, `KV_REST_API_TOKEN`).
 
 ## Avvio locale
 

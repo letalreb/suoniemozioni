@@ -48,4 +48,6 @@ export async function leggiSessioneAdmin(valore) {
   if ((await firma(`${m[1]}.${m[2]}`)) !== m[3]) return null;
   try { return atob(m[1]); } catch { return null; }
 }
-export const emailAmmesse = () => String(process.env.ADMIN_EMAILS || '').toLowerCase().split(/[\s,;]+/).filter(Boolean);
+// Amministratori autorizzati. La variabile ADMIN_EMAILS su Vercel, se presente, sostituisce questo elenco.
+const AMMINISTRATORI = ['letalreb@gmail.com', 'info.villamedici@gmail.com'];
+export const emailAmmesse = () => (process.env.ADMIN_EMAILS ? String(process.env.ADMIN_EMAILS) : AMMINISTRATORI.join(',')).toLowerCase().split(/[\s,;]+/).filter(Boolean);
