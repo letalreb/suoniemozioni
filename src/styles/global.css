@@ -265,3 +265,43 @@ h2, .edificio-nome, .pannello strong { font-variation-settings: 'opsz' 36; }
 .sala-intro { font-family: var(--testo); font-weight: 400; font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.6; letter-spacing: 0; max-width: 38em; color: var(--inchiostro); }
 .lead, .nota, .didascalia, .edificio-desc, .gruppo-testa p, .sala-dove { color: color-mix(in srgb, var(--tenue) 80%, var(--inchiostro)); }
 .scheda-testo, .testo-lungo, .dal-volume blockquote { font-size: 1.0625rem; line-height: 1.7; }
+
+/* ===== Titoli fuori dalle foto (leggibilità WCAG): la foto resta pulita, il testo va sotto, scuro su chiaro ===== */
+.copertina-testo, .sala-hero:not(.senza-foto) .sala-hero-testo, .carta-num, .carta-tit, .pannello span { text-shadow: none; }
+
+/* Copertina della home */
+.copertina { height: auto; min-height: 0; color: var(--inchiostro); overflow: visible; }
+.copertina img { position: relative; inset: auto; display: block; width: 100%; height: min(82svh, 820px); min-height: 420px; object-fit: cover; }
+.copertina-testo { position: static; width: min(var(--larghezza), 100% - 2 * var(--margine)); max-width: none; margin: 0 auto; padding: clamp(1.6rem, 4vw, 2.6rem) 0 0; }
+.copertina-testo p { color: color-mix(in srgb, var(--tenue) 80%, var(--inchiostro)); max-width: 46rem; }
+
+/* Apertura della sala e pagine speciali */
+.sala-hero:not(.senza-foto) { display: block; min-height: 0; color: var(--inchiostro); background: none; overflow: visible; }
+.sala-hero:not(.senza-foto) img { position: relative; inset: auto; display: block; width: 100%; height: min(78svh, 780px); min-height: 360px; object-fit: cover; }
+.sala-hero:not(.senza-foto) .sala-hero-testo { padding: clamp(1.4rem, 4vw, 2.4rem) 0 0; }
+.sala-hero:not(.senza-foto) .sala-numero { color: var(--s); }
+.sala-hero:not(.senza-foto) .sala-en { color: color-mix(in srgb, var(--tenue) 80%, var(--inchiostro)); opacity: 1; }
+.sala-hero:not(.senza-foto) + .sala-corpo, .sala-hero + .sala-corpo { padding-top: clamp(1.2rem, 3vw, 2rem); }
+
+/* Copertine delle sale: numero in un bollo scuro sulla foto, nome sotto */
+.carta { aspect-ratio: auto; overflow: visible; background: none; color: var(--inchiostro); }
+.carta img, .carta-vuota { position: relative; inset: auto; display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+.carta-vuota { display: grid; place-items: center; color: var(--bianco); }
+.carta-vuota > span { position: static; opacity: .8; }
+.carta-num { left: .6rem; top: .6rem; min-width: 2.9rem; height: 2.9rem; padding: 0 .55rem; display: grid; place-items: center; border-radius: 999px; background: rgb(17 22 19 / .82); color: #fff; font-size: 1.5rem; line-height: 1; }
+.carta-tit { position: static; display: block; padding: .6rem .1rem 0; color: var(--inchiostro); font-size: 1.12rem; line-height: 1.25; }
+.carta:hover .carta-tit { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.griglia-sale .carta-num { font-size: 1.3rem; min-width: 2.5rem; height: 2.5rem; }
+.griglia-sale .carta-tit { font-size: 1rem; }
+
+/* Teatrino e giardino in home */
+.pannello { aspect-ratio: auto; overflow: visible; color: var(--inchiostro); }
+.pannello img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.pannello span { position: static; display: block; padding: 1rem var(--margine) 1.4rem; max-width: none; color: color-mix(in srgb, var(--tenue) 80%, var(--inchiostro)); }
+.pannello strong { color: var(--inchiostro); }
+.dittico { gap: 1rem; }
+.copertina p, .carta-tit, .pannello span, .sala-hero-testo h1 { text-shadow: none; }
+/* la foto lascia spazio al titolo già nella prima schermata */
+.sala-hero:not(.senza-foto) img { height: clamp(280px, 58svh, 640px); min-height: 0; }
+.copertina img { height: clamp(320px, 66svh, 720px); min-height: 0; }
+@media (max-width: 760px) { .sala-hero:not(.senza-foto) img { height: clamp(240px, 46svh, 420px); } .copertina img { height: clamp(260px, 52svh, 460px); } }
