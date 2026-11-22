@@ -255,3 +255,13 @@ main:has(.passo) + .piede { margin-top: 0; }
 .ascolta-voce.in-arrivo::before, .ascolta.in-arrivo::before { border-width: .3em; border-radius: 50%; border-color: currentColor; }
 .ascolta-voce span, .ascolta span { font-weight: 400; opacity: .85; }
 .elenco li .ascolta-voce { display: flex; width: fit-content; }
+
+/* Leggibilità: il Bodoni ha filetti sottilissimi, quindi
+   - i testi lunghi (presentazione della sala) passano al carattere del testo;
+   - i titoli usano un peso maggiore e l'ottica per piccole dimensioni, con filetti più spessi. */
+h1, h2, .sala-numero, .carta-num, .pannello strong, .edificio-nome { font-weight: 500; }
+.carta-tit, .scheda-titolo, .elenco h3, .passo a, .sala-en, .piede-nome, .marchio { font-weight: 500; font-variation-settings: 'opsz' 18; }
+h2, .edificio-nome, .pannello strong { font-variation-settings: 'opsz' 36; }
+.sala-intro { font-family: var(--testo); font-weight: 400; font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.6; letter-spacing: 0; max-width: 38em; color: var(--inchiostro); }
+.lead, .nota, .didascalia, .edificio-desc, .gruppo-testa p, .sala-dove { color: color-mix(in srgb, var(--tenue) 80%, var(--inchiostro)); }
+.scheda-testo, .testo-lungo, .dal-volume blockquote { font-size: 1.0625rem; line-height: 1.7; }
