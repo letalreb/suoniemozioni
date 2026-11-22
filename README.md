@@ -23,7 +23,7 @@ In `src/data/`: `sale.json` (sale, foto, strumenti e arredi, schede), `sezioni.j
 
 ## Accesso con PIN
 
-`middleware.js` (con i moduli in `accesso/`) protegge tutto il sito: si entra solo con il PIN, valido 30 giorni sul dispositivo. Cambiando PIN, tutti devono rientrare.
+`middleware.js` (con i moduli in `accesso/`) protegge tutto il sito: si entra solo con il PIN, valido 1 giorno sul dispositivo e per tutte le sale. Cambiando PIN, tutti devono rientrare.
 
 - **Amministrazione** (`/admin`, solo in italiano): accesso con Google per gli amministratori letalreb@gmail.com e info.villamedici@gmail.com (elenco in `accesso/google.js`; la variabile `ADMIN_EMAILS` su Vercel, se presente, lo sostituisce). Permette di cambiare, generare e condividere il PIN e di vedere il registro degli accessi (data, esito, tipo di dispositivo, città della rete; conservato 30 giorni).
 - **Comando rapido dell’iPhone**: `POST /api/pin` con la chiave `PIN_ADMIN_KEY`.

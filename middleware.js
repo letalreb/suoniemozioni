@@ -1,5 +1,5 @@
 // Accesso al sito, eseguito da Vercel prima di servire qualsiasi file.
-// - Si entra solo con il PIN; ogni tentativo viene registrato (30 giorni) nell'archivio Redis, se collegato.
+// - Si entra solo con il PIN, valido 1 giorno per tutte le sale; ogni tentativo viene registrato (30 giorni) nell'archivio Redis, se collegato.
 // - L'amministrazione (/admin, solo in italiano) si apre con un account Google autorizzato (elenco in accesso/google.js o variabile ADMIN_EMAILS).
 // - Lingua: italiano alla radice, inglese sotto /en, scelta dal browser al primo accesso.
 // Il PIN sta, in ordine: nell'archivio Redis, in Global Config (ex Edge Config), nella variabile SITE_PIN, o è quello predefinito (qui solo la sua impronta).
@@ -153,7 +153,8 @@ async function tentaAccesso(req, d) {
     return { ok: false, errore: 'pin', lang, dest };
   }
   await registra({ ...voce, e: 'libero' });
-  const s = await creaSessione(dev, await firmaPin(st), 24 * 30, false);
+  // un giorno, uguale per tutte le sale; decade prima se l'amministratore cambia il PIN
+  const s = await creaSessione(dev, await firmaPin(st), 24, false);
   return { ok: true, dest, cookie: cookieSessione(s) };
 }
 
@@ -196,7 +197,7 @@ export default async function middleware(req) {
   // controllo della sessione
   const st = await stato();
   const sessOk = !!(await leggiSessione(leggiCookie(req, COOKIE_SESSIONE), await firmaPin(st)));
-  const vecchioOk = !sessOk && (await (async () => { const v = /^(\d{4,8})$/.exec(leggiCookie(req, 'vmg_pin') || ''); return v ? pinValido(v[1], st) : false; })());
+  const vecchioOk = false; // i vecchi accessi da 30 giorni non valgono più: si rientra con il PIN
 
   // PIN nell'indirizzo (vecchi QR code): entra subito e toglie il PIN dalla barra degli indirizzi
   const chiavePin = [...url.searchParams.keys()].find((k) => k.toLowerCase() === 'pin');
