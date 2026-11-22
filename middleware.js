@@ -2,7 +2,8 @@
 // - Si entra solo con il PIN, valido 1 giorno per tutte le sale; ogni tentativo viene registrato (30 giorni) nell'archivio Redis, se collegato.
 // - L'amministrazione (/admin, solo in italiano) si apre con un account Google autorizzato (elenco in accesso/google.js o variabile ADMIN_EMAILS).
 // - Lingua: italiano alla radice, inglese sotto /en, scelta dal browser al primo accesso.
-// Il PIN sta, in ordine: nell'archivio Redis, in Global Config (ex Edge Config), nella variabile SITE_PIN, o è quello predefinito (qui solo la sua impronta).
+// Il PIN sta, in ordine: nell'archivio Redis, in Global Config (ex Edge Config), nella variabile SITE_PIN, o è quello predefinito
+// (qui solo la sua impronta HMAC, che senza la chiave PIN_ADMIN_KEY non permette di risalire al PIN).
 import { next } from '@vercel/functions';
 import { createClient } from '@vercel/global-config';
 import { archivioAttivo, stato, salvaPin, registra, elencoAccessi } from './accesso/archivio.js';
@@ -13,9 +14,7 @@ import { paginaAdmin, MANIFEST_ADMIN } from './accesso/pagina-admin.js';
 
 export const config = { matcher: ['/((?!favicon\\.svg|favicon\\.ico|apple-touch-icon\\.png|icon-192\\.png|icon-512\\.png|og\\.png|site\\.webmanifest).*)'] };
 
-const SALE = 'villa-medici-giulini';
-const IMPRONTA = '1bd6cb70b5c3e06887b40b64eeceb31709dc599b99512c8fe4f8eb28543f0c0a';
-const PIN_PREDEFINITO_VERIFICATO = new Set();
+const IMPRONTA = 'fa710ed41300235ebb209ca7ea2f015eb8b32bdf0a7fd5753a6c671a32feae4f'; // HMAC-SHA256 del PIN con la chiave segreta PIN_ADMIN_KEY (non ricavabile senza la chiave)
 const enc = new TextEncoder();
 
 // ---------- PIN ----------
@@ -38,12 +37,16 @@ async function pinValido(pin, st) {
   if (!/^\d{4,8}$/.test(pin)) return false;
   const noto = await pinNoto(st);
   if (noto) return pin === noto;
-  if (PIN_PREDEFINITO_VERIFICATO.has(pin)) return true;
-  const k = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
-  const b = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: enc.encode(SALE), iterations: 150000, hash: 'SHA-256' }, k, 256);
-  const ok = [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, '0')).join('') === IMPRONTA;
-  if (ok) PIN_PREDEFINITO_VERIFICATO.add(pin);
-  return ok;
+  // PIN predefinito: confronto con l'impronta HMAC (veloce e supportata ovunque, a differenza di PBKDF2 sull'edge di Vercel)
+  const chiave = pulisci(process.env.PIN_ADMIN_KEY);
+  if (!chiave) return false;
+  try {
+    const k = await crypto.subtle.importKey('raw', enc.encode(chiave), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+    const firma = [...new Uint8Array(await crypto.subtle.sign('HMAC', k, enc.encode('pin:' + pin)))].map((x) => x.toString(16).padStart(2, '0')).join('');
+    return uguali(firma, IMPRONTA);
+  } catch {
+    return false;
+  }
 }
 /** Valore del PIN usato per firmare le sessioni: cambia quando cambia il PIN. */
 async function firmaPin(st) { return (await pinNoto(st)) || IMPRONTA; } // cambiando il PIN predefinito, gli accessi in corso decadono
