@@ -21,17 +21,15 @@ Il sito è in italiano (alla radice) e in inglese (sotto `/en/`), generati dalle
 
 In `src/data/`: `sale.json` (sale, foto, strumenti e arredi, schede), `sezioni.json` (i cinque edifici), `strumenti.json`, `speciali.json` (Teatrino e giardino). Le immagini sono in `public/img/<numero sala>/`.
 
-## Accesso: PIN e posizione
+## Accesso con PIN
 
-`middleware.js` (con i moduli in `accesso/`) protegge tutto il sito:
+`middleware.js` (con i moduli in `accesso/`) protegge tutto il sito: si entra solo con il PIN, valido 30 giorni sul dispositivo. Cambiando PIN, tutti devono rientrare.
 
-- **PIN** obbligatorio. Si cambia da `/admin` o dal comando rapido (`POST /api/pin`). Si trova, in ordine: nell’archivio Redis, in Global Config, nella variabile `SITE_PIN`, oppure è quello predefinito.
-- **Controllo della posizione** (da attivare in `/admin`): si entra solo con il telefono entro il raggio scelto dal centro della villa (predefinito 300 m da via Medici 6, Briosco). L’accesso dura il numero di ore scelto (predefinito 4), poi si rifà.
-- **Dispositivi autorizzati senza GPS**: dall’amministrazione si può consentire a un singolo dispositivo di entrare da ovunque.
-- **Registro degli accessi**: data, esito, distanza, posizione, tipo di dispositivo e città della rete; conservato 30 giorni.
-- La pagina `/admin` è solo in italiano; si apre con il link personale che contiene la chiave (`PIN_ADMIN_KEY`).
+- **Amministrazione** (`/admin`, solo in italiano): accesso con Google per gli indirizzi elencati in `ADMIN_EMAILS`. Permette di cambiare, generare e condividere il PIN e di vedere il registro degli accessi (data, esito, tipo di dispositivo, città della rete; conservato 30 giorni).
+- **Comando rapido dell’iPhone**: `POST /api/pin` con la chiave `PIN_ADMIN_KEY`.
+- **Dove sta il PIN**: nell’archivio Redis, in Global Config, nella variabile `SITE_PIN`, oppure è quello predefinito.
 
-Archivio: Upstash Redis collegato dal Marketplace di Vercel (variabili `KV_REST_API_URL` e `KV_REST_API_TOKEN`, oppure `UPSTASH_REDIS_REST_URL` e `UPSTASH_REDIS_REST_TOKEN`). Senza archivio il sito funziona solo con il PIN.
+Variabili su Vercel: `GOOGLE_CLIENT_ID` (client OAuth di tipo «Applicazione web» con origine `https://www.suoniemozioni.it`), `ADMIN_EMAILS` (indirizzi separati da virgola), `PIN_ADMIN_KEY` (firma delle sessioni e comando rapido), archivio Upstash Redis (`KV_REST_API_URL`, `KV_REST_API_TOKEN`).
 
 ## Avvio locale
 
