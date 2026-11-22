@@ -21,9 +21,17 @@ Il sito è in italiano (alla radice) e in inglese (sotto `/en/`), generati dalle
 
 In `src/data/`: `sale.json` (sale, foto, strumenti e arredi, schede), `sezioni.json` (i cinque edifici), `strumenti.json`, `speciali.json` (Teatrino e giardino). Le immagini sono in `public/img/<numero sala>/`.
 
-## Accesso con PIN
+## Accesso: PIN e posizione
 
-`middleware.js` chiede un PIN prima di servire qualsiasi pagina. Il PIN si può passare anche nell’indirizzo (`?PIN=…`) per l’accesso dai QR code; resta valido 30 giorni sul dispositivo. La variabile d’ambiente `SITE_PIN` su Vercel sostituisce il PIN predefinito.
+`middleware.js` (con i moduli in `accesso/`) protegge tutto il sito:
+
+- **PIN** obbligatorio. Si cambia da `/admin` o dal comando rapido (`POST /api/pin`). Si trova, in ordine: nell’archivio Redis, in Global Config, nella variabile `SITE_PIN`, oppure è quello predefinito.
+- **Controllo della posizione** (da attivare in `/admin`): si entra solo con il telefono entro il raggio scelto dal centro della villa (predefinito 300 m da via Medici 6, Briosco). L’accesso dura il numero di ore scelto (predefinito 4), poi si rifà.
+- **Dispositivi autorizzati senza GPS**: dall’amministrazione si può consentire a un singolo dispositivo di entrare da ovunque.
+- **Registro degli accessi**: data, esito, distanza, posizione, tipo di dispositivo e città della rete; conservato 30 giorni.
+- La pagina `/admin` è solo in italiano; si apre con il link personale che contiene la chiave (`PIN_ADMIN_KEY`).
+
+Archivio: Upstash Redis collegato dal Marketplace di Vercel (variabili `KV_REST_API_URL` e `KV_REST_API_TOKEN`, oppure `UPSTASH_REDIS_REST_URL` e `UPSTASH_REDIS_REST_TOKEN`). Senza archivio il sito funziona solo con il PIN.
 
 ## Avvio locale
 
