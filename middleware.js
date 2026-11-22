@@ -14,7 +14,7 @@ import { paginaAdmin, MANIFEST_ADMIN } from './accesso/pagina-admin.js';
 export const config = { matcher: ['/((?!favicon\\.svg|favicon\\.ico|apple-touch-icon\\.png|icon-192\\.png|icon-512\\.png|og\\.png|site\\.webmanifest).*)'] };
 
 const SALE = 'villa-medici-giulini';
-const IMPRONTA = 'b123a985827f6a998201fbf8ea6cc7420907238741bbb906334982b7824d7371';
+const IMPRONTA = '1bd6cb70b5c3e06887b40b64eeceb31709dc599b99512c8fe4f8eb28543f0c0a';
 const PIN_PREDEFINITO_VERIFICATO = new Set();
 const enc = new TextEncoder();
 
@@ -46,7 +46,7 @@ async function pinValido(pin, st) {
   return ok;
 }
 /** Valore del PIN usato per firmare le sessioni: cambia quando cambia il PIN. */
-async function firmaPin(st) { return (await pinNoto(st)) || 'predefinito'; }
+async function firmaPin(st) { return (await pinNoto(st)) || IMPRONTA; } // cambiando il PIN predefinito, gli accessi in corso decadono
 
 // ---------- utilità ----------
 const json = (s, d, h = {}) => new Response(JSON.stringify(d), { status: s, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...h } });
