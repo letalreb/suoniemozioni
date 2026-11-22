@@ -2,7 +2,7 @@
    un filo d'oro delle cornici. Bodoni (Parma) per i titoli, Hanken Grotesk per il testo. */
 :root {
   --carta: #EDEFEA; --carta-2: #E2E6DE; --inchiostro: #1D2420; --tenue: #56605A; --filo: #C6CEC4;
-  --oro: #8E6D2E; --focus: #2457C5; --bianco: #FBFBF8;
+  --oro: #76581F; --focus: #2457C5; --bianco: #FBFBF8;
   --sez: #2E4A3B; --sez-scuro: #9CC3A8;
   --display: 'Bodoni Moda', 'Bodoni 72', Didot, 'Times New Roman', serif;
   --testo: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
